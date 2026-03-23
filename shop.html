@@ -160,6 +160,8 @@
         <a href="about.html">About</a>
       </nav>
       <div class="header-actions">
+        <button id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+        <button id="rtl-toggle" aria-label="Toggle RTL" title="Toggle RTL" style="font-weight: bold; font-size: 0.8rem;">RTL</button>
         <button aria-label="Search"><i class="fas fa-search"></i></button>
         <a href="user-dashboard.html" aria-label="Account"><i class="far fa-user"></i></a>
         <a href="wishlist.html" aria-label="Wishlist"><i class="far fa-heart"></i></a>
@@ -184,55 +186,69 @@
       <div class="filter-group">
         <h3 class="filter-title">Scent Profile <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i></h3>
         <div class="filter-options">
-          <label><input type="checkbox"> Woody (42)</label>
-          <label><input type="checkbox"> Fresh/Citrus (38)</label>
-          <label><input type="checkbox"> Oriental/Spicy (25)</label>
-          <label><input type="checkbox"> Floral (30)</label>
-          <label><input type="checkbox"> Gourmand (15)</label>
-          <label><input type="checkbox"> Aquatic (12)</label>
+          <label><input type="checkbox" class="filter-scent" value="woody"> Woody (42)</label>
+          <label><input type="checkbox" class="filter-scent" value="fresh"> Fresh/Citrus (38)</label>
+          <label><input type="checkbox" class="filter-scent" value="oriental"> Oriental/Spicy (25)</label>
+          <label><input type="checkbox" class="filter-scent" value="floral"> Floral (30)</label>
+          <label><input type="checkbox" class="filter-scent" value="gourmand"> Gourmand (15)</label>
+          <label><input type="checkbox" class="filter-scent" value="aquatic"> Aquatic (12)</label>
         </div>
       </div>
       
       <div class="filter-group">
         <h3 class="filter-title">Brands <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i></h3>
         <div class="filter-options">
-          <label><input type="checkbox"> Creed</label>
-          <label><input type="checkbox"> Tom Ford</label>
-          <label><input type="checkbox"> Maison Francis Kurkdjian</label>
-          <label><input type="checkbox"> Parfums de Marly</label>
-          <label><input type="checkbox"> Dior (Private Collection)</label>
-          <label><input type="checkbox"> Byredo</label>
+          <label><input type="checkbox" class="filter-brand" value="creed"> Creed</label>
+          <label><input type="checkbox" class="filter-brand" value="tom-ford"> Tom Ford</label>
+          <label><input type="checkbox" class="filter-brand" value="mfk"> Maison Francis Kurkdjian</label>
+          <label><input type="checkbox" class="filter-brand" value="pdm"> Parfums de Marly</label>
+          <label><input type="checkbox" class="filter-brand" value="dior"> Dior (Private Collection)</label>
+          <label><input type="checkbox" class="filter-brand" value="byredo"> Byredo</label>
+          <label><input type="checkbox" class="filter-brand" value="le-labo"> Le Labo</label>
+          <label><input type="checkbox" class="filter-brand" value="kilian"> By Kilian</label>
+          <label><input type="checkbox" class="filter-brand" value="amouage"> Amouage</label>
+          <label><input type="checkbox" class="filter-brand" value="bond-no-9"> Bond No. 9</label>
+          <label><input type="checkbox" class="filter-brand" value="memo"> Memo Paris</label>
+          <label><input type="checkbox" class="filter-brand" value="lv"> Louis Vuitton</label>
+          <label><input type="checkbox" class="filter-brand" value="initio"> Initio Parfums</label>
+          <label><input type="checkbox" class="filter-brand" value="d&g"> Dolce & Gabbana</label>
         </div>
       </div>
       
       <div class="filter-group">
         <h3 class="filter-title">Occasion <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i></h3>
         <div class="filter-options">
-          <label><input type="checkbox"> Date Night</label>
-          <label><input type="checkbox"> Office / Formal</label>
-          <label><input type="checkbox"> Clubbing / Party</label>
-          <label><input type="checkbox"> Casual Daily</label>
+          <label><input type="checkbox" class="filter-occasion" value="date"> Date Night</label>
+          <label><input type="checkbox" class="filter-occasion" value="office"> Office / Formal</label>
+          <label><input type="checkbox" class="filter-occasion" value="clubbing"> Clubbing / Party</label>
+          <label><input type="checkbox" class="filter-occasion" value="casual"> Casual Daily</label>
         </div>
+      </div>
+      <div class="filter-group" style="border-bottom: none;">
+        <button id="clear-filters" style="width: 100%; padding: 10px; background: #f0f0f0; border: 1px solid #ddd; cursor: pointer; font-size: 0.9rem;">Clear All Filters</button>
       </div>
     </aside>
 
     <!-- Main Grid -->
     <main class="shop-main">
       <div class="shop-toolbar">
-        <div>Showing 1 - 9 of 142 Decants</div>
+        <div id="results-count">Showing 1 - 18 of 18 Decants</div>
+        <div style="flex: 1; max-width: 300px; margin: 0 20px;">
+          <input type="text" id="shop-search" placeholder="Search brands or scents..." style="width: 100%; padding: 8px 15px; border: 1px solid var(--color-gray-light);">
+        </div>
         <div class="toolbar-sort">
-          <select>
-            <option>Sort by: Popularity</option>
-            <option>Sort by: Newest</option>
-            <option>Price: Low to High</option>
-            <option>Price: High to Low</option>
+          <select id="sort-select">
+            <option value="popularity">Sort by: Popularity</option>
+            <option value="newest">Sort by: Newest</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
           </select>
         </div>
       </div>
       
       <div class="product-grid">
-        <!-- Product -->
-        <div class="product-card">
+        <!-- Product 1: Oud Wood -->
+        <div class="product-card" data-scent="woody" data-brand="tom-ford" data-occasion="date office" data-price="800" data-popularity="98" data-date="2026-03-20">
           <div class="product-image">
             <a href="product-details.html"><img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=600" alt="Tom Ford Oud Wood"></a>
           </div>
@@ -240,36 +256,36 @@
             <div class="product-brand">Tom Ford</div>
             <a href="product-details.html" class="product-title">Oud Wood</a>
             <div class="product-notes">Oud, Sandalwood, Cardamom</div>
-            <div class="product-price">From ₹800</div>
+            <div class="product-price">₹800</div>
             <div class="size-pills">
-              <span class="size-pill active">2ml</span>
-              <span class="size-pill">5ml</span>
-              <span class="size-pill">10ml</span>
+              <span class="size-pill active" data-price="800">2ml</span>
+              <span class="size-pill" data-price="1800">5ml</span>
+              <span class="size-pill" data-price="3200">10ml</span>
             </div>
             <button class="add-to-cart-btn">Add to Cart</button>
           </div>
         </div>
 
-        <!-- Product -->
-        <div class="product-card">
+        <!-- Product 2: Aventus -->
+        <div class="product-card" data-scent="fresh" data-brand="creed" data-occasion="office casual" data-price="1200" data-popularity="99" data-date="2026-03-21">
           <div class="product-image">
-            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&q=80&w=600" alt="Creed Aventus"></a>
+            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1557170334-a9632e77c6e4?auto=format&fit=crop&q=80&w=600" alt="Creed Aventus"></a>
           </div>
           <div class="product-info">
             <div class="product-brand">Creed</div>
             <a href="product-details.html" class="product-title">Aventus</a>
             <div class="product-notes">Pineapple, Birch, Musk</div>
-            <div class="product-price">From ₹1,200</div>
+            <div class="product-price">₹1,200</div>
             <div class="size-pills">
-              <span class="size-pill">2ml</span>
-              <span class="size-pill active">5ml</span>
+              <span class="size-pill active" data-price="1200">2ml</span>
+              <span class="size-pill" data-price="2800">5ml</span>
             </div>
             <button class="add-to-cart-btn">Add to Cart</button>
           </div>
         </div>
 
-        <!-- Product -->
-        <div class="product-card">
+        <!-- Product 3: BR 540 -->
+        <div class="product-card" data-scent="oriental" data-brand="mfk" data-occasion="date clubbing" data-price="1500" data-popularity="100" data-date="2026-03-22">
           <div class="product-image">
             <a href="product-details.html"><img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=600" alt="Baccarat Rouge 540"></a>
           </div>
@@ -277,18 +293,18 @@
             <div class="product-brand">Maison Francis Kurkdjian</div>
             <a href="product-details.html" class="product-title">Baccarat Rouge 540</a>
             <div class="product-notes">Saffron, Jasmine, Amberwood</div>
-            <div class="product-price">From ₹1,500</div>
+            <div class="product-price">₹1,500</div>
             <div class="size-pills">
-              <span class="size-pill active">2ml</span>
-              <span class="size-pill">5ml</span>
-              <span class="size-pill">10ml</span>
+              <span class="size-pill active" data-price="1500">2ml</span>
+              <span class="size-pill" data-price="3500">5ml</span>
+              <span class="size-pill" data-price="6500">10ml</span>
             </div>
             <button class="add-to-cart-btn">Add to Cart</button>
           </div>
         </div>
         
-        <!-- Product -->
-        <div class="product-card">
+        <!-- Product 4: Gypsy Water -->
+        <div class="product-card" data-scent="fresh woody" data-brand="byredo" data-occasion="casual office" data-price="900" data-popularity="85" data-date="2026-03-10">
           <div class="product-image">
             <a href="product-details.html"><img src="https://images.unsplash.com/photo-1595425970377-c9703bc48b2d?auto=format&fit=crop&q=80&w=600" alt="Byredo Gypsy Water"></a>
           </div>
@@ -296,18 +312,18 @@
             <div class="product-brand">Byredo</div>
             <a href="product-details.html" class="product-title">Gypsy Water</a>
             <div class="product-notes">Bergamot, Lemon, Pepper</div>
-            <div class="product-price">From ₹900</div>
+            <div class="product-price">₹900</div>
             <div class="size-pills">
-              <span class="size-pill">2ml</span>
-              <span class="size-pill active">5ml</span>
-              <span class="size-pill">10ml</span>
+              <span class="size-pill active" data-price="900">2ml</span>
+              <span class="size-pill" data-price="2100">5ml</span>
+              <span class="size-pill" data-price="3800">10ml</span>
             </div>
             <button class="add-to-cart-btn">Add to Cart</button>
           </div>
         </div>
 
-        <!-- Product -->
-        <div class="product-card">
+        <!-- Product 5: Layton -->
+        <div class="product-card" data-scent="oriental gourmand" data-brand="pdm" data-occasion="date clubbing" data-price="1050" data-popularity="92" data-date="2026-03-15">
           <div class="product-image">
             <a href="product-details.html"><img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=600" alt="Parfums de Marly Layton"></a>
           </div>
@@ -315,18 +331,18 @@
             <div class="product-brand">Parfums de Marly</div>
             <a href="product-details.html" class="product-title">Layton</a>
             <div class="product-notes">Apple, Vanilla, Cardamom</div>
-            <div class="product-price">From ₹1,050</div>
+            <div class="product-price">₹1,050</div>
             <div class="size-pills">
-              <span class="size-pill active">2ml</span>
-              <span class="size-pill">5ml</span>
-              <span class="size-pill">10ml</span>
+              <span class="size-pill active" data-price="1050">2ml</span>
+              <span class="size-pill" data-price="2400">5ml</span>
+              <span class="size-pill" data-price="4200">10ml</span>
             </div>
             <button class="add-to-cart-btn">Add to Cart</button>
           </div>
         </div>
 
-        <!-- Product -->
-        <div class="product-card">
+        <!-- Product 6: Sauvage Elixir -->
+        <div class="product-card" data-scent="spicy woody" data-brand="dior" data-occasion="formal date" data-price="950" data-popularity="88" data-date="2026-03-05">
           <div class="product-image">
             <a href="product-details.html"><img src="https://images.unsplash.com/photo-1615309033306-05646f8fb049?auto=format&fit=crop&q=80&w=600" alt="Dior Sauvage Elixir"></a>
           </div>
@@ -334,11 +350,231 @@
             <div class="product-brand">Dior</div>
             <a href="product-details.html" class="product-title">Sauvage Elixir</a>
             <div class="product-notes">Nutmeg, Cinnamon, Sandalwood</div>
-            <div class="product-price">From ₹950</div>
+            <div class="product-price">₹950</div>
             <div class="size-pills">
-              <span class="size-pill active">2ml</span>
-              <span class="size-pill">5ml</span>
-              <span class="size-pill">10ml</span>
+              <span class="size-pill active" data-price="950">2ml</span>
+              <span class="size-pill" data-price="2200">5ml</span>
+              <span class="size-pill" data-price="3900">10ml</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product 7: Santal 33 -->
+        <div class="product-card" data-scent="woody floral" data-brand="le-labo" data-occasion="casual office" data-price="1100" data-popularity="95" data-date="2026-03-24">
+          <div class="product-image">
+            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1627384113710-424c9181ebbb?auto=format&fit=crop&q=80&w=600" alt="Le Labo Santal 33"></a>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Le Labo</div>
+            <a href="product-details.html" class="product-title">Santal 33</a>
+            <div class="product-notes">Sandalwood, Papyrus, Leather</div>
+            <div class="product-price">₹1,100</div>
+            <div class="size-pills">
+              <span class="size-pill active" data-price="1100">2ml</span>
+              <span class="size-pill" data-price="2500">5ml</span>
+              <span class="size-pill" data-price="4800">10ml</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product 8: Black Phantom -->
+        <div class="product-card" data-scent="gourmand oriental" data-brand="kilian" data-occasion="clubbing date" data-price="1800" data-popularity="82" data-date="2026-03-25">
+          <div class="product-image">
+            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1547887532-3178a536965b?auto=format&fit=crop&q=80&w=600" alt="Kilian Black Phantom"></a>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">By Kilian</div>
+            <a href="product-details.html" class="product-title">Black Phantom</a>
+            <div class="product-notes">Coffee, Rum, Dark Chocolate</div>
+            <div class="product-price">₹1,800</div>
+            <div class="size-pills">
+              <span class="size-pill active" data-price="1800">2ml</span>
+              <span class="size-pill" data-price="4200">5ml</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product 9: Reflection Man -->
+        <div class="product-card" data-scent="floral woody" data-brand="amouage" data-occasion="office formal" data-price="1300" data-popularity="89" data-date="2026-03-26">
+          <div class="product-image">
+            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1557827983-012eb6ea8dc1?auto=format&fit=crop&q=80&w=600" alt="Amouage Reflection Man"></a>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Amouage</div>
+            <a href="product-details.html" class="product-title">Reflection Man</a>
+            <div class="product-notes">Jasmine, Neroli, Sandalwood</div>
+            <div class="product-price">₹1,300</div>
+            <div class="size-pills">
+              <span class="size-pill active" data-price="1300">2ml</span>
+              <span class="size-pill" data-price="3100">5ml</span>
+              <span class="size-pill" data-price="5500">10ml</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product 10: Lost Cherry -->
+        <div class="product-card" data-scent="gourmand floral" data-brand="tom-ford" data-occasion="date clubbing" data-price="1600" data-popularity="93" data-date="2026-03-27">
+          <div class="product-image">
+            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1628149455678-16f37bc392f4?auto=format&fit=crop&q=80&w=600" alt="Tom Ford Lost Cherry"></a>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Tom Ford</div>
+            <a href="product-details.html" class="product-title">Lost Cherry</a>
+            <div class="product-notes">Black Cherry, Bitter Almond, Griotte</div>
+            <div class="product-price">₹1,600</div>
+            <div class="size-pills">
+              <span class="size-pill active" data-price="1600">2ml</span>
+              <span class="size-pill" data-price="3800">5ml</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product 11: Delina -->
+        <div class="product-card" data-scent="floral" data-brand="pdm" data-occasion="casual date" data-price="1400" data-popularity="97" data-date="2026-03-28">
+          <div class="product-image">
+            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1590156221122-c4463fc0402b?auto=format&fit=crop&q=80&w=600" alt="PDM Delina"></a>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Parfums de Marly</div>
+            <a href="product-details.html" class="product-title">Delina</a>
+            <div class="product-notes">Turkish Rose, Lychee, Rhubarb</div>
+            <div class="product-price">₹1,400</div>
+            <div class="size-pills">
+              <span class="size-pill active" data-price="1400">2ml</span>
+              <span class="size-pill" data-price="3200">5ml</span>
+              <span class="size-pill" data-price="5800">10ml</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product 12: Light Blue Intense -->
+        <div class="product-card" data-scent="aquatic fresh" data-brand="d&g" data-occasion="casual summer" data-price="600" data-popularity="80" data-date="2026-03-01">
+          <div class="product-image">
+            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&q=80&w=600" alt="D&G Light Blue Intense"></a>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Dolce & Gabbana</div>
+            <a href="product-details.html" class="product-title">Light Blue Intense</a>
+            <div class="product-notes">Sea Water, Grapefruit, Juniper</div>
+            <div class="product-price">₹600</div>
+            <div class="size-pills">
+              <span class="size-pill active" data-price="600">2ml</span>
+              <span class="size-pill" data-price="1400">5ml</span>
+              <span class="size-pill" data-price="2600">10ml</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product 13: Bleecker Street -->
+        <div class="product-card" data-scent="fresh woody" data-brand="bond-no-9" data-occasion="casual office" data-price="1250" data-popularity="75" data-date="2026-03-05">
+          <div class="product-image">
+            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1608228078970-985f403487f8?auto=format&fit=crop&q=80&w=600" alt="Bond No 9 Bleecker Street"></a>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Bond No. 9</div>
+            <a href="product-details.html" class="product-title">Bleecker Street</a>
+            <div class="product-notes">Violet Leaf, Blueberry, Suede</div>
+            <div class="product-price">₹1,250</div>
+            <div class="size-pills">
+              <span class="size-pill active" data-price="1250">2ml</span>
+              <span class="size-pill" data-price="2900">5ml</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product 14: Grand Soir -->
+        <div class="product-card" data-scent="oriental" data-brand="mfk" data-occasion="date evening" data-price="1350" data-popularity="86" data-date="2026-03-12">
+          <div class="product-image">
+            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1547883445-247607774431?auto=format&fit=crop&q=80&w=600" alt="MFK Grand Soir"></a>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Maison Francis Kurkdjian</div>
+            <a href="product-details.html" class="product-title">Grand Soir</a>
+            <div class="product-notes">Amber, Vanilla, Tonka Bean</div>
+            <div class="product-price">₹1,350</div>
+            <div class="size-pills">
+              <span class="size-pill active" data-price="1350">2ml</span>
+              <span class="size-pill" data-price="3100">5ml</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product 15: Irish Leather -->
+        <div class="product-card" data-scent="oriental woody" data-brand="memo" data-occasion="casual travel" data-price="1150" data-popularity="70" data-date="2026-02-28">
+          <div class="product-image">
+            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=600" alt="Memo Irish Leather"></a>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Memo Paris</div>
+            <a href="product-details.html" class="product-title">Irish Leather</a>
+            <div class="product-notes">Juniper, Leather, Amber</div>
+            <div class="product-price">₹1,150</div>
+            <div class="size-pills">
+              <span class="size-pill active" data-price="1150">2ml</span>
+              <span class="size-pill" data-price="2700">5ml</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product 16: Ombre Nomade -->
+        <div class="product-card" data-scent="oriental woody" data-brand="lv" data-occasion="formal winter" data-price="1900" data-popularity="94" data-date="2026-03-29">
+          <div class="product-image">
+            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1615309033306-05646f8fb049?auto=format&fit=crop&q=80&w=600" alt="LV Ombre Nomade"></a>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Louis Vuitton</div>
+            <a href="product-details.html" class="product-title">Ombre Nomade</a>
+            <div class="product-notes">Oud, Rose, Incense</div>
+            <div class="product-price">₹1,900</div>
+            <div class="size-pills">
+              <span class="size-pill active" data-price="1900">2ml</span>
+              <span class="size-pill" data-price="4500">5ml</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product 17: Side Effect -->
+        <div class="product-card" data-scent="oriental spicy" data-brand="initio" data-occasion="clubbing date" data-price="1450" data-popularity="81" data-date="2026-03-30">
+          <div class="product-image">
+            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1631214502752-9571f5c66e4a?auto=format&fit=crop&q=80&w=600" alt="Initio Side Effect"></a>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Initio Parfums Prives</div>
+            <a href="product-details.html" class="product-title">Side Effect</a>
+            <div class="product-notes">Tobacco, Rum, Vanilla</div>
+            <div class="product-price">₹1,450</div>
+            <div class="size-pills">
+              <span class="size-pill active" data-price="1450">2ml</span>
+              <span class="size-pill" data-price="3400">5ml</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product 18: Silver Mountain Water -->
+        <div class="product-card" data-scent="fresh" data-brand="creed" data-occasion="casual office" data-price="1100" data-popularity="87" data-date="2026-03-18">
+          <div class="product-image">
+            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1557827983-012eb6ea8dc1?auto=format&fit=crop&q=80&w=600" alt="Creed Silver Mountain Water"></a>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Creed</div>
+            <a href="product-details.html" class="product-title">Silver Mountain Water</a>
+            <div class="product-notes">Green Tea, Black Currant, Musk</div>
+            <div class="product-price">₹1,100</div>
+            <div class="size-pills">
+              <span class="size-pill active" data-price="1100">2ml</span>
+              <span class="size-pill" data-price="2600">5ml</span>
             </div>
             <button class="add-to-cart-btn">Add to Cart</button>
           </div>
@@ -405,6 +641,122 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const productGrid = document.querySelector('.product-grid');
+      const products = Array.from(document.querySelectorAll('.product-card'));
+      const scentFilters = document.querySelectorAll('.filter-scent');
+      const brandFilters = document.querySelectorAll('.filter-brand');
+      const occasionFilters = document.querySelectorAll('.filter-occasion');
+      const sortSelect = document.getElementById('sort-select');
+      const searchInput = document.getElementById('shop-search');
+      const resultsCount = document.getElementById('results-count');
+
+      // Create Toast Container
+      const toastContainer = document.createElement('div');
+      toastContainer.className = 'toast-container';
+      document.body.appendChild(toastContainer);
+
+      function showToast(message) {
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.textContent = message;
+        toastContainer.appendChild(toast);
+        setTimeout(() => toast.classList.add('active'), 100);
+        setTimeout(() => {
+          toast.classList.remove('active');
+          setTimeout(() => toast.remove(), 400);
+        }, 3000);
+      }
+
+      function updateProducts() {
+        const activeScents = Array.from(scentFilters).filter(i => i.checked).map(i => i.value);
+        const activeBrands = Array.from(brandFilters).filter(i => i.checked).map(i => i.value);
+        const activeOccasions = Array.from(occasionFilters).filter(i => i.checked).map(i => i.value);
+        const searchTerm = searchInput.value.toLowerCase();
+
+        let visibleCount = 0;
+
+        products.forEach(product => {
+          const scent = product.dataset.scent.split(' ');
+          const brand = product.dataset.brand;
+          const occasion = product.dataset.occasion.split(' ');
+          const title = product.querySelector('.product-title').textContent.toLowerCase();
+          const brandText = product.querySelector('.product-brand').textContent.toLowerCase();
+
+          const matchesScent = activeScents.length === 0 || activeScents.some(s => scent.includes(s));
+          const matchesBrand = activeBrands.length === 0 || activeBrands.includes(brand);
+          const matchesOccasion = activeOccasions.length === 0 || activeOccasions.some(o => occasion.includes(o));
+          const matchesSearch = title.includes(searchTerm) || brandText.includes(searchTerm);
+
+          if (matchesScent && matchesBrand && matchesOccasion && matchesSearch) {
+            product.classList.remove('hidden');
+            visibleCount++;
+          } else {
+            product.classList.add('hidden');
+          }
+        });
+
+        resultsCount.textContent = `Showing ${visibleCount} of ${products.length} Decants`;
+        sortProducts();
+      }
+
+      function sortProducts() {
+        const sortVal = sortSelect.value;
+        const visibleProducts = products.filter(p => !p.classList.contains('hidden'));
+        
+        visibleProducts.sort((a, b) => {
+          if (sortVal === 'price-low') return a.dataset.price - b.dataset.price;
+          if (sortVal === 'price-high') return b.dataset.price - a.dataset.price;
+          if (sortVal === 'popularity') return b.dataset.popularity - a.dataset.popularity;
+          if (sortVal === 'newest') return new Date(b.dataset.date) - new Date(a.dataset.date);
+          return 0;
+        });
+
+        visibleProducts.forEach(p => productGrid.appendChild(p));
+      }
+
+      // Filter Events
+      [...scentFilters, ...brandFilters, ...occasionFilters].forEach(f => {
+        f.addEventListener('change', updateProducts);
+      });
+
+      sortSelect.addEventListener('change', updateProducts);
+      searchInput.addEventListener('input', updateProducts);
+
+      // Clear Filters
+      document.getElementById('clear-filters').addEventListener('click', () => {
+        [...scentFilters, ...brandFilters, ...occasionFilters].forEach(f => f.checked = false);
+        searchInput.value = '';
+        sortSelect.value = 'popularity';
+        updateProducts();
+      });
+
+      // Size Pill Logic
+      document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('size-pill')) {
+          const card = e.target.closest('.product-card');
+          const priceDisplay = card.querySelector('.product-price');
+          const pills = card.querySelectorAll('.size-pill');
+          
+          pills.forEach(p => p.classList.remove('active'));
+          e.target.classList.add('active');
+          
+          const newPrice = e.target.dataset.price;
+          priceDisplay.textContent = `₹${newPrice}`;
+          card.dataset.price = newPrice;
+        }
+
+        if (e.target.classList.contains('add-to-cart-btn')) {
+          const title = e.target.closest('.product-card').querySelector('.product-title').textContent;
+          showToast(`Added ${title} to your bag.`);
+        }
+      });
+
+      // Initial Sort
+      sortProducts();
+    });
+  </script>
 </body>
 </html>
 

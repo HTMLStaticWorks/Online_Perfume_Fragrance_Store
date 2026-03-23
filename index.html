@@ -215,11 +215,33 @@
     .reviewer-name { font-family: var(--font-serif); font-size: 1.2rem; }
     .reviewer-badge { font-size: 0.75rem; text-transform: uppercase; color: var(--color-accent); letter-spacing: 1px; margin-top: 5px; }
 
+    /* Art of Decanting */
+    .decanting-section { padding: var(--section-padding); background-color: var(--color-primary); color: #fff; }
+    .decanting-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
+    .decanting-text h2 { color: #fff; font-size: 3rem; margin-bottom: 25px; }
+    .decanting-text p { color: #A0A0A0; margin-bottom: 30px; font-size: 1.1rem; }
+    .decanting-image img { border-radius: 8px; box-shadow: var(--shadow-lg); }
+
+    /* Scent Notes 101 */
+    .notes-section { padding: var(--section-padding); background-color: #fff; }
+    .notes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
+    .note-card { text-align: center; padding: 40px; background: var(--color-secondary); border-radius: 4px; transition: transform var(--transition-normal); }
+    .note-card:hover { transform: translateY(-10px); }
+    .note-icon { font-size: 2.5rem; color: var(--color-accent); margin-bottom: 20px; }
+    .note-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+    .note-card p { color: var(--color-gray); font-size: 0.95rem; }
+
+
+
+    @media (max-width: 992px) {
+      .decanting-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
     @media (max-width: 768px) {
       .hero-title { font-size: 2.8rem; }
       .subs-inner { grid-template-columns: 1fr; }
       .review-grid { grid-template-columns: 1fr; }
       .trust-inner { justify-content: center; }
+      .notes-grid { grid-template-columns: 1fr; }
     }
   </style>
   <link rel="icon" type="image/png" href="favicon.png">
@@ -241,6 +263,8 @@
         <a href="about.html">About</a>
       </nav>
       <div class="header-actions">
+        <button id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+        <button id="rtl-toggle" aria-label="Toggle RTL" title="Toggle RTL" style="font-weight: bold; font-size: 0.8rem;">RTL</button>
         <button aria-label="Search"><i class="fas fa-search"></i></button>
         <a href="user-dashboard.html" aria-label="Account"><i class="far fa-user"></i></a>
         <a href="wishlist.html" aria-label="Wishlist"><i class="far fa-heart"></i></a>
@@ -276,20 +300,20 @@
     <p style="color: var(--color-gray);">Not sure where to start? Filter by the scent profiles that resonate with you.</p>
     
     <div class="scent-filters">
-        <button class="filter-btn active">All</button>
-        <button class="filter-btn">Woody</button>
-        <button class="filter-btn">Fresh</button>
-        <button class="filter-btn">Sweet / Gourmand</button>
-        <button class="filter-btn">Spicy</button>
-        <button class="filter-btn">Floral</button>
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="woody">Woody</button>
+        <button class="filter-btn" data-filter="fresh">Fresh</button>
+        <button class="filter-btn" data-filter="sweet">Sweet / Gourmand</button>
+        <button class="filter-btn" data-filter="spicy">Spicy</button>
+        <button class="filter-btn" data-filter="floral">Floral</button>
     </div>
 
     <div class="product-grid">
-      <!-- Product 1 -->
-      <div class="product-card">
+      <!-- Woody -->
+      <div class="product-card" data-category="woody">
         <div class="product-badge">Best Seller</div>
         <div class="product-image">
-          <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=600" alt="Tom Ford Oud Wood Decant">
+          <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=600" alt="Tom Ford Oud Wood">
         </div>
         <div class="product-info">
           <div class="product-brand">Tom Ford</div>
@@ -305,69 +329,220 @@
         </div>
       </div>
 
-      <!-- Product 2 -->
-      <div class="product-card">
+      <div class="product-card" data-category="woody">
         <div class="product-image">
-          <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&q=80&w=600" alt="Creed Aventus Decant">
+          <img src="https://images.unsplash.com/photo-1583445013765-48c2201c8144?auto=format&fit=crop&q=80&w=600" alt="Diptyque Tam Dao">
         </div>
         <div class="product-info">
-          <div class="product-brand">Creed</div>
-          <h3 class="product-title">Aventus</h3>
-          <div class="product-notes">Pineapple, Birch, Musk</div>
-          <div class="product-price">From ₹1,200</div>
+          <div class="product-brand">Diptyque</div>
+          <h3 class="product-title">Tam Dao</h3>
+          <div class="product-notes">Cedar, Sandalwood, Cypress</div>
+          <div class="product-price">From ₹750</div>
           <div class="size-pills">
-            <span class="size-pill">2ml</span>
-            <span class="size-pill active">5ml</span>
-            <span class="size-pill">10ml</span>
+            <span class="size-pill active">2ml</span>
+            <span class="size-pill">5ml</span>
           </div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
 
-      <!-- Product 3 -->
-      <div class="product-card">
+      <!-- Fresh -->
+      <div class="product-card" data-category="fresh">
         <div class="product-image">
-          <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=600" alt="Maison Francis Kurkdjian Baccarat Rouge 540">
+          <img src="https://images.unsplash.com/photo-1528650059530-10f76016c39f?auto=format&fit=crop&q=80&w=600" alt="Chanel Bleu de Chanel">
         </div>
         <div class="product-info">
-          <div class="product-brand">Maison Francis Kurkdjian</div>
-          <h3 class="product-title">Baccarat Rouge 540</h3>
-          <div class="product-notes">Saffron, Jasmine, Amberwood</div>
-          <div class="product-price">From ₹1,500</div>
+          <div class="product-brand">Chanel</div>
+          <h3 class="product-title">Bleu de Chanel</h3>
+          <div class="product-notes">Grapefruit, Mint, Pink Pepper</div>
+          <div class="product-price">From ₹850</div>
           <div class="size-pills">
             <span class="size-pill active">2ml</span>
             <span class="size-pill">5ml</span>
-            <span class="size-pill">10ml</span>
           </div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
-      
-      <!-- Product 4 -->
-      <div class="product-card">
-        <div class="product-badge">New</div>
+
+      <div class="product-card" data-category="fresh">
         <div class="product-image">
-          <img src="https://images.unsplash.com/photo-1595425970377-c9703bc48b2d?auto=format&fit=crop&q=80&w=600" alt="Byredo Gypsy Water">
+          <img src="https://images.unsplash.com/photo-1594913214152-7b565595c27f?auto=format&fit=crop&q=80&w=600" alt="Acqua di Parma Colonia">
         </div>
         <div class="product-info">
-          <div class="product-brand">Byredo</div>
-          <h3 class="product-title">Gypsy Water</h3>
-          <div class="product-notes">Bergamot, Lemon, Pepper</div>
-          <div class="product-price">From ₹900</div>
+          <div class="product-brand">Acqua di Parma</div>
+          <h3 class="product-title">Colonia</h3>
+          <div class="product-notes">Sicilian Citrus, Lavender, Rosemary</div>
+          <div class="product-price">From ₹700</div>
           <div class="size-pills">
-            <span class="size-pill">2ml</span>
-            <span class="size-pill active">5ml</span>
-            <span class="size-pill">10ml</span>
+            <span class="size-pill active">2ml</span>
+            <span class="size-pill">5ml</span>
           </div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
+
+      <!-- Sweet / Gourmand -->
+      <div class="product-card" data-category="sweet">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1588145241477-74892795804e?auto=format&fit=crop&q=80&w=600" alt="Kilian Angel's Share">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">By Kilian</div>
+          <h3 class="product-title">Angel's Share</h3>
+          <div class="product-notes">Cognac, Cinnamon, Oak</div>
+          <div class="product-price">From ₹1,600</div>
+          <div class="size-pills">
+            <span class="size-pill active">2ml</span>
+            <span class="size-pill">5ml</span>
+          </div>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="sweet">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1610461888750-10bfc601b874?auto=format&fit=crop&q=80&w=600" alt="Xerjoff Italica">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Xerjoff</div>
+          <h3 class="product-title">Italica</h3>
+          <div class="product-notes">Almond, Milk, Toffee</div>
+          <div class="product-price">From ₹1,800</div>
+          <div class="size-pills">
+            <span class="size-pill active">2ml</span>
+            <span class="size-pill">5ml</span>
+          </div>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Spicy -->
+      <div class="product-card" data-category="spicy">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1595535373192-38aef713d799?auto=format&fit=crop&q=80&w=600" alt="Viktor&Rolf Spicebomb Extreme">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Viktor&Rolf</div>
+          <h3 class="product-title">Spicebomb Extreme</h3>
+          <div class="product-notes">Black Pepper, Cumin, Tobacco</div>
+          <div class="product-price">From ₹950</div>
+          <div class="size-pills">
+            <span class="size-pill active">2ml</span>
+            <span class="size-pill">5ml</span>
+          </div>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="spicy">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1627382025732-4467554e58b1?auto=format&fit=crop&q=80&w=600" alt="Tom Ford Tobacco Vanille">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Tom Ford</div>
+          <h3 class="product-title">Tobacco Vanille</h3>
+          <div class="product-notes">Tobacco Leaf, Vanilla, Cocoa</div>
+          <div class="product-price">From ₹1,200</div>
+          <div class="size-pills">
+            <span class="size-pill active">2ml</span>
+            <span class="size-pill">5ml</span>
+          </div>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Floral -->
+      <div class="product-card" data-category="floral">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1605651202774-7d573df3f12d?auto=format&fit=crop&q=80&w=600" alt="Gucci Bloom">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Gucci</div>
+          <h3 class="product-title">Bloom</h3>
+          <div class="product-notes">Tuberose, Jasmine, Rangoon Creeper</div>
+          <div class="product-price">From ₹700</div>
+          <div class="size-pills">
+            <span class="size-pill active">2ml</span>
+            <span class="size-pill">5ml</span>
+          </div>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="floral">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1602930301458-ef2548f32561?auto=format&fit=crop&q=80&w=600" alt="Portrait of a Lady">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Frederic Malle</div>
+          <h3 class="product-title">Portrait of a Lady</h3>
+          <div class="product-notes">Rose, Clove, Patchouli</div>
+          <div class="product-price">From ₹1,900</div>
+          <div class="size-pills">
+            <span class="size-pill active">2ml</span>
+            <span class="size-pill">5ml</span>
+          </div>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
     </div>
     
     <div class="mt-4">
       <a href="shop.html" class="btn btn-outline" style="border-radius: 30px;">View All Fragrances</a>
     </div>
   </section>
+
+  <!-- The Art of Decanting -->
+  <section class="decanting-section">
+    <div class="container decanting-inner">
+      <div class="decanting-text">
+        <p class="section-subtitle mb-1" style="color: var(--color-accent);">Our Craftsmanship</p>
+        <h2>The Art of the Perfect Poured Decant</h2>
+        <p>Every decant is a labor of love. We use medical-grade, laboratory-standard equipment to ensure your fragrance never touches the air, preserving its full complexity and longevity.</p>
+        <p>From sterile environment control to precision glass atomizers, we treat every ml with the respect a masterpiece deserves.</p>
+        <div class="subs-features">
+          <li style="color: #fff;"><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Sterile, UV-protected environment</li>
+          <li style="color: #fff;"><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Precision medical-grade pipettes</li>
+          <li style="color: #fff;"><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Guaranteed leak-proof glass atomizers</li>
+        </div>
+      </div>
+      <div class="decanting-image">
+        <img src="assets/images/decanting-process-user.jpg" alt="Premium Fragrance Decanting - Chanel Coco Mademoiselle">
+      </div>
+    </div>
+  </section>
+
+  <!-- Scent Notes 101 -->
+  <section class="notes-section">
+    <div class="container">
+      <div class="text-center">
+        <p class="section-subtitle">Fragrance Education</p>
+        <h2 class="section-title">Understanding the Scent Pyramid</h2>
+        <p style="color: var(--color-gray); max-width: 600px; margin: 0 auto;">Fragrances evolve over time. Knowing the notes helps you appreciate the journey of a perfume from the first spray to the final dry down.</p>
+      </div>
+
+      <div class="notes-grid">
+        <div class="note-card">
+          <div class="note-icon"><i class="fas fa-leaf"></i></div>
+          <h3>Top Notes</h3>
+          <p>The first impression. Typically citrus or herbal, these notes are light and disappear within 15-30 minutes of application.</p>
+        </div>
+        <div class="note-card">
+          <div class="note-icon"><i class="fas fa-tint"></i></div>
+          <h3>Heart Notes</h3>
+          <p>The soul of the scent. Florals, spices, or fruits that emerge once the top notes fade, lasting for 2-4 hours.</p>
+        </div>
+        <div class="note-card">
+          <div class="note-icon"><i class="fas fa-tree"></i></div>
+          <h3>Base Notes</h3>
+          <p>The lasting foundation. Deep woods, musk, or resins that provide longevity and stay on your skin for 6-12+ hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
 
   <!-- Subscription Highlight -->
   <section class="subs-section">
@@ -468,6 +643,32 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
+  <script>
+    // Category Filtering Logic for Home 1
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const products = document.querySelectorAll('.product-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Remove active class from all buttons
+          filterBtns.forEach(b => b.classList.remove('active'));
+          // Add active class to clicked button
+          btn.classList.add('active');
+
+          const filterValue = btn.getAttribute('data-filter');
+
+          products.forEach(product => {
+            if (filterValue === 'all' || product.getAttribute('data-category') === filterValue) {
+              product.style.display = 'block';
+            } else {
+              product.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
 </body>
 </html>
 
