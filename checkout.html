@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | LUXE</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <style>
+    body { background-color: #fafafa; }
+    .checkout-header { text-align: center; padding: 40px 0; border-bottom: 1px solid var(--color-gray-light); background: #fff; }
+    .checkout-container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; }
+    
+    .checkout-section { background: #fff; padding: 30px; border: 1px solid var(--color-gray-light); margin-bottom: 20px; }
+    .section-title-sm { font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #f0f0f0; }
+    
+    form .row { display: flex; gap: 15px; margin-bottom: 15px; }
+    form .col { flex: 1; }
+    form label { display: block; font-size: 0.85rem; color: #555; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+    form input, form select { width: 100%; padding: 12px; border: 1px solid var(--color-gray-light); outline: none; font-family: var(--font-sans); }
+    form input:focus { border-color: var(--color-primary); }
+    
+    .payment-methods { display: flex; flex-direction: column; gap: 10px; }
+    .pm-option { border: 1px solid var(--color-gray-light); padding: 15px; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all 0.2s; }
+    .pm-option:hover, .pm-option.active { border-color: var(--color-primary); background: #fdfdfd; }
+    .pm-option input { width: auto; accent-color: var(--color-primary); }
+    .pm-option label { margin: 0; cursor: pointer; text-transform: none; letter-spacing: normal; font-size: 1rem; color: var(--color-primary); flex: 1; display:flex; justify-content:space-between; align-items:center;}
+
+    .order-summary { background: #fcfcfc; padding: 30px; border: 1px solid var(--color-gray-light); border-top: 4px solid var(--color-primary); height: max-content; }
+    .os-item { display: flex; justify-content: space-between; margin-bottom: 15px; align-items: center; }
+    .os-item img { width: 60px; height: 60px; object-fit: cover; }
+    .os-info { flex: 1; padding: 0 15px; }
+    .os-title { font-size: 0.95rem; font-weight: 500; }
+    .os-meta { font-size: 0.8rem; color: var(--color-gray); }
+    .os-price { font-size: 0.95rem; }
+    
+    .os-totals { border-top: 1px dashed var(--color-gray-light); margin-top: 20px; padding-top: 20px; }
+    .os-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.95rem; }
+    .os-final { display: flex; justify-content: space-between; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--color-gray-light); font-size: 1.3rem; font-weight: 500; font-family: var(--font-serif); }
+    
+    @media (max-width: 800px) {
+      .checkout-container { grid-template-columns: 1fr; }
+      .order-summary { order: -1; } /* move summary above inputs on mobile */
+    }
+  </style>
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+  <div class="checkout-header">
+    <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+    <div style="font-size: 0.85rem; color: var(--color-gray); margin-top: 10px; text-transform: uppercase;">Secure Checkout <i class="fas fa-lock"></i></div>
+  </div>
+
+  <div class="checkout-container">
+    
+    <div class="checkout-forms">
+      <div class="checkout-section">
+        <h2 class="section-title-sm">1. Delivery Address</h2>
+        <form>
+          <div class="row">
+            <div class="col">
+              <label>First Name</label><input type="text" value="Rahul">
+            </div>
+            <div class="col">
+              <label>Last Name</label><input type="text" value="Sharma">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label>Phone Number</label><input type="tel" value="+91 9876543210">
+            </div>
+            <div class="col">
+              <label>Email Address</label><input type="email" value="rahul@example.com">
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 15px">
+            <div class="col">
+              <label>Street Address</label><input type="text" placeholder="House/Flat No., Street, Area">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label>City</label><input type="text" placeholder="Mumbai">
+            </div>
+            <div class="col">
+              <label>State</label>
+              <select>
+                <option>Maharashtra</option>
+                <option>Delhi</option>
+                <option>Karnataka</option>
+              </select>
+            </div>
+            <div class="col">
+              <label>PIN Code</label><input type="text" placeholder="400001">
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="checkout-section">
+        <h2 class="section-title-sm">2. Payment Method</h2>
+        <div class="payment-methods">
+          <div class="pm-option active">
+            <input type="radio" name="payment" id="upi" checked>
+            <label for="upi">UPI / QR (GPay, PhonePe, Paytm) <span><i class="fas fa-qrcode"></i></span></label>
+          </div>
+          <div class="pm-option">
+            <input type="radio" name="payment" id="card">
+            <label for="card">Credit / Debit Card (Razorpay) <span><i class="far fa-credit-card"></i></span></label>
+          </div>
+          <div class="pm-option">
+            <input type="radio" name="payment" id="cod">
+            <label for="cod">Cash on Delivery (COD) <span><i class="fas fa-money-bill-wave"></i></span></label>
+          </div>
+        </div>
+        <p style="font-size: 0.8rem; color: #777; margin-top: 15px;"><i class="fas fa-shield-alt"></i> Payments are 100% secure and encrypted. We do not store your card details.</p>
+      </div>
+
+      <button class="btn btn-primary" style="width: 100%; padding: 20px; font-size: 1.1rem;">Place Order Now - ₹4,470</button>
+    </div>
+
+    <!-- Summary sidebar -->
+    <div class="order-summary">
+      <h2 class="section-title-sm">Order Summary</h2>
+      
+      <div class="os-item">
+        <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=150" alt="Item">
+        <div class="os-info">
+          <div class="os-title">Oud Wood (Tom Ford)</div>
+          <div class="os-meta">Decant - 5ml x 1</div>
+        </div>
+        <div class="os-price">₹1,800</div>
+      </div>
+      
+      <div class="os-item">
+        <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=150" alt="Item">
+        <div class="os-info">
+          <div class="os-title">Baccarat Rouge 540 (MFK)</div>
+          <div class="os-meta">Decant - 2ml x 2</div>
+        </div>
+        <div class="os-price">₹3,000</div>
+      </div>
+      
+      <div class="os-totals">
+        <div class="os-row">
+          <span>Subtotal</span><span>₹4,800</span>
+        </div>
+        <div class="os-row">
+          <span>Shipping (Express & Safe)</span><span>₹150</span>
+        </div>
+        <div class="os-row" style="color: #27ae60;">
+          <span>Discount (NEW10)</span><span>-₹480</span>
+        </div>
+        <div class="os-final">
+          <span>Total</span><span>₹4,470</span>
+        </div>
+      </div>
+      
+      <div style="background: rgba(197, 160, 89, 0.1); border: 1px solid var(--color-accent); padding: 15px; margin-top: 20px; text-align: center; font-size: 0.85rem; color: var(--color-primary);">
+        <strong>Authenticity Promise:</strong> Your decants are guaranteed to be 100% genuine juice from original bottles.
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
+

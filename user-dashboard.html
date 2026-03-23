@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account | LUXE</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <style>
+    body { background-color: #f7f7f7; }
+    .dash-container { max-width: 1200px; margin: 100px auto 60px; display: grid; grid-template-columns: 280px 1fr; gap: 40px; padding: 0 20px; }
+    
+    /* Sidebar */
+    .dash-sidebar { background: #fff; padding: 30px 0; border: 1px solid var(--color-gray-light); height: max-content; }
+    .user-profile { text-align: center; margin-bottom: 30px; padding: 0 20px; }
+    .user-avatar { width: 80px; height: 80px; background: var(--color-primary); color: var(--color-accent); font-size: 2rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 auto 15px; font-family: var(--font-serif); }
+    .user-name { font-size: 1.2rem; font-family: var(--font-serif); margin-bottom: 5px; }
+    .user-tier { font-size: 0.8rem; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px; }
+    
+    .dash-nav { list-style: none; }
+    .dash-nav a { display: block; padding: 15px 30px; color: var(--color-gray); font-size: 0.95rem; border-left: 3px solid transparent; transition: all 0.2s; }
+    .dash-nav a:hover, .dash-nav a.active { background: #fdfdfd; color: var(--color-primary); border-left-color: var(--color-accent); font-weight: 500; }
+    .dash-nav i { width: 25px; }
+
+    /* Main Content */
+    .dash-content { display: flex; flex-direction: column; gap: 30px; }
+    
+    .welcome-card { background: var(--color-primary); color: #fff; padding: 40px; border-radius: 8px; position: relative; overflow: hidden; }
+    .welcome-card h2 { color: var(--color-secondary); font-size: 2rem; margin-bottom: 10px; }
+    .welcome-card p { color: #ccc; max-width: 500px; }
+    .welcome-card i { position: absolute; right: 30px; bottom: -20px; font-size: 8rem; color: rgba(255,255,255,0.05); }
+
+    .dash-box { background: #fff; padding: 30px; border: 1px solid var(--color-gray-light); border-radius: 8px; }
+    .dash-title { font-size: 1.2rem; font-family: var(--font-serif); margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; }
+    .dash-title a { font-size: 0.85rem; font-family: var(--font-sans); color: var(--color-primary); text-transform: uppercase; letter-spacing: 1px; text-decoration: underline; }
+
+    /* Orders Table */
+    .order-table { width: 100%; border-collapse: collapse; text-align: left; }
+    .order-table th { padding: 15px 10px; color: var(--color-gray); font-weight: 400; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; border-bottom: 2px solid #f0f0f0; }
+    .order-table td { padding: 20px 10px; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem; }
+    .status-badge { display: inline-block; padding: 5px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; }
+    .status-shipped { background: #e8f5e9; color: #2e7d32; }
+    .status-processing { background: #fff8e1; color: #f57f17; }
+
+    /* Subscription Summary */
+    .sub-summary { display: flex; align-items: center; gap: 20px; background: #fafafa; padding: 20px; border: 1px solid #eee; border-radius: 6px; }
+    .sub-icon { font-size: 2.5rem; color: var(--color-accent); }
+    .sub-info flex { 1 }
+    .sub-info h4 { font-size: 1.1rem; margin-bottom: 5px; }
+    .sub-info p { font-size: 0.9rem; color: var(--color-gray); }
+
+    @media (max-width: 900px) {
+      .dash-container { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+      <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+      <nav class="nav-links">
+        <a href="index.html">Home 1</a>
+        <a href="index-2.html">Home 2</a>
+        <a href="shop.html">Shop</a>
+        <a href="subscription.html">Discovery Box</a>
+        <a href="deals.html">Deals</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button aria-label="Search"><i class="fas fa-search"></i></button>
+        <a href="user-dashboard.html" class="active" aria-label="Account"><i class="far fa-user"></i></a>
+        <a href="wishlist.html" aria-label="Wishlist"><i class="far fa-heart"></i></a>
+        <a href="cart.html" aria-label="Cart"><i class="fas fa-shopping-bag"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <div class="dash-container">
+    
+    <!-- Sidebar -->
+    <aside class="dash-sidebar">
+      <div class="user-profile">
+        <div class="user-avatar">R</div>
+        <h2 class="user-name">Rahul Sharma</h2>
+        <div class="user-tier"><i class="fas fa-crown"></i> Gold Member</div>
+      </div>
+      
+      <ul class="dash-nav">
+        <li><a href="user-dashboard.html" class="active"><i class="fas fa-th-large"></i> Dashboard</a></li>
+        <li><a href="#"><i class="fas fa-box-open"></i> My Orders</a></li>
+        <li><a href="#"><i class="fas fa-gem"></i> Subscription</a></li>
+        <li><a href="wishlist.html"><i class="fas fa-heart"></i> Want List</a></li>
+        <li><a href="#"><i class="fas fa-star"></i> My Reviews</a></li>
+        <li><a href="#"><i class="fas fa-cog"></i> Profile Settings</a></li>
+        <li><a href="index.html" style="color: #e74c3c; margin-top: 20px;"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dash-content">
+      
+      <div class="welcome-card">
+        <h2>Welcome back, Rahul</h2>
+        <p>You have 1 active subscription box arriving this week. Your scent profile is 85% mapped to 'Woody & Spicy'.</p>
+        <i class="fas fa-seedling"></i>
+      </div>
+
+      <div class="dash-box">
+        <h3 class="dash-title">Recent Orders <a href="#">View All</a></h3>
+        <div style="overflow-x: auto;">
+          <table class="order-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Date</th>
+                <th>Items</th>
+                <th>Status</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>#LUXE-8942</strong></td>
+                <td>Mar 21, 2026</td>
+                <td>Oud Wood (5ml) + 1 more</td>
+                <td><span class="status-badge status-shipped">Shipped</span></td>
+                <td>₹4,470</td>
+              </tr>
+              <tr>
+                <td><strong>#LUXE-8105</strong></td>
+                <td>Feb 10, 2026</td>
+                <td>Aventus (10ml)</td>
+                <td><span class="status-badge status-shipped" style="background: #eee; color: #555;">Delivered</span></td>
+                <td>₹2,400</td>
+              </tr>
+              <tr>
+                <td><strong>#LUXE-7833</strong></td>
+                <td>Jan 05, 2026</td>
+                <td>Winter Spice Discovery Set</td>
+                <td><span class="status-badge status-shipped" style="background: #eee; color: #555;">Delivered</span></td>
+                <td>₹3,500</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="dash-box">
+        <h3 class="dash-title">Active Subscription <a href="subscription.html">Manage</a></h3>
+        <div class="sub-summary">
+          <i class="fas fa-gem sub-icon"></i>
+          <div class="sub-info">
+            <h4>Niche Explorer Box (Monthly)</h4>
+            <p>Next box ships on <strong>April 5th, 2026</strong>. <br>3 premium 5ml decants curated for you.</p>
+          </div>
+          <div style="margin-left: auto;">
+            <button class="btn btn-outline" style="padding: 10px 20px;">Pause Box</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <footer class="footer" style="padding: 40px 0 20px;">
+    <div class="container text-center">
+      <p style="color: #666; font-size: 0.9rem;">&copy; 2026 LUXE Fragrance Discovery. Authentic Decants Only.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+

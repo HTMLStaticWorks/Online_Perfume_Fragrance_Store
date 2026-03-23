@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | LUXE</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <style>
+    .contact-hero { padding: 150px 0 60px; text-align: center; background: #fff; border-bottom: 1px solid var(--color-gray-light); }
+    .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding: 80px 20px; max-width: 1000px; margin: 0 auto; }
+    
+    .contact-info h3 { font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 20px; }
+    .contact-info p { color: var(--color-gray); margin-bottom: 30px; line-height: 1.6; }
+    
+    .info-item { display: flex; gap: 15px; margin-bottom: 20px; }
+    .info-item i { font-size: 1.2rem; color: var(--color-accent); margin-top: 3px; width: 20px; }
+    .info-item div h5 { font-family: var(--font-sans); font-size: 1rem; margin-bottom: 5px; }
+    .info-item div p { color: var(--color-gray); margin-bottom: 0; }
+    .contact-form form { display: flex; flex-direction: column; gap: 20px; }
+    .contact-form input, .contact-form textarea { width: 100%; padding: 15px; border: 1px solid var(--color-gray-light); outline: none; font-family: var(--font-sans); font-size: 0.95rem; }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--color-primary); }
+    .contact-form textarea { resize: vertical; min-height: 150px; }
+    .contact-form button { background: var(--color-primary); color: #fff; padding: 15px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.95rem; }
+    .map-placeholder { width: 100%; height: 350px; background: #eee url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200') center/cover; position: relative; }
+    .map-placeholder::after { content: 'Interactive Map Area'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255,255,255,0.9); padding: 10px 20px; font-weight: 500; box-shadow: var(--shadow-sm); }
+    
+    @media (max-width: 768px) {
+      .contact-container { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+      <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+      <nav class="nav-links">
+        <a href="index.html">Home 1</a>
+        <a href="index-2.html">Home 2</a>
+        <a href="shop.html">Shop</a>
+        <a href="subscription.html">Discovery Box</a>
+        <a href="deals.html">Deals</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button aria-label="Search"><i class="fas fa-search"></i></button>
+        <a href="user-dashboard.html" aria-label="Account"><i class="far fa-user"></i></a>
+        <a href="wishlist.html" aria-label="Wishlist"><i class="far fa-heart"></i></a>
+        <a href="cart.html" aria-label="Cart"><i class="fas fa-shopping-bag"></i></a>
+      </div>
+    </div>
+  </header>
+  <div class="contact-hero">
+    <h1 class="section-title">Get In Touch</h1>
+    <p style="color: var(--color-gray);">Have questions about a scent? Need help with your order? We're here.</p>
+  </div>
+  <div class="contact-container">
+    <div class="contact-info">
+      <h3>We'd love to hear from you</h3>
+      <p>Our fragrance consultants and support team are available Monday through Saturday to ensure your discovery journey is flawless.</p>
+      
+      <div class="info-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <div>
+          <h5>Mumbai Studio (Not open for walk-ins)</h5>
+          <p>Bandra West, Mumbai<br>Maharashtra, India 400050</p>
+        </div>
+      </div>
+      
+      <div class="info-item">
+        <i class="fas fa-envelope"></i>
+        <div>
+          <h5>Email Support</h5>
+          <p>hello@luxefragrances.in</p>
+        </div>
+      </div>
+      
+      <div class="info-item">
+        <i class="fas fa-phone"></i>
+        <div>
+          <h5>Phone & WhatsApp</h5>
+          <p>+91 98765 43210 (Mon-Sat, 10am - 6pm)</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="contact-form">
+      <!-- Placeholder Action using Formspree structure -->
+      <form action="https://formspree.io/f/placeholder" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email Address" required>
+        <input type="text" name="subject" placeholder="Subject (Optional)">
+        <textarea name="message" placeholder="How can we help you?" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+  <div class="map-placeholder"></div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container text-center">
+      <a href="index.html" class="logo" style="color: var(--color-secondary); display:block; margin-bottom:15px;"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+      <p style="color: #666; font-size: 0.9rem;">&copy; 2026 LUXE Fragrance Discovery. All Rights Reserved. 100% Authentic Guarantee.</p>
+    </div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+

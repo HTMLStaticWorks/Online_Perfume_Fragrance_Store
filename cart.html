@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart | LUXE</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <style>
+    .cart-container { padding: 120px 20px 80px; max-width: var(--container-width); margin: 0 auto; }
+    .cart-title { font-size: 2.5rem; margin-bottom: 40px; text-align: center; }
+    
+    .cart-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 50px; }
+    
+    /* Cart Items */
+    .cart-items { border-top: 1px solid var(--color-gray-light); }
+    .cart-item {
+      display: flex; padding: 25px 0; border-bottom: 1px solid var(--color-gray-light); gap: 25px;
+    }
+    .cart-item-img { width: 120px; height: 120px; object-fit: cover; background: #f9f9f9; }
+    .cart-item-info { flex: 1; }
+    .cart-item-brand { font-size: 0.8rem; text-transform: uppercase; color: var(--color-gray); letter-spacing: 1px; }
+    .cart-item-title { font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 5px; }
+    .cart-item-meta { font-size: 0.9rem; color: #666; margin-bottom: 15px; }
+    .cart-item-meta span { color: var(--color-primary); font-weight: 500; }
+    
+    .cart-item-actions { display: flex; align-items: center; justify-content: space-between; }
+    .qty-controls { display: flex; border: 1px solid var(--color-gray-light); width: max-content; }
+    .qty-btn { padding: 5px 15px; background: #f9f9f9; cursor: pointer; }
+    .qty-input { width: 40px; text-align: center; border: none; outline: none; border-left: 1px solid var(--color-gray-light); border-right: 1px solid var(--color-gray-light); }
+    .remove-btn { color: var(--color-gray); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+    .remove-btn:hover { color: #e74c3c; text-decoration: underline; }
+    
+    .cart-item-price { font-size: 1.2rem; font-weight: 500; }
+
+    /* Summary */
+    .cart-summary {
+      background: #fdfdfd; border: 1px solid var(--color-gray-light); padding: 30px; height: max-content;
+    }
+    .summary-title { font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+    .summary-row { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 0.95rem; }
+    .summary-total { font-size: 1.3rem; font-weight: 500; border-top: 1px solid #eee; padding-top: 20px; margin-top: 10px; display: flex; justify-content: space-between; }
+    
+    .promo-box { margin: 25px 0; display: flex; }
+    .promo-box input { flex: 1; padding: 12px; border: 1px solid var(--color-gray-light); outline: none; }
+    .promo-box button { background: var(--color-primary); color: #fff; padding: 0 20px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+
+    @media (max-width: 900px) {
+      .cart-layout { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 500px) {
+      .cart-item { flex-direction: column; }
+      .cart-item-img { width: 100%; height: auto; aspect-ratio: 1; }
+    }
+  </style>
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+      <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+      <nav class="nav-links">
+        <a href="index.html">Home 1</a>
+        <a href="index-2.html">Home 2</a>
+        <a href="shop.html">Shop</a>
+        <a href="subscription.html">Discovery Box</a>
+        <a href="deals.html">Deals</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button aria-label="Search"><i class="fas fa-search"></i></button>
+        <a href="user-dashboard.html" aria-label="Account"><i class="far fa-user"></i></a>
+        <a href="wishlist.html" aria-label="Wishlist"><i class="far fa-heart"></i></a>
+        <a href="cart.html" class="active" aria-label="Cart"><i class="fas fa-shopping-bag"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <div class="cart-container">
+    <h1 class="cart-title">Your Cart</h1>
+    
+    <div class="cart-layout">
+      <!-- Items -->
+      <div class="cart-items">
+        <div class="cart-item">
+          <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=200" alt="Oud Wood Decant" class="cart-item-img">
+          <div class="cart-item-info">
+            <div class="cart-item-brand">Tom Ford</div>
+            <h3 class="cart-item-title">Oud Wood <span style="font-size:1rem; font-family:var(--font-sans); font-weight:400; color:var(--color-gray)">- Decant</span></h3>
+            <div class="cart-item-meta">Size: <span>5ml</span> | Approx. 75 sprays</div>
+            <div class="cart-item-actions">
+              <div class="qty-controls">
+                <button class="qty-btn">-</button>
+                <input type="text" class="qty-input" value="1" readonly>
+                <button class="qty-btn">+</button>
+              </div>
+              <button class="remove-btn">Remove</button>
+            </div>
+          </div>
+          <div class="cart-item-price">₹1,800</div>
+        </div>
+        
+        <div class="cart-item">
+          <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=200" alt="Baccarat Rouge 540 Decant" class="cart-item-img">
+          <div class="cart-item-info">
+            <div class="cart-item-brand">Maison Francis Kurkdjian</div>
+            <h3 class="cart-item-title">Baccarat Rouge 540 <span style="font-size:1rem; font-family:var(--font-sans); font-weight:400; color:var(--color-gray)">- Decant</span></h3>
+            <div class="cart-item-meta">Size: <span>2ml</span> | Approx. 30 sprays</div>
+            <div class="cart-item-actions">
+              <div class="qty-controls">
+                <button class="qty-btn">-</button>
+                <input type="text" class="qty-input" value="2" readonly>
+                <button class="qty-btn">+</button>
+              </div>
+              <button class="remove-btn">Remove</button>
+            </div>
+          </div>
+          <div class="cart-item-price">₹3,000</div>
+        </div>
+        
+        <div style="padding: 20px 0;">
+          <a href="shop.html" style="color: var(--color-accent); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;"><i class="fas fa-arrow-left"></i> Continue Discovering</a>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="cart-summary">
+        <h3 class="summary-title">Order Summary</h3>
+        <div class="summary-row">
+          <span>Subtotal (3 items)</span>
+          <span>₹4,800</span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping (Secure Packaging)</span>
+          <span>₹150</span>
+        </div>
+        <div class="summary-row" style="color: #27ae60;">
+          <span>First Purchase Discount</span>
+          <span>-₹480</span>
+        </div>
+        
+        <div class="promo-box">
+          <input type="text" placeholder="Promo Code (NEW10 applied)" value="NEW10">
+          <button>Apply</button>
+        </div>
+        
+        <div class="summary-total">
+          <span>Total</span>
+          <span>₹4,470</span>
+        </div>
+        <p style="font-size: 0.8rem; color: var(--color-gray); margin-bottom: 25px; text-align: right;">Inclusive of all taxes</p>
+        
+        <a href="checkout.html" class="btn btn-primary" style="width: 100%; text-align: center; padding: 18px;">Proceed to Checkout</a>
+        
+        <div style="text-align: center; margin-top: 20px; font-size: 0.8rem; color: var(--color-gray);">
+          <i class="fas fa-lock"></i> Secure Encrypted Checkout
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer (Base layout included for consistency, stripped down) -->
+  <footer class="footer" style="padding: 40px 0 20px;">
+    <div class="container text-center">
+      <p style="color: #666; font-size: 0.9rem;">&copy; 2026 LUXE Fragrance Discovery. Authentic Decants Only.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+

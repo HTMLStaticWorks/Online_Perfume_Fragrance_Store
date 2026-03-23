@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scent Journal | LUXE</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <style>
+    .blog-header { padding: 150px 0 60px; text-align: center; }
+    
+    .featured-post { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 80px; align-items: center; }
+    .featured-img { width: 100%; height: 400px; object-fit: cover; }
+    .post-meta { font-size: 0.85rem; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; display: block; }
+    .post-title { font-family: var(--font-serif); font-size: 2.2rem; margin-bottom: 20px; line-height: 1.2; }
+    .post-excerpt { color: var(--color-gray); margin-bottom: 30px; line-height: 1.7; }
+
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+    .blog-card { border: 1px solid transparent; transition: all 0.3s; }
+    .blog-card:hover { transform: translateY(-5px); }
+    .blog-card-img { width: 100%; height: 250px; object-fit: cover; margin-bottom: 20px; }
+    .blog-card-title { font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 10px; }
+    
+    @media (max-width: 900px) {
+      .featured-post { grid-template-columns: 1fr; }
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .blog-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+      <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+      <nav class="nav-links">
+        <a href="index.html">Home 1</a>
+        <a href="index-2.html">Home 2</a>
+        <a href="shop.html">Shop</a>
+        <a href="subscription.html">Discovery Box</a>
+        <a href="deals.html">Deals</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button aria-label="Search"><i class="fas fa-search"></i></button>
+        <a href="user-dashboard.html" aria-label="Account"><i class="far fa-user"></i></a>
+        <a href="wishlist.html" aria-label="Wishlist"><i class="far fa-heart"></i></a>
+        <a href="cart.html" aria-label="Cart"><i class="fas fa-shopping-bag"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container blog-header">
+    <p class="section-subtitle mb-1">The Scent Journal</p>
+    <h1 class="section-title">Guides, Reviews & Education</h1>
+  </div>
+
+  <div class="container" style="padding-bottom: 100px;">
+    
+    <!-- Featured -->
+    <article class="featured-post">
+      <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=800" alt="Guide" class="featured-img">
+      <div>
+        <span class="post-meta">Ultimate Guide • 5 Min Read</span>
+        <h2 class="post-title"><a href="#">Designer vs Niche: What's the Real Difference?</a></h2>
+        <p class="post-excerpt">Are niche fragrances always better? Is the steep price tag justified? We break down the differences in ingredients, blending techniques, and mass appeal so you can make informed choices for your wardrobe.</p>
+        <a href="#" class="btn btn-outline">Read Article</a>
+      </div>
+    </article>
+
+    <!-- Grid -->
+    <div class="blog-grid">
+      <article class="blog-card">
+        <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&q=80&w=500" alt="Article" class="blog-card-img">
+        <span class="post-meta">Editor's Picks</span>
+        <h3 class="blog-card-title"><a href="#">Top 10 Office-Safe Fragrances for 2026</a></h3>
+        <p style="color: var(--color-gray); font-size: 0.95rem;">Scents that project confidence without overwhelming your coworkers. From crisp vetivers to clean musks.</p>
+      </article>
+      
+      <article class="blog-card">
+        <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=500" alt="Article" class="blog-card-img">
+        <span class="post-meta">Review</span>
+        <h3 class="blog-card-title"><a href="#">Baccarat Rouge 540: Worth the Hype?</a></h3>
+        <p style="color: var(--color-gray); font-size: 0.95rem;">An in-depth review of MFK's masterpiece. We analyze the legendary sillage and the mesmerizing notes.</p>
+      </article>
+      
+      <article class="blog-card">
+        <img src="https://images.unsplash.com/photo-1599839619722-39751411ea63?auto=format&fit=crop&q=80&w=500" alt="Article" class="blog-card-img">
+        <span class="post-meta">Education</span>
+        <h3 class="blog-card-title"><a href="#">How to Make Your Perfume Last Longer</a></h3>
+        <p style="color: var(--color-gray); font-size: 0.95rem;">Applying to pulse points isn't enough. Learn the moisturizer trick and fabric techniques for max longevity.</p>
+      </article>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container text-center">
+      <a href="index.html" class="logo" style="color: var(--color-secondary); display:block; margin-bottom:15px;"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+      <p style="color: #666; font-size: 0.9rem;">&copy; 2026 LUXE Fragrance Discovery. All Rights Reserved. 100% Authentic Guarantee.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+

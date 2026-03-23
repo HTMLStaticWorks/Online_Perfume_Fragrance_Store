@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tom Ford Oud Wood Decant | LUXE</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <style>
+    .pd-container {
+      padding: 120px 20px 60px;
+      max-width: var(--container-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    
+    /* Image Gallery */
+    .pd-gallery {
+      position: sticky;
+      top: 100px;
+    }
+    .main-image {
+      margin-bottom: 20px;
+      background: #f9f9f9;
+    }
+    .thumb-images {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+    .thumb-images img {
+      cursor: pointer;
+      opacity: 0.6;
+      transition: opacity var(--transition-fast);
+    }
+    .thumb-images img.active, .thumb-images img:hover {
+      opacity: 1;
+      border: 1px solid var(--color-primary);
+    }
+
+    /* Product Info */
+    .pd-brand { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--color-gray); margin-bottom: 10px; }
+    .pd-title { font-size: 2.8rem; line-height: 1.2; margin-bottom: 15px; }
+    .pd-price { font-size: 1.5rem; font-weight: 500; margin-bottom: 20px; }
+    
+    .rating-summary {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 30px;
+      font-size: 0.9rem;
+    }
+    .rating-summary .stars { color: var(--color-accent); }
+    .rating-summary a { color: var(--color-gray); text-decoration: underline; }
+
+    .pd-description { color: #555; margin-bottom: 30px; font-size: 1.05rem; }
+
+    /* Variations / Sizing */
+    .size-selector { margin-bottom: 30px; }
+    .size-selector h4 { font-family: var(--font-sans); font-size: 0.95rem; text-transform: uppercase; margin-bottom: 15px; }
+    .size-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+    .sz-option {
+      border: 1px solid var(--color-gray-light);
+      padding: 15px;
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .sz-option:hover, .sz-option.active {
+      border-color: var(--color-primary);
+      background-color: #fafafa;
+    }
+    .sz-ml { display: block; font-weight: 500; font-size: 1.1rem; margin-bottom: 5px; }
+    .sz-price { display: block; font-size: 0.85rem; color: var(--color-gray); }
+    .sz-sprays { display: block; font-size: 0.75rem; color: var(--color-accent); margin-top: 5px; }
+
+    /* Actions */
+    .add-to-cart-wrapper {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .qty-input {
+      width: 80px;
+      border: 1px solid var(--color-gray-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qty-input input {
+      width: 100%;
+      text-align: center;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+    }
+    .btn-add {
+      flex: 1;
+      padding: 18px;
+      background: var(--color-primary);
+      color: var(--color-text-light);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.95rem;
+      transition: background var(--transition-fast);
+    }
+    .btn-add:hover { background: var(--color-accent); color: var(--color-primary); }
+    
+    .btn-wishlist {
+      width: 60px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--color-gray-light);
+      font-size: 1.2rem;
+      color: var(--color-gray);
+    }
+    .btn-wishlist:hover { color: #e74c3c; border-color: #e74c3c; }
+
+    /* Trust Elements */
+    .pd-trust {
+      background: #fdfdfd;
+      border: 1px solid var(--color-gray-light);
+      padding: 20px;
+      margin-bottom: 40px;
+    }
+    .pd-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    .pd-trust-item:last-child { margin-bottom: 0; }
+    .pd-trust-item i { font-size: 1.5rem; color: var(--color-accent); width: 25px; text-align: center; }
+    .pd-trust-text h5 { font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 2px; text-transform: uppercase; }
+    .pd-trust-text p { font-size: 0.85rem; color: var(--color-gray); }
+
+    /* Accordion */
+    .accordion-item {
+      border-bottom: 1px solid var(--color-gray-light);
+    }
+    .accordion-header {
+      padding: 20px 0;
+      font-family: var(--font-sans);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex; align-items: center; justify-content: space-between;
+      cursor: pointer;
+    }
+    .accordion-body { padding-bottom: 20px; color: #555; }
+    .notes-list { margin-top: 10px; }
+    .notes-list li { margin-bottom: 8px; }
+    .notes-list strong { color: var(--color-primary); font-weight: 500; }
+
+    @media (max-width: 900px) {
+      .pd-container { grid-template-columns: 1fr; gap: 40px; padding-top: 100px; }
+      .pd-gallery { position: relative; top: 0; }
+    }
+    @media (max-width: 500px) {
+      .size-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+      <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+      <nav class="nav-links">
+        <a href="index.html">Home 1</a>
+        <a href="index-2.html">Home 2</a>
+        <a href="shop.html" class="active">Shop</a>
+        <a href="subscription.html">Discovery Box</a>
+        <a href="deals.html">Deals</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button aria-label="Search"><i class="fas fa-search"></i></button>
+        <a href="user-dashboard.html" aria-label="Account"><i class="far fa-user"></i></a>
+        <a href="wishlist.html" aria-label="Wishlist"><i class="far fa-heart"></i></a>
+        <a href="cart.html" aria-label="Cart"><i class="fas fa-shopping-bag"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Product Details -->
+  <main class="pd-container">
+    
+    <!-- Gallery -->
+    <div class="pd-gallery">
+      <div class="main-image">
+        <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=800" alt="Tom Ford Oud Wood Decant">
+      </div>
+      <div class="thumb-images">
+        <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=200" class="active" alt="Thumb 1">
+        <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&q=80&w=200" alt="Thumb 2">
+        <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=200" alt="Thumb 3">
+        <img src="https://images.unsplash.com/photo-1599839619722-39751411ea63?auto=format&fit=crop&q=80&w=200" alt="Thumb 4">
+      </div>
+    </div>
+
+    <!-- Details -->
+    <div class="pd-info">
+      <div class="pd-brand">Tom Ford</div>
+      <h1 class="pd-title">Oud Wood</h1>
+      
+      <div class="rating-summary">
+        <div class="stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+        </div>
+        <span>4.8/5</span>
+        <a href="#reviews">(124 Reviews)</a>
+      </div>
+      
+      <div class="pd-price">₹800 - ₹3,500</div>
+      
+      <p class="pd-description">
+        One of the most rare, precious, and expensive ingredients in a perfumer's arsenal, oud wood is often burned in incense-filled temples. Exotic rose wood and cardamom give way to a smoky blend of rare oud wood, sandalwood and vetiver.
+      </p>
+
+      <!-- Sizing -->
+      <div class="size-selector">
+        <h4>Select Decant Size</h4>
+        <div class="size-grid">
+          <div class="sz-option">
+            <span class="sz-ml">2ml</span>
+            <span class="sz-price">₹800</span>
+            <span class="sz-sprays">~30 Sprays</span>
+          </div>
+          <div class="sz-option active">
+            <span class="sz-ml">5ml</span>
+            <span class="sz-price">₹1,800</span>
+            <span class="sz-sprays">~75 Sprays</span>
+          </div>
+          <div class="sz-option">
+            <span class="sz-ml">10ml</span>
+            <span class="sz-price">₹3,500</span>
+            <span class="sz-sprays">~150 Sprays</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add to Cart -->
+      <div class="add-to-cart-wrapper">
+        <div class="qty-input">
+          <input type="number" value="1" min="1">
+        </div>
+        <button class="btn btn-add">Add to Cart</button>
+        <button class="btn btn-wishlist" title="Add to Want List"><i class="far fa-heart"></i></button>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="pd-trust">
+        <div class="pd-trust-item">
+          <i class="fas fa-certificate"></i>
+          <div class="pd-trust-text">
+            <h5>100% Authentic Guarantee</h5>
+            <p>Extracted directly from genuine manufacturer bottles.</p>
+          </div>
+        </div>
+        <div class="pd-trust-item">
+          <i class="fas fa-tint-slash"></i>
+          <div class="pd-trust-text">
+            <h5>Medical Grade Extraction</h5>
+            <p>Sterile syringe extraction means zero air exposure to juice.</p>
+          </div>
+        </div>
+        <div class="pd-trust-item">
+          <i class="fas fa-box"></i>
+          <div class="pd-trust-text">
+            <h5>Premium Glass Atomizers</h5>
+            <p>Leak-proof thick glass vials, perfectly safe for travel.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accordion -->
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            Scent Profile & Notes <i class="fas fa-minus"></i>
+          </div>
+          <div class="accordion-body">
+            <ul class="notes-list">
+              <li><strong>Top Notes:</strong> Rosewood, Cardamom, Chinese Pepper</li>
+              <li><strong>Middle Notes:</strong> Oud Wood, Sandalwood, Vetiver</li>
+              <li><strong>Base Notes:</strong> Tonka Bean, Vanilla, Amber</li>
+            </ul>
+            <p style="margin-top: 15px; font-size: 0.9rem;">
+              <strong>Longevity:</strong> Moderate to Long-Lasting (6-8 hours)<br>
+              <strong>Projection:</strong> Moderate<br>
+              <strong>Best For:</strong> Evening wear, formal occasions, colder weather.
+            </p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div class="accordion-header">
+            Shipping & Returns <i class="fas fa-plus"></i>
+          </div>
+          <!-- Body hidden by JS normally -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+

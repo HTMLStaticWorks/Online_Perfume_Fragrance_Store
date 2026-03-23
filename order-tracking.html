@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Order | LUXE</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <style>
+    .track-wrapper { padding: 150px 20px 80px; text-align: center; }
+    .track-header { max-width: 600px; margin: 0 auto 50px; }
+    
+    .track-form { display: flex; max-width: 500px; margin: 0 auto 60px; }
+    .track-form input { flex: 1; padding: 15px 20px; border: 1px solid var(--color-gray-light); font-size: 1rem; outline: none; }
+    .track-form input:focus { border-color: var(--color-primary); }
+    .track-form button { background: var(--color-primary); color: #fff; padding: 0 30px; text-transform: uppercase; letter-spacing: 1px; }
+    
+    .tracking-result { max-width: 800px; margin: 0 auto; background: #fff; border: 1px solid var(--color-gray-light); padding: 40px; text-align: left; box-shadow: var(--shadow-sm); }
+    .order-info-head { display: flex; justify-content: space-between; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0; }
+    .order-info-head h4 { font-family: var(--font-sans); color: var(--color-gray); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+    .order-info-head p { font-size: 1.1rem; font-weight: 500; margin-top: 5px; }
+    
+    /* Timeline */
+    .timeline { position: relative; padding-left: 30px; }
+    .timeline::before { content: ''; position: absolute; left: 7px; top: 0; bottom: 0; width: 2px; background: var(--color-gray-light); }
+    
+    .tl-node { position: relative; margin-bottom: 30px; }
+    .tl-node:last-child { margin-bottom: 0; }
+    .tl-node::before {
+      content: ''; position: absolute; left: -30px; top: 2px; width: 16px; height: 16px;
+      border-radius: 50%; background: #fff; border: 2px solid var(--color-gray-light); z-index: 2;
+    }
+    
+    .tl-node.active::before { background: var(--color-accent); border-color: var(--color-accent); }
+    .tl-node.active ~ .timeline::before { background: var(--color-accent); } /* Simplistic visual for demo */
+    
+    .tl-content h5 { font-family: var(--font-sans); font-size: 1.05rem; margin-bottom: 5px; color: var(--color-primary); }
+    .tl-content p { font-size: 0.9rem; color: var(--color-gray); }
+    .tl-date { font-size: 0.8rem; color: #a0a0a0; margin-top: 5px; }
+
+  </style>
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+      <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+      <nav class="nav-links">
+        <a href="index.html">Home 1</a>
+        <a href="index-2.html">Home 2</a>
+        <a href="shop.html">Shop</a>
+        <a href="subscription.html">Discovery Box</a>
+        <a href="deals.html">Deals</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button aria-label="Search"><i class="fas fa-search"></i></button>
+        <a href="user-dashboard.html" class="active" aria-label="Account"><i class="far fa-user"></i></a>
+        <a href="wishlist.html" aria-label="Wishlist"><i class="far fa-heart"></i></a>
+        <a href="cart.html" aria-label="Cart"><i class="fas fa-shopping-bag"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container track-wrapper">
+    <div class="track-header">
+      <h1 class="section-title">Track Your Decants</h1>
+      <p style="color: var(--color-gray);">Enter your Order ID or tracking number to see the status of your fragrance delivery.</p>
+    </div>
+    
+    <div class="track-form">
+      <input type="text" placeholder="e.g. LUXE-2026-8942" value="LUXE-2026-8942">
+      <button>Track Order</button>
+    </div>
+    
+    <!-- Tracking Result Simulator -->
+    <div class="tracking-result">
+      <div class="order-info-head">
+        <div>
+          <h4>Order ID</h4>
+          <p>LUXE-2026-8942</p>
+        </div>
+        <div>
+          <h4>Expected Delivery</h4>
+          <p style="color: var(--color-accent);">25 Mar 2026</p>
+        </div>
+        <div>
+          <h4>Carrier</h4>
+          <p>Bluedart Express</p>
+        </div>
+      </div>
+      
+      <div class="timeline">
+        <div class="tl-node active">
+          <div class="tl-content">
+            <h5>Out for Delivery</h5>
+            <p>Your package is out for delivery in Mumbai, MH.</p>
+            <div class="tl-date">24 Mar 2026, 09:15 AM</div>
+          </div>
+        </div>
+        <div class="tl-node active">
+          <div class="tl-content">
+            <h5>Arrived at Local Hub</h5>
+            <p>Package received at Mumbai Processing Center.</p>
+            <div class="tl-date">23 Mar 2026, 08:30 PM</div>
+          </div>
+        </div>
+        <div class="tl-node active">
+          <div class="tl-content">
+            <h5>Shipped</h5>
+            <p>Package handed over to carrier.</p>
+            <div class="tl-date">22 Mar 2026, 04:00 PM</div>
+          </div>
+        </div>
+        <div class="tl-node active">
+          <div class="tl-content">
+            <h5>Decanted & Packed</h5>
+            <p>Your fragrances have been safely decanted into sterile atomizers and securely packed.</p>
+            <div class="tl-date">22 Mar 2026, 11:30 AM</div>
+          </div>
+        </div>
+        <div class="tl-node active">
+          <div class="tl-content">
+            <h5>Order Confirmed</h5>
+            <p>We received your order.</p>
+            <div class="tl-date">21 Mar 2026, 02:45 PM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+

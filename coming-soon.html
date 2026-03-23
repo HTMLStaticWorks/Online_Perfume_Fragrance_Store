@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon | LUXE</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <style>
+    .coming-container { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; background: url('https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=1920') center/cover; position: relative; color: var(--color-text-light); }
+    .coming-container::before { content: ''; position: absolute; inset: 0; background: rgba(18, 18, 18, 0.85); }
+    .coming-content { position: relative; z-index: 2; max-width: 600px; }
+    
+    .logo { color: var(--color-secondary); font-size: 2.5rem; margin-bottom: 40px; display: inline-block; }
+    .logo span { color: var(--color-accent); }
+    
+    .coming-title { font-size: 4rem; font-family: var(--font-serif); margin-bottom: 20px; line-height: 1.1; }
+    .coming-desc { font-size: 1.2rem; color: #ccc; margin-bottom: 40px; }
+    
+    .notify-form { display: flex; gap: 10px; justify-content: center; }
+    .notify-form input { padding: 15px 25px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: #fff; width: 300px; outline: none; font-family: var(--font-sans); }
+    .notify-form button { background: var(--color-accent); color: var(--color-primary); padding: 0 30px; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
+    
+    @media (max-width: 600px) {
+      .notify-form { flex-direction: column; }
+      .notify-form input { width: 100%; }
+      .notify-form button { padding: 15px; }
+      .coming-title { font-size: 2.8rem; }
+    }
+  </style>
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+  
+  <div class="coming-container">
+    <div class="coming-content">
+      <div class="logo">LUXE</div>
+      <h1 class="coming-title">Something Beautiful Is Brewing</h1>
+      <p class="coming-desc">We're pouring the final drops into our new premium niche fragrance collection. Subscribe to get early access before they officially drop.</p>
+      
+      <form class="notify-form">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit">Notify Me</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
+

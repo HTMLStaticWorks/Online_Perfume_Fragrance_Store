@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUXE | Shop Decants & Samples</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <style>
+    /* Shop Layout Specific */
+    .shop-header {
+      background-color: var(--color-primary);
+      color: var(--color-text-light);
+      padding: 120px 0 60px;
+      text-align: center;
+    }
+    
+    .shop-container {
+      display: flex;
+      gap: 40px;
+      padding: 60px 20px;
+      max-width: var(--container-width);
+      margin: 0 auto;
+    }
+    
+    /* Sidebar Filters */
+    .sidebar-filters {
+      flex: 0 0 260px;
+    }
+    .filter-group {
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--color-gray-light);
+      padding-bottom: 20px;
+    }
+    .filter-group:last-child { border-bottom: none; }
+    .filter-title {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .filter-options label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      color: #444;
+    }
+    .filter-options input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--color-primary);
+      cursor: pointer;
+    }
+    
+    /* Product Grid */
+    .shop-main {
+      flex: 1;
+    }
+    .shop-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      background: #fff;
+      padding: 15px 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .toolbar-sort select {
+      padding: 8px 15px;
+      border: 1px solid var(--color-gray-light);
+      font-family: var(--font-sans);
+      outline: none;
+    }
+    
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    
+    /* Product Overrides (From style.css base) */
+    .product-card { background: #fff; transition: transform var(--transition-normal); position: relative; }
+    .product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    .product-image { height: 320px; overflow: hidden; position: relative; }
+    .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+    .product-card:hover .product-image img { transform: scale(1.05); }
+    .product-info { padding: 20px; text-align: center; }
+    .product-brand { font-size: 0.8rem; color: var(--color-gray); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 5px; }
+    .product-title { font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 10px; color: var(--color-primary); text-decoration: none; display: block; }
+    .product-notes { font-size: 0.85rem; color: var(--color-gray); margin-bottom: 15px; font-style: italic; }
+    .product-price { font-size: 1.1rem; font-weight: 500; }
+    .size-pills { display: flex; justify-content: center; gap: 8px; margin-top: 15px; }
+    .size-pill { border: 1px solid var(--color-gray-light); padding: 5px 10px; font-size: 0.75rem; color: var(--color-gray); cursor: pointer; }
+    .size-pill.active { border-color: var(--color-primary); color: var(--color-primary); }
+    .add-to-cart-btn {
+      width: 100%; padding: 12px; background: transparent; border: 1px solid var(--color-primary);
+      color: var(--color-primary); text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem;
+      margin-top: 15px; transition: all var(--transition-fast);
+    }
+    .product-card:hover .add-to-cart-btn { background: var(--color-primary); color: var(--color-text-light); }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 50px;
+    }
+    .page-link {
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--color-gray-light);
+      color: var(--color-primary);
+      transition: all var(--transition-fast);
+    }
+    .page-link:hover, .page-link.active {
+      background: var(--color-primary);
+      color: var(--color-text-light);
+      border-color: var(--color-primary);
+    }
+
+    @media (max-width: 900px) {
+      .shop-container { flex-direction: column; }
+      .sidebar-filters { flex: none; width: 100%; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 500px) {
+      .product-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+      <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+      <nav class="nav-links">
+        <a href="index.html">Home 1</a>
+        <a href="index-2.html">Home 2</a>
+        <a href="shop.html" class="active">Shop</a>
+        <a href="subscription.html">Discovery Box</a>
+        <a href="deals.html">Deals</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button aria-label="Search"><i class="fas fa-search"></i></button>
+        <a href="user-dashboard.html" aria-label="Account"><i class="far fa-user"></i></a>
+        <a href="wishlist.html" aria-label="Wishlist"><i class="far fa-heart"></i></a>
+        <a href="cart.html" aria-label="Cart"><i class="fas fa-shopping-bag"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Shop Header -->
+  <div class="shop-header">
+    <div class="container">
+      <h1 class="section-title text-light" style="color: white; margin-bottom: 10px;">The Decant Library</h1>
+      <p style="color: #ccc; max-width: 600px; margin: 0 auto;">Discover rare, niche, and designer fragrances curated for the true enthusiast. Hand-poured with precision, ensuring 100% authenticity.</p>
+    </div>
+  </div>
+
+  <!-- Shop Content -->
+  <div class="shop-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar-filters">
+      <div class="filter-group">
+        <h3 class="filter-title">Scent Profile <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i></h3>
+        <div class="filter-options">
+          <label><input type="checkbox"> Woody (42)</label>
+          <label><input type="checkbox"> Fresh/Citrus (38)</label>
+          <label><input type="checkbox"> Oriental/Spicy (25)</label>
+          <label><input type="checkbox"> Floral (30)</label>
+          <label><input type="checkbox"> Gourmand (15)</label>
+          <label><input type="checkbox"> Aquatic (12)</label>
+        </div>
+      </div>
+      
+      <div class="filter-group">
+        <h3 class="filter-title">Brands <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i></h3>
+        <div class="filter-options">
+          <label><input type="checkbox"> Creed</label>
+          <label><input type="checkbox"> Tom Ford</label>
+          <label><input type="checkbox"> Maison Francis Kurkdjian</label>
+          <label><input type="checkbox"> Parfums de Marly</label>
+          <label><input type="checkbox"> Dior (Private Collection)</label>
+          <label><input type="checkbox"> Byredo</label>
+        </div>
+      </div>
+      
+      <div class="filter-group">
+        <h3 class="filter-title">Occasion <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i></h3>
+        <div class="filter-options">
+          <label><input type="checkbox"> Date Night</label>
+          <label><input type="checkbox"> Office / Formal</label>
+          <label><input type="checkbox"> Clubbing / Party</label>
+          <label><input type="checkbox"> Casual Daily</label>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Grid -->
+    <main class="shop-main">
+      <div class="shop-toolbar">
+        <div>Showing 1 - 9 of 142 Decants</div>
+        <div class="toolbar-sort">
+          <select>
+            <option>Sort by: Popularity</option>
+            <option>Sort by: Newest</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="product-grid">
+        <!-- Product -->
+        <div class="product-card">
+          <div class="product-image">
+            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=600" alt="Tom Ford Oud Wood"></a>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Tom Ford</div>
+            <a href="product-details.html" class="product-title">Oud Wood</a>
+            <div class="product-notes">Oud, Sandalwood, Cardamom</div>
+            <div class="product-price">From ₹800</div>
+            <div class="size-pills">
+              <span class="size-pill active">2ml</span>
+              <span class="size-pill">5ml</span>
+              <span class="size-pill">10ml</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product -->
+        <div class="product-card">
+          <div class="product-image">
+            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&q=80&w=600" alt="Creed Aventus"></a>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Creed</div>
+            <a href="product-details.html" class="product-title">Aventus</a>
+            <div class="product-notes">Pineapple, Birch, Musk</div>
+            <div class="product-price">From ₹1,200</div>
+            <div class="size-pills">
+              <span class="size-pill">2ml</span>
+              <span class="size-pill active">5ml</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product -->
+        <div class="product-card">
+          <div class="product-image">
+            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=600" alt="Baccarat Rouge 540"></a>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Maison Francis Kurkdjian</div>
+            <a href="product-details.html" class="product-title">Baccarat Rouge 540</a>
+            <div class="product-notes">Saffron, Jasmine, Amberwood</div>
+            <div class="product-price">From ₹1,500</div>
+            <div class="size-pills">
+              <span class="size-pill active">2ml</span>
+              <span class="size-pill">5ml</span>
+              <span class="size-pill">10ml</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+        
+        <!-- Product -->
+        <div class="product-card">
+          <div class="product-image">
+            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1595425970377-c9703bc48b2d?auto=format&fit=crop&q=80&w=600" alt="Byredo Gypsy Water"></a>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Byredo</div>
+            <a href="product-details.html" class="product-title">Gypsy Water</a>
+            <div class="product-notes">Bergamot, Lemon, Pepper</div>
+            <div class="product-price">From ₹900</div>
+            <div class="size-pills">
+              <span class="size-pill">2ml</span>
+              <span class="size-pill active">5ml</span>
+              <span class="size-pill">10ml</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product -->
+        <div class="product-card">
+          <div class="product-image">
+            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=600" alt="Parfums de Marly Layton"></a>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Parfums de Marly</div>
+            <a href="product-details.html" class="product-title">Layton</a>
+            <div class="product-notes">Apple, Vanilla, Cardamom</div>
+            <div class="product-price">From ₹1,050</div>
+            <div class="size-pills">
+              <span class="size-pill active">2ml</span>
+              <span class="size-pill">5ml</span>
+              <span class="size-pill">10ml</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product -->
+        <div class="product-card">
+          <div class="product-image">
+            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1615309033306-05646f8fb049?auto=format&fit=crop&q=80&w=600" alt="Dior Sauvage Elixir"></a>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Dior</div>
+            <a href="product-details.html" class="product-title">Sauvage Elixir</a>
+            <div class="product-notes">Nutmeg, Cinnamon, Sandalwood</div>
+            <div class="product-price">From ₹950</div>
+            <div class="size-pills">
+              <span class="size-pill active">2ml</span>
+              <span class="size-pill">5ml</span>
+              <span class="size-pill">10ml</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <a href="#" class="page-link"><i class="fas fa-chevron-left"></i></a>
+        <a href="#" class="page-link active">1</a>
+        <a href="#" class="page-link">2</a>
+        <a href="#" class="page-link">3</a>
+        <span class="page-link" style="border:none; pointer-events:none;">...</span>
+        <a href="#" class="page-link">8</a>
+        <a href="#" class="page-link"><i class="fas fa-chevron-right"></i></a>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo" style="color: var(--color-secondary);"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+          <p>The ultimate discovery platform for premium, niche, and designer fragrances. Find your signature scent securely and affordably.</p>
+        </div>
+        
+        <div>
+          <h4 class="footer-title">Shop</h4>
+          <ul class="footer-links">
+            <li><a href="shop.html">All Fragrances</a></li>
+            <li><a href="#">Best Sellers</a></li>
+            <li><a href="#">New Arrivals</a></li>
+            <li><a href="subscription.html">Discovery Box</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer-title">Support</h4>
+          <ul class="footer-links">
+            <li><a href="#">Track Order</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="#">FAQs / Delivery Info</a></li>
+            <li><a href="#">Return Policy</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer-title">Join The Club</h4>
+          <p style="color: #A0A0A0; font-size: 0.9rem;">Subscribe for exclusive 10% off your first order and early access to rare drops.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 LUXE Fragrance Discovery. All Rights Reserved. 100% Authentic Guarantee.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+

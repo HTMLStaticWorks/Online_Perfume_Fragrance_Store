@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discovery Box Subscription | LUXE</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <style>
+    .sub-hero { background: var(--color-primary); color: var(--color-text-light); text-align: center; padding: 150px 20px 100px; position: relative; }
+    .sub-hero h1 { font-size: 3.5rem; color: var(--color-secondary); margin-bottom: 20px; line-height: 1.1; }
+    .sub-hero p { max-width: 600px; margin: 0 auto 40px; font-size: 1.1rem; color: #ccc; }
+    
+    .how-it-works { padding: 100px 0; background: #fafafa; text-align: center; }
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 50px; }
+    .step-box i { font-size: 2.5rem; color: var(--color-accent); margin-bottom: 20px; }
+    .step-box h4 { font-family: var(--font-sans); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+    
+    .pricing-tier { padding: 100px 0; }
+    .tier-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1000px; margin: 50px auto 0; }
+    .tier-card { border: 1px solid var(--color-gray-light); padding: 50px 40px; text-align: center; transition: all 0.3s; background: #fff; }
+    .tier-card.premium { border: 2px solid var(--color-primary); box-shadow: var(--shadow-md); position: relative; }
+    .tier-card.premium::after {
+      content: 'Most Popular'; position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+      background: var(--color-primary); color: #fff; padding: 5px 15px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;
+    }
+    
+    .tier-name { font-family: var(--font-serif); font-size: 2rem; margin-bottom: 10px; }
+    .tier-price { font-size: 2.5rem; font-weight: 500; margin-bottom: 20px; }
+    .tier-price span { font-size: 1rem; color: var(--color-gray); font-weight: 400; }
+    .tier-features { margin-bottom: 30px; text-align: left; }
+    .tier-features li { margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; }
+    .tier-features i { color: var(--color-accent); margin-top: 4px; }
+
+    @media (max-width: 768px) {
+      .steps-grid, .tier-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+      <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+      <nav class="nav-links">
+        <a href="index.html">Home 1</a>
+        <a href="index-2.html">Home 2</a>
+        <a href="shop.html">Shop</a>
+        <a href="subscription.html" class="active">Discovery Box</a>
+        <a href="deals.html">Deals</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button aria-label="Search"><i class="fas fa-search"></i></button>
+        <a href="user-dashboard.html" aria-label="Account"><i class="far fa-user"></i></a>
+        <a href="wishlist.html" aria-label="Wishlist"><i class="far fa-heart"></i></a>
+        <a href="cart.html" aria-label="Cart"><i class="fas fa-shopping-bag"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <section class="sub-hero">
+    <div class="container">
+      <p class="section-subtitle mb-1" style="color: var(--color-accent);">The Fragrance Club</p>
+      <h1>Curated Scents, Delivered Monthly.</h1>
+      <p>Upgrade your scent wardrobe without the commitment of full bottles. Let our experts curate the world's most luxurious fragrances matching your unique profile.</p>
+      <a href="#pricing" class="btn btn-accent">View Membership Plans</a>
+    </div>
+  </section>
+
+  <section class="how-it-works">
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      <p style="color: var(--color-gray);">Your journey to finding the perfect signature scent.</p>
+      
+      <div class="steps-grid">
+        <div class="step-box">
+          <i class="fas fa-clipboard-list"></i>
+          <h4>Take The Scent Quiz</h4>
+          <p style="color: #666;">Tell us your preferences, favorite notes, and occasions. Our AI builds your unique scent profile.</p>
+        </div>
+        <div class="step-box">
+          <i class="fas fa-box-open"></i>
+          <h4>Receive 3 Decants</h4>
+          <p style="color: #666;">Every month, receive three 5ml travel-friendly decants (approx 75 sprays each) sourced from authentic bottles.</p>
+        </div>
+        <div class="step-box">
+          <i class="fas fa-star"></i>
+          <h4>Rate & Refine</h4>
+          <p style="color: #666;">Rate the scents you receive. Your profile gets smarter, and you get discounts on full bottles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="pricing-tier container">
+    <div class="text-center">
+      <h2 class="section-title">Membership Tiers</h2>
+      <p style="color: var(--color-gray);">Cancel or pause anytime. No hidden fees.</p>
+    </div>
+    
+    <div class="tier-grid">
+      <!-- Standard -->
+      <div class="tier-card">
+        <div class="tier-name">Designer Tier</div>
+        <div class="tier-price">₹1,499<span> / month</span></div>
+        <p style="color: var(--color-gray); margin-bottom: 20px;">Perfect for discovering popular mainstream hits.</p>
+        
+        <ul class="tier-features">
+          <li><i class="fas fa-check"></i> 3 x 5ml Designer Fragrances (Dior, Chanel, Versace, etc.)</li>
+          <li><i class="fas fa-check"></i> Personalized based on your quiz</li>
+          <li><i class="fas fa-check"></i> Premium glass atomizers with velvet pouch</li>
+          <li><i class="fas fa-check"></i> Free Shipping India-wide</li>
+        </ul>
+        
+        <button class="btn btn-outline" style="width: 100%;">Choose Designer</button>
+      </div>
+
+      <!-- Premium -->
+      <div class="tier-card premium">
+        <div class="tier-name">Niche Explorer</div>
+        <div class="tier-price">₹2,999<span> / month</span></div>
+        <p style="color: var(--color-gray); margin-bottom: 20px;">For the ultimate collector who demands exclusivity.</p>
+        
+        <ul class="tier-features">
+          <li><i class="fas fa-check"></i> 3 x 5ml Premium Niche Fragrances (Creed, Tom Ford, MFK, PDM)</li>
+          <li><i class="fas fa-check"></i> Rare, hard-to-find vault scents included occasionally</li>
+          <li><i class="fas fa-check"></i> 10% OFF all full-size bottle purchases</li>
+          <li><i class="fas fa-check"></i> Skip a month anytime via dashboard</li>
+        </ul>
+        
+        <button class="btn btn-primary" style="width: 100%;">Choose Niche Explorer</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo" style="color: var(--color-secondary);"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+          <p>The ultimate discovery platform for premium, niche, and designer fragrances. Find your signature scent securely and affordably.</p>
+        </div>
+        
+        <div>
+          <h4 class="footer-title">Shop</h4>
+          <ul class="footer-links">
+            <li><a href="shop.html">All Fragrances</a></li>
+            <li><a href="#">Best Sellers</a></li>
+            <li><a href="#">New Arrivals</a></li>
+            <li><a href="subscription.html">Discovery Box</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer-title">Support</h4>
+          <ul class="footer-links">
+            <li><a href="#">Track Order</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="#">FAQs / Delivery Info</a></li>
+            <li><a href="#">Return Policy</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer-title">Join The Club</h4>
+          <p style="color: #A0A0A0; font-size: 0.9rem;">Subscribe for exclusive 10% off your first order and early access to rare drops.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 LUXE Fragrance Discovery. All Rights Reserved. 100% Authentic Guarantee.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+
