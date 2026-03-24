@@ -19,12 +19,16 @@
     
     .how-it-works { padding: 100px 0; background: #fafafa; text-align: center; }
     .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 50px; }
-    .step-box i { font-size: 2.5rem; color: var(--color-accent); margin-bottom: 20px; }
+    .step-box { background: #fff; padding: 40px 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.03); }
+    .step-box:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+    .step-box i { font-size: 2.5rem; color: var(--color-accent); margin-bottom: 20px; transition: transform 0.3s ease; }
+    .step-box:hover i { transform: scale(1.15); }
     .step-box h4 { font-family: var(--font-sans); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
     
     .pricing-tier { padding: 100px 0; }
     .tier-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1000px; margin: 50px auto 0; }
-    .tier-card { border: 1px solid var(--color-gray-light); padding: 50px 40px; text-align: center; transition: all 0.3s; background: #fff; }
+    .tier-card { border: 1px solid var(--color-gray-light); padding: 50px 40px; text-align: center; transition: all 0.3s ease; background: #fff; display: flex; flex-direction: column; }
+    .tier-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); border-color: var(--color-primary); }
     .tier-card.premium { border: 2px solid var(--color-primary); box-shadow: var(--shadow-md); position: relative; }
     .tier-card.premium::after {
       content: 'Most Popular'; position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
@@ -34,12 +38,33 @@
     .tier-name { font-family: var(--font-serif); font-size: 2rem; margin-bottom: 10px; }
     .tier-price { font-size: 2.5rem; font-weight: 500; margin-bottom: 20px; }
     .tier-price span { font-size: 1rem; color: var(--color-gray); font-weight: 400; }
-    .tier-features { margin-bottom: 30px; text-align: left; }
+    .tier-features { margin-bottom: 30px; text-align: left; flex-grow: 1; }
     .tier-features li { margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; }
     .tier-features i { color: var(--color-accent); margin-top: 4px; }
 
     @media (max-width: 768px) {
       .steps-grid, .tier-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Header Visibility Fix for Discovery Box (Dark Hero) */
+    .header .logo,
+    .header .nav-links a,
+    .header .header-actions i,
+    .header .header-actions button {
+      color: var(--color-secondary);
+    }
+    .header .nav-links a:hover,
+    .header .header-actions i:hover,
+    .header .header-actions button:hover {
+      color: var(--color-accent);
+    }
+    
+    /* Scrolled Header */
+    .header.scrolled .logo,
+    .header.scrolled .nav-links a,
+    .header.scrolled .header-actions i,
+    .header.scrolled .header-actions button {
+      color: var(--color-primary);
     }
   </style>
   <link rel="icon" type="image/png" href="favicon.png">
@@ -164,12 +189,15 @@
         </div>
         
         <div>
-          <h4 class="footer-title">Support</h4>
+          <h4 class="footer-title">Quick Links</h4>
           <ul class="footer-links">
-            <li><a href="#">Track Order</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="deals.html">Deals</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="order-tracking.html">Track Order</a></li>
             <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="#">FAQs / Delivery Info</a></li>
-            <li><a href="#">Return Policy</a></li>
           </ul>
         </div>
         
@@ -191,5 +219,3 @@
   <script src="assets/js/main.js"></script>
 </body>
 </html>
-
-

@@ -118,6 +118,65 @@
       .features-grid { grid-template-columns: 1fr; }
       .product-grid-mini { grid-template-columns: repeat(2, 1fr); }
     }
+    /* Header Visibility Fix for Home 2 (Dark Hero) */
+    .header .logo,
+    .header .nav-links a,
+    .header .header-actions i,
+    .header .header-actions button {
+      color: var(--color-secondary);
+    }
+    .header .nav-links a:hover,
+    .header .header-actions i:hover,
+    .header .header-actions button:hover {
+      color: var(--color-accent);
+    }
+    
+    /* Ensure scrolled header (which has light background) still uses dark text */
+    .header.scrolled .logo,
+    .header.scrolled .nav-links a,
+    .header.scrolled .header-actions i,
+    .header.scrolled .header-actions button {
+      color: var(--color-primary);
+    }
+
+    /* ── Feature Cards ── */
+    .why-decants {
+      background: #f8f6f2;
+    }
+    .feature-box {
+      background: #fff;
+      padding: 44px 32px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                  box-shadow 0.4s ease,
+                  border-color 0.4s ease;
+      cursor: default;
+    }
+    .feature-box:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+      border-color: var(--color-accent);
+    }
+    .feature-box i {
+      display: inline-block;
+      font-size: 2.2rem;
+      color: var(--color-accent);
+      margin-bottom: 20px;
+      transition: transform 0.4s ease;
+    }
+    .feature-box:hover i {
+      transform: scale(1.2) rotate(6deg);
+    }
+    .feature-box h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      color: var(--color-primary);
+    }
   </style>
   <link rel="icon" type="image/png" href="favicon.png">
 </head>
@@ -218,7 +277,7 @@
       </div>
       <div class="product-card">
         <div class="product-image">
-          <img src="https://images.unsplash.com/photo-1595425970377-c9703bc48b2d?auto=format&fit=crop&q=80&w=400" alt="Date Night Collection">
+          <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&q=80&w=400" alt="Date Night Seduction">
         </div>
         <div class="product-info">
           <div class="product-brand">Premium Set</div>
@@ -269,12 +328,15 @@
         </div>
         
         <div>
-          <h4 class="footer-title">Support</h4>
+          <h4 class="footer-title">Quick Links</h4>
           <ul class="footer-links">
-            <li><a href="#">Track Order</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="deals.html">Deals</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="order-tracking.html">Track Order</a></li>
             <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="#">FAQs / Delivery Info</a></li>
-            <li><a href="#">Return Policy</a></li>
           </ul>
         </div>
         
