@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -30,7 +30,7 @@
     }
     .main-image {
       margin-bottom: 20px;
-      background: #f9f9f9;
+      background: var(--color-secondary);
     }
     .thumb-images {
       display: grid;
@@ -62,7 +62,7 @@
     .rating-summary .stars { color: var(--color-accent); }
     .rating-summary a { color: var(--color-gray); text-decoration: underline; }
 
-    .pd-description { color: #555; margin-bottom: 30px; font-size: 1.05rem; }
+    .pd-description { color: var(--color-gray); margin-bottom: 30px; font-size: 1.05rem; }
 
     /* Variations / Sizing */
     .size-selector { margin-bottom: 30px; }
@@ -81,7 +81,7 @@
     }
     .sz-option:hover, .sz-option.active {
       border-color: var(--color-primary);
-      background-color: #fafafa;
+      background-color: var(--color-secondary);
     }
     .sz-ml { display: block; font-weight: 500; font-size: 1.1rem; margin-bottom: 5px; }
     .sz-price { display: block; font-size: 0.85rem; color: var(--color-gray); }
@@ -126,11 +126,11 @@
       font-size: 1.2rem;
       color: var(--color-gray);
     }
-    .btn-wishlist:hover { color: #e74c3c; border-color: #e74c3c; }
+    .btn-wishlist:hover { color: var(--color-accent); border-color: var(--color-accent); }
 
     /* Trust Elements */
     .pd-trust {
-      background: #fdfdfd;
+      background: var(--color-secondary);
       border: 1px solid var(--color-gray-light);
       padding: 20px;
       margin-bottom: 40px;
@@ -159,7 +159,7 @@
       display: flex; align-items: center; justify-content: space-between;
       cursor: pointer;
     }
-    .accordion-body { padding-bottom: 20px; color: #555; }
+    .accordion-body { padding-bottom: 20px; color: var(--color-gray); }
     .notes-list { margin-top: 10px; }
     .notes-list li { margin-bottom: 8px; }
     .notes-list strong { color: var(--color-primary); font-weight: 500; }
@@ -181,9 +181,14 @@
     <div class="container header-inner">
       <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
       <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
-      <nav class="nav-links">
-        <a href="index.html">Home 1</a>
-        <a href="index-2.html">Home 2</a>
+            <nav class="nav-links">
+        <div class="nav-item-dropdown">
+          <a href="#">Home <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="index.html">Home 1</a>
+            <a href="index-2.html">Home 2</a>
+          </div>
+        </div>
         <a href="shop.html" class="active">Shop</a>
         <a href="subscription.html">Discovery Box</a>
         <a href="deals.html">Deals</a>
@@ -228,7 +233,7 @@
         <a href="#reviews">(124 Reviews)</a>
       </div>
       
-      <div class="pd-price">₹800 - ₹3,500</div>
+      <div class="pd-price">?800 - ?3,500</div>
       
       <p class="pd-description">
         One of the most rare, precious, and expensive ingredients in a perfumer's arsenal, oud wood is often burned in incense-filled temples. Exotic rose wood and cardamom give way to a smoky blend of rare oud wood, sandalwood and vetiver.
@@ -240,17 +245,17 @@
         <div class="size-grid">
           <div class="sz-option">
             <span class="sz-ml">2ml</span>
-            <span class="sz-price">₹800</span>
+            <span class="sz-price">?800</span>
             <span class="sz-sprays">~30 Sprays</span>
           </div>
           <div class="sz-option active">
             <span class="sz-ml">5ml</span>
-            <span class="sz-price">₹1,800</span>
+            <span class="sz-price">?1,800</span>
             <span class="sz-sprays">~75 Sprays</span>
           </div>
           <div class="sz-option">
             <span class="sz-ml">10ml</span>
-            <span class="sz-price">₹3,500</span>
+            <span class="sz-price">?3,500</span>
             <span class="sz-sprays">~150 Sprays</span>
           </div>
         </div>
@@ -357,7 +362,7 @@
         
         <div>
           <h4 class="footer-title">Join The Club</h4>
-          <p style="color: #A0A0A0; font-size: 0.9rem;">Subscribe for exclusive 10% off your first order and early access to rare drops.</p>
+          <p style="color: var(--color-gray); font-size: 0.9rem;">Subscribe for exclusive 10% off your first order and early access to rare drops.</p>
           <form class="newsletter-form">
             <input type="email" placeholder="Enter your email" required>
             <button type="submit">Join</button>
@@ -371,5 +376,6 @@
   </footer>
 </body>
 </html>
+
 
 

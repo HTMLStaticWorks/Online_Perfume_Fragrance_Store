@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
   
   <style>
-    .contact-hero { padding: 150px 0 60px; text-align: center; background: #fff; border-bottom: 1px solid var(--color-gray-light); }
+    .contact-hero { padding: 150px 0 60px; text-align: center; background: var(--color-secondary); border-bottom: 1px solid var(--color-gray-light); }
     .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding: 80px 20px; max-width: 1000px; margin: 0 auto; }
     
     .contact-info h3 { font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 20px; }
@@ -27,8 +27,8 @@
     .contact-form input, .contact-form textarea { width: 100%; padding: 15px; border: 1px solid var(--color-gray-light); outline: none; font-family: var(--font-sans); font-size: 0.95rem; }
     .contact-form input:focus, .contact-form textarea:focus { border-color: var(--color-primary); }
     .contact-form textarea { resize: vertical; min-height: 150px; }
-    .contact-form button { background: var(--color-primary); color: #fff; padding: 15px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.95rem; }
-    .map-placeholder { width: 100%; height: 350px; background: #eee url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200') center/cover; position: relative; }
+    .contact-form button { background: var(--color-primary); color: var(--color-secondary); padding: 15px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.95rem; }
+    .map-placeholder { width: 100%; height: 350px; background: var(--color-gray-light) url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200') center/cover; position: relative; }
     .map-placeholder::after { content: 'Interactive Map Area'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255,255,255,0.9); padding: 10px 20px; font-weight: 500; box-shadow: var(--shadow-sm); }
     
     @media (max-width: 768px) {
@@ -43,9 +43,14 @@
     <div class="container header-inner">
       <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
       <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
-      <nav class="nav-links">
-        <a href="index.html">Home 1</a>
-        <a href="index-2.html">Home 2</a>
+            <nav class="nav-links">
+        <div class="nav-item-dropdown">
+          <a href="#">Home <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="index.html">Home 1</a>
+            <a href="index-2.html">Home 2</a>
+          </div>
+        </div>
         <a href="shop.html">Shop</a>
         <a href="subscription.html">Discovery Box</a>
         <a href="deals.html">Deals</a>
@@ -141,7 +146,7 @@
         
         <div>
           <h4 class="footer-title">Join The Club</h4>
-          <p style="color: #A0A0A0; font-size: 0.9rem;">Subscribe for exclusive 10% off your first order and early access to rare drops.</p>
+          <p style="color: var(--color-gray); font-size: 0.9rem;">Subscribe for exclusive 10% off your first order and early access to rare drops.</p>
           <form class="newsletter-form">
             <input type="email" placeholder="Enter your email" required>
             <button type="submit">Join</button>
@@ -156,5 +161,6 @@
   <script src="assets/js/main.js"></script>
 </body>
 </html>
+
 
 

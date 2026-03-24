@@ -75,7 +75,7 @@
       margin-bottom: 10px;
       font-size: 0.95rem;
       cursor: pointer;
-      color: #444;
+      color: var(--color-primary);
     }
     .filter-options input[type="checkbox"] {
       width: 16px;
@@ -93,7 +93,7 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 30px;
-      background: #fff;
+      background: var(--color-secondary);
       padding: 15px 20px;
       box-shadow: var(--shadow-sm);
     }
@@ -111,7 +111,7 @@
     }
     
     /* Product Overrides (From style.css base) */
-    .product-card { background: #fff; transition: transform var(--transition-normal); position: relative; }
+    .product-card { background: var(--color-secondary); transition: transform var(--transition-normal); position: relative; }
     .product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
     .product-image { height: 320px; overflow: hidden; position: relative; }
     .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
@@ -169,9 +169,14 @@
     <div class="container header-inner">
       <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
       <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
-      <nav class="nav-links">
-        <a href="index.html">Home 1</a>
-        <a href="index-2.html">Home 2</a>
+            <nav class="nav-links">
+        <div class="nav-item-dropdown">
+          <a href="#">Home <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="index.html">Home 1</a>
+            <a href="index-2.html">Home 2</a>
+          </div>
+        </div>
         <a href="shop.html" class="active">Shop</a>
         <a href="subscription.html">Discovery Box</a>
         <a href="deals.html">Deals</a>
@@ -193,7 +198,7 @@
   <div class="shop-header">
     <div class="container">
       <h1 class="section-title text-light" style="color: white; margin-bottom: 10px;">The Decant Library</h1>
-      <p style="color: #ccc; max-width: 600px; margin: 0 auto;">Discover rare, niche, and designer fragrances curated for the true enthusiast. Hand-poured with precision, ensuring 100% authenticity.</p>
+      <p style="color: var(--color-gray); max-width: 600px; margin: 0 auto;">Discover rare, niche, and designer fragrances curated for the true enthusiast. Hand-poured with precision, ensuring 100% authenticity.</p>
     </div>
   </div>
 
@@ -244,7 +249,7 @@
         </div>
       </div>
       <div class="filter-group" style="border-bottom: none;">
-        <button id="clear-filters" style="width: 100%; padding: 10px; background: #f0f0f0; border: 1px solid #ddd; cursor: pointer; font-size: 0.9rem;">Clear All Filters</button>
+        <button id="clear-filters" style="width: 100%; padding: 10px; background: var(--color-gray-light); border: 1px solid var(--color-gray-light); cursor: pointer; font-size: 0.9rem;">Clear All Filters</button>
       </div>
     </aside>
 
@@ -650,7 +655,7 @@
         
         <div>
           <h4 class="footer-title">Join The Club</h4>
-          <p style="color: #A0A0A0; font-size: 0.9rem;">Subscribe for exclusive 10% off your first order and early access to rare drops.</p>
+          <p style="color: var(--color-gray); font-size: 0.9rem;">Subscribe for exclusive 10% off your first order and early access to rare drops.</p>
           <form class="newsletter-form">
             <input type="email" placeholder="Enter your email" required>
             <button type="submit">Join</button>
@@ -797,5 +802,6 @@
   </script>
 </body>
 </html>
+
 
 

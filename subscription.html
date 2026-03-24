@@ -15,11 +15,11 @@
   <style>
     .sub-hero { background: var(--color-primary); color: var(--color-text-light); text-align: center; padding: 150px 20px 100px; position: relative; }
     .sub-hero h1 { font-size: 3.5rem; color: var(--color-secondary); margin-bottom: 20px; line-height: 1.1; }
-    .sub-hero p { max-width: 600px; margin: 0 auto 40px; font-size: 1.1rem; color: #ccc; }
+    .sub-hero p { max-width: 600px; margin: 0 auto 40px; font-size: 1.1rem; color: var(--color-gray); }
     
-    .how-it-works { padding: 100px 0; background: #fafafa; text-align: center; }
+    .how-it-works { padding: 100px 0; background: var(--color-secondary); text-align: center; }
     .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 50px; }
-    .step-box { background: #fff; padding: 40px 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.03); }
+    .step-box { background: var(--color-secondary); padding: 40px 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.03); }
     .step-box:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
     .step-box i { font-size: 2.5rem; color: var(--color-accent); margin-bottom: 20px; transition: transform 0.3s ease; }
     .step-box:hover i { transform: scale(1.15); }
@@ -27,12 +27,12 @@
     
     .pricing-tier { padding: 100px 0; }
     .tier-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1000px; margin: 50px auto 0; }
-    .tier-card { border: 1px solid var(--color-gray-light); padding: 50px 40px; text-align: center; transition: all 0.3s ease; background: #fff; display: flex; flex-direction: column; }
+    .tier-card { border: 1px solid var(--color-gray-light); padding: 50px 40px; text-align: center; transition: all 0.3s ease; background: var(--color-secondary); display: flex; flex-direction: column; }
     .tier-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); border-color: var(--color-primary); }
     .tier-card.premium { border: 2px solid var(--color-primary); box-shadow: var(--shadow-md); position: relative; }
     .tier-card.premium::after {
       content: 'Most Popular'; position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
-      background: var(--color-primary); color: #fff; padding: 5px 15px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;
+      background: var(--color-primary); color: var(--color-secondary); padding: 5px 15px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;
     }
     
     .tier-name { font-family: var(--font-serif); font-size: 2rem; margin-bottom: 10px; }
@@ -77,8 +77,13 @@
       <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
       <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
       <nav class="nav-links">
-        <a href="index.html">Home 1</a>
-        <a href="index-2.html">Home 2</a>
+        <div class="nav-item-dropdown">
+          <a href="#">Home <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="index.html">Home 1</a>
+            <a href="index-2.html">Home 2</a>
+          </div>
+        </div>
         <a href="shop.html">Shop</a>
         <a href="subscription.html" class="active">Discovery Box</a>
         <a href="deals.html">Deals</a>
@@ -112,17 +117,17 @@
         <div class="step-box">
           <i class="fas fa-clipboard-list"></i>
           <h4>Take The Scent Quiz</h4>
-          <p style="color: #666;">Tell us your preferences, favorite notes, and occasions. Our AI builds your unique scent profile.</p>
+          <p style="color: var(--color-gray);">Tell us your preferences, favorite notes, and occasions. Our AI builds your unique scent profile.</p>
         </div>
         <div class="step-box">
           <i class="fas fa-box-open"></i>
           <h4>Receive 3 Decants</h4>
-          <p style="color: #666;">Every month, receive three 5ml travel-friendly decants (approx 75 sprays each) sourced from authentic bottles.</p>
+          <p style="color: var(--color-gray);">Every month, receive three 5ml travel-friendly decants (approx 75 sprays each) sourced from authentic bottles.</p>
         </div>
         <div class="step-box">
           <i class="fas fa-star"></i>
           <h4>Rate & Refine</h4>
-          <p style="color: #666;">Rate the scents you receive. Your profile gets smarter, and you get discounts on full bottles.</p>
+          <p style="color: var(--color-gray);">Rate the scents you receive. Your profile gets smarter, and you get discounts on full bottles.</p>
         </div>
       </div>
     </div>
@@ -203,7 +208,7 @@
         
         <div>
           <h4 class="footer-title">Join The Club</h4>
-          <p style="color: #A0A0A0; font-size: 0.9rem;">Subscribe for exclusive 10% off your first order and early access to rare drops.</p>
+          <p style="color: var(--color-gray); font-size: 0.9rem;">Subscribe for exclusive 10% off your first order and early access to rare drops.</p>
           <form class="newsletter-form">
             <input type="email" placeholder="Enter your email" required>
             <button type="submit">Join</button>

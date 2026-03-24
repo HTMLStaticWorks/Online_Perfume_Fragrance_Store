@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -19,10 +19,10 @@
     .track-form { display: flex; max-width: 500px; margin: 0 auto 60px; }
     .track-form input { flex: 1; padding: 15px 20px; border: 1px solid var(--color-gray-light); font-size: 1rem; outline: none; }
     .track-form input:focus { border-color: var(--color-primary); }
-    .track-form button { background: var(--color-primary); color: #fff; padding: 0 30px; text-transform: uppercase; letter-spacing: 1px; }
+    .track-form button { background: var(--color-primary); color: var(--color-secondary); padding: 0 30px; text-transform: uppercase; letter-spacing: 1px; }
     
-    .tracking-result { max-width: 800px; margin: 0 auto; background: #fff; border: 1px solid var(--color-gray-light); padding: 40px; text-align: left; box-shadow: var(--shadow-sm); }
-    .order-info-head { display: flex; justify-content: space-between; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0; }
+    .tracking-result { max-width: 800px; margin: 0 auto; background: var(--color-secondary); border: 1px solid var(--color-gray-light); padding: 40px; text-align: left; box-shadow: var(--shadow-sm); }
+    .order-info-head { display: flex; justify-content: space-between; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--color-gray-light); }
     .order-info-head h4 { font-family: var(--font-sans); color: var(--color-gray); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
     .order-info-head p { font-size: 1.1rem; font-weight: 500; margin-top: 5px; }
     
@@ -34,7 +34,7 @@
     .tl-node:last-child { margin-bottom: 0; }
     .tl-node::before {
       content: ''; position: absolute; left: -30px; top: 2px; width: 16px; height: 16px;
-      border-radius: 50%; background: #fff; border: 2px solid var(--color-gray-light); z-index: 2;
+      border-radius: 50%; background: var(--color-secondary); border: 2px solid var(--color-gray-light); z-index: 2;
     }
     
     .tl-node.active::before { background: var(--color-accent); border-color: var(--color-accent); }
@@ -42,7 +42,7 @@
     
     .tl-content h5 { font-family: var(--font-sans); font-size: 1.05rem; margin-bottom: 5px; color: var(--color-primary); }
     .tl-content p { font-size: 0.9rem; color: var(--color-gray); }
-    .tl-date { font-size: 0.8rem; color: #a0a0a0; margin-top: 5px; }
+    .tl-date { font-size: 0.8rem; color: var(--color-gray); margin-top: 5px; }
 
   </style>
   <link rel="icon" type="image/png" href="favicon.png">
@@ -54,9 +54,14 @@
     <div class="container header-inner">
       <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
       <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
-      <nav class="nav-links">
-        <a href="index.html">Home 1</a>
-        <a href="index-2.html">Home 2</a>
+            <nav class="nav-links">
+        <div class="nav-item-dropdown">
+          <a href="#">Home <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="index.html">Home 1</a>
+            <a href="index-2.html">Home 2</a>
+          </div>
+        </div>
         <a href="shop.html">Shop</a>
         <a href="subscription.html">Discovery Box</a>
         <a href="deals.html">Deals</a>
@@ -177,7 +182,7 @@
         
         <div>
           <h4 class="footer-title">Join The Club</h4>
-          <p style="color: #A0A0A0; font-size: 0.9rem;">Subscribe for exclusive 10% off your first order and early access to rare drops.</p>
+          <p style="color: var(--color-gray); font-size: 0.9rem;">Subscribe for exclusive 10% off your first order and early access to rare drops.</p>
           <form class="newsletter-form">
             <input type="email" placeholder="Enter your email" required>
             <button type="submit">Join</button>
@@ -191,5 +196,6 @@
   </footer>
 </body>
 </html>
+
 
 

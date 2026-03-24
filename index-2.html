@@ -101,7 +101,7 @@
     }
 
     /* Product card inherited from style.css but need to define for this page since we put it in index style tag earlier */
-    .product-card { background: #fff; transition: transform var(--transition-normal); position: relative; }
+    .product-card { background: var(--color-secondary); transition: transform var(--transition-normal); position: relative; }
     .product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
     .product-image { height: 280px; overflow: hidden; position: relative; }
     .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
@@ -144,7 +144,7 @@
       background: #f8f6f2;
     }
     .feature-box {
-      background: #fff;
+      background: var(--color-secondary);
       padding: 44px 32px;
       border-radius: 16px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
@@ -188,8 +188,13 @@
       <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
       <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
       <nav class="nav-links">
-        <a href="index.html">Home 1</a>
-        <a href="index-2.html" class="active">Home 2</a>
+        <div class="nav-item-dropdown">
+          <a href="#" class="active">Home <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="index.html">Home 1</a>
+            <a href="index-2.html" class="active">Home 2</a>
+          </div>
+        </div>
         <a href="shop.html">Shop</a>
         <a href="subscription.html">Discovery Box</a>
         <a href="deals.html">Deals</a>
@@ -212,7 +217,7 @@
     <div class="text-content container">
       <p class="section-subtitle mb-1" style="color: var(--color-accent); letter-spacing: 3px;">Stop Blind Buying</p>
       <h1 class="hero-title-2">Your Signature Scent Awaits</h1>
-      <p class="mb-3" style="font-size: 1.1rem; color: #ccc;">Sample the world's most luxurious and exclusive fragrances starting at just ₹500. Find what you love, then invest in the full bottle.</p>
+      <p class="mb-3" style="font-size: 1.1rem; color: var(--color-gray);">Sample the world's most luxurious and exclusive fragrances starting at just ₹500. Find what you love, then invest in the full bottle.</p>
       <a href="#quiz" class="btn btn-accent">Take The Scent Quiz</a>
       <a href="shop.html" class="btn btn-outline" style="color: var(--color-secondary); border-color: var(--color-secondary); margin-left: 15px;">Shop All Decants</a>
     </div>
@@ -229,17 +234,17 @@
         <div class="feature-box">
           <i class="fas fa-vial"></i>
           <h4>Low Risk, High Reward</h4>
-          <p class="text-muted" style="color: #666; font-size: 0.95rem;">Test a ₹25,000 niche fragrance for a fraction of the price. If you don't love it, you simply move on.</p>
+          <p class="text-muted" style="color: var(--color-gray); font-size: 0.95rem;">Test a ₹25,000 niche fragrance for a fraction of the price. If you don't love it, you simply move on.</p>
         </div>
         <div class="feature-box">
           <i class="fas fa-certificate"></i>
           <h4>Guaranteed Authenticity</h4>
-          <p class="text-muted" style="color: #666; font-size: 0.95rem;">Every decant is hand-poured directly from the original manufacturer's bottle using sterile syringes. 100% pure juice.</p>
+          <p class="text-muted" style="color: var(--color-gray); font-size: 0.95rem;">Every decant is hand-poured directly from the original manufacturer's bottle using sterile syringes. 100% pure juice.</p>
         </div>
         <div class="feature-box">
           <i class="fas fa-plane"></i>
           <h4>Travel Friendly</h4>
-          <p class="text-muted" style="color: #666; font-size: 0.95rem;">Our 5ml and 10ml glass atomizers are leak-proof and TSA approved. Perfect for reapplying throughout the day.</p>
+          <p class="text-muted" style="color: var(--color-gray); font-size: 0.95rem;">Our 5ml and 10ml glass atomizers are leak-proof and TSA approved. Perfect for reapplying throughout the day.</p>
         </div>
       </div>
     </div>
@@ -342,7 +347,7 @@
         
         <div>
           <h4 class="footer-title">Join The Club</h4>
-          <p style="color: #A0A0A0; font-size: 0.9rem;">Subscribe for exclusive 10% off your first order and early access to rare drops.</p>
+          <p style="color: var(--color-gray); font-size: 0.9rem;">Subscribe for exclusive 10% off your first order and early access to rare drops.</p>
           <form class="newsletter-form">
             <input type="email" placeholder="Enter your email" required>
             <button type="submit">Join</button>

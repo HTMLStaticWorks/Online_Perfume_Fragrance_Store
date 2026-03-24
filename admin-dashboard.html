@@ -16,14 +16,14 @@
       --primary: #121212;
       --accent: #C5A059;
       --bg: #f4f5f7;
-      --white: #ffffff;
+      --white: var(--color-secondary);
       --gray: #8a909d;
       --border: #e2e5eb;
       --success: #2ecc71;
     }
     
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg); color: #333; display: flex; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--color-primary); display: flex; }
     
     /* Sidebar */
     .admin-sidebar { width: 260px; height: 100vh; background: var(--primary); color: var(--white); position: fixed; display: flex; flex-direction: column; }
@@ -43,7 +43,7 @@
     .header-search input { border: none; background: transparent; outline: none; margin-left: 10px; width: 100%; font-size: 0.9rem; }
     
     .header-user { display: flex; align-items: center; gap: 15px; }
-    .header-user img { width: 35px; height: 35px; border-radius: 50%; background: #ccc; }
+    .header-user img { width: 35px; height: 35px; border-radius: 50%; background: var(--color-gray); }
 
     .admin-content { padding: 30px; flex: 1; }
     .page-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 25px; color: var(--primary); }
@@ -62,11 +62,11 @@
     
     table { width: 100%; border-collapse: collapse; text-align: left; }
     th { padding: 15px 20px; background: #f9fafb; font-size: 0.75rem; text-transform: uppercase; color: var(--gray); letter-spacing: 1px; border-bottom: 1px solid var(--border); }
-    td { padding: 15px 20px; border-bottom: 1px solid var(--border); font-size: 0.9rem; color: #444; }
+    td { padding: 15px 20px; border-bottom: 1px solid var(--border); font-size: 0.9rem; color: var(--color-primary); }
     tr:last-child td { border-bottom: none; }
     
     .badge { padding: 5px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; }
-    .badge-pending { background: #fff3cd; color: #856404; }
+    .badge-pending { background: var(--color-secondary)3cd; color: #856404; }
     .badge-processing { background: #cce5ff; color: #004085; }
     .badge-completed { background: #d4edda; color: #155724; }
   </style>
@@ -137,7 +137,7 @@
       <div class="table-container">
         <div class="table-header">
           <h3>Recent Orders (To Be Decanted)</h3>
-          <button style="background: var(--primary); color: #fff; border: none; padding: 8px 15px; border-radius: 4px; font-size: 0.85rem; cursor: pointer;">View All Orders</button>
+          <button style="background: var(--primary); color: var(--color-secondary); border: none; padding: 8px 15px; border-radius: 4px; font-size: 0.85rem; cursor: pointer;">View All Orders</button>
         </div>
         <table>
           <thead>

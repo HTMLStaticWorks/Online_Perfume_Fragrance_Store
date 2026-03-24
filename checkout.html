@@ -12,22 +12,22 @@
   <link rel="stylesheet" href="assets/css/style.css">
   
   <style>
-    body { background-color: #fafafa; }
-    .checkout-header { text-align: center; padding: 40px 0; border-bottom: 1px solid var(--color-gray-light); background: #fff; }
+    body { background-color: var(--color-secondary); }
+    .checkout-header { text-align: center; padding: 40px 0; border-bottom: 1px solid var(--color-gray-light); background: var(--color-secondary); }
     .checkout-container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; }
     
-    .checkout-section { background: #fff; padding: 30px; border: 1px solid var(--color-gray-light); margin-bottom: 20px; }
-    .section-title-sm { font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #f0f0f0; }
+    .checkout-section { background: var(--color-secondary); padding: 30px; border: 1px solid var(--color-gray-light); margin-bottom: 20px; }
+    .section-title-sm { font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--color-gray-light); }
     
     form .row { display: flex; gap: 15px; margin-bottom: 15px; }
     form .col { flex: 1; }
-    form label { display: block; font-size: 0.85rem; color: #555; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+    form label { display: block; font-size: 0.85rem; color: var(--color-gray); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
     form input, form select { width: 100%; padding: 12px; border: 1px solid var(--color-gray-light); outline: none; font-family: var(--font-sans); }
     form input:focus { border-color: var(--color-primary); }
     
     .payment-methods { display: flex; flex-direction: column; gap: 10px; }
     .pm-option { border: 1px solid var(--color-gray-light); padding: 15px; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all 0.2s; }
-    .pm-option:hover, .pm-option.active { border-color: var(--color-primary); background: #fdfdfd; }
+    .pm-option:hover, .pm-option.active { border-color: var(--color-primary); background: var(--color-secondary); }
     .pm-option input { width: auto; accent-color: var(--color-primary); }
     .pm-option label { margin: 0; cursor: pointer; text-transform: none; letter-spacing: normal; font-size: 1rem; color: var(--color-primary); flex: 1; display:flex; justify-content:space-between; align-items:center;}
 
@@ -119,7 +119,7 @@
             <label for="cod">Cash on Delivery (COD) <span><i class="fas fa-money-bill-wave"></i></span></label>
           </div>
         </div>
-        <p style="font-size: 0.8rem; color: #777; margin-top: 15px;"><i class="fas fa-shield-alt"></i> Payments are 100% secure and encrypted. We do not store your card details.</p>
+        <p style="font-size: 0.8rem; color: var(--color-gray); margin-top: 15px;"><i class="fas fa-shield-alt"></i> Payments are 100% secure and encrypted. We do not store your card details.</p>
       </div>
 
       <button class="btn btn-primary" style="width: 100%; padding: 20px; font-size: 1.1rem;">Place Order Now - ₹4,470</button>
@@ -204,7 +204,7 @@
         
         <div>
           <h4 class="footer-title">Join The Club</h4>
-          <p style="color: #A0A0A0; font-size: 0.9rem;">Subscribe for exclusive 10% off your first order and early access to rare drops.</p>
+          <p style="color: var(--color-gray); font-size: 0.9rem;">Subscribe for exclusive 10% off your first order and early access to rare drops.</p>
           <form class="newsletter-form">
             <input type="email" placeholder="Enter your email" required>
             <button type="submit">Join</button>

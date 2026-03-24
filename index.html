@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -103,7 +103,7 @@
       margin-top: 50px;
     }
     .product-card {
-      background: #fff;
+      background: var(--color-secondary);
       transition: transform var(--transition-normal), box-shadow var(--transition-normal);
       position: relative;
     }
@@ -183,6 +183,14 @@
       padding: 100px 0;
       position: relative;
     }
+    
+    body.dark-mode .subs-section {
+      background-color: #121212;
+      color: var(--color-text-dark);
+    }
+    body.dark-mode .subs-section h2 { color: var(--color-text-dark); }
+    body.dark-mode .subs-section .section-subtitle { color: var(--color-accent); }
+    body.dark-mode .subs-features i { color: var(--color-accent); }
     .subs-inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -191,7 +199,7 @@
     }
     .subs-image img { border-radius: 4px; }
     .subs-content h2 { color: var(--color-text-light); font-size: 3rem; margin-bottom: 20px; }
-    .subs-content p { color: #A0A0A0; margin-bottom: 30px; font-size: 1.1rem; }
+    .subs-content p { color: var(--color-gray); margin-bottom: 30px; font-size: 1.1rem; }
     .subs-features { margin-bottom: 40px; }
     .subs-features li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: var(--color-secondary); }
     .subs-features i { color: var(--color-accent); }
@@ -205,7 +213,7 @@
       margin-top: 50px;
     }
     .review-card {
-      background: #fff;
+      background: var(--color-secondary);
       padding: 40px 30px;
       box-shadow: var(--shadow-sm);
       text-align: center;
@@ -216,18 +224,51 @@
     .reviewer-badge { font-size: 0.75rem; text-transform: uppercase; color: var(--color-accent); letter-spacing: 1px; margin-top: 5px; }
 
     /* Art of Decanting */
-    .decanting-section { padding: var(--section-padding); background-color: var(--color-primary); color: #fff; }
+    .decanting-section { padding: var(--section-padding); background-color: var(--color-primary); color: var(--color-secondary); }
     .decanting-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
-    .decanting-text h2 { color: #fff; font-size: 3rem; margin-bottom: 25px; }
-    .decanting-text p { color: #A0A0A0; margin-bottom: 30px; font-size: 1.1rem; }
+    .decanting-text h2 { color: var(--color-secondary); font-size: 3rem; margin-bottom: 25px; }
+    .decanting-text p { color: var(--color-gray); margin-bottom: 30px; font-size: 1.1rem; }
     .decanting-image img { border-radius: 8px; box-shadow: var(--shadow-lg); }
 
     /* Scent Notes 101 */
-    .notes-section { padding: var(--section-padding); background-color: #fff; }
+    .notes-section { padding: var(--section-padding); background-color: var(--color-secondary); }
     .notes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
-    .note-card { text-align: center; padding: 40px; background: var(--color-secondary); border-radius: 4px; transition: transform var(--transition-normal); }
-    .note-card:hover { transform: translateY(-10px); }
-    .note-icon { font-size: 2.5rem; color: var(--color-accent); margin-bottom: 20px; }
+    .note-card { text-align: center; padding: 40px; background: var(--color-secondary); border: 1px solid transparent; border-radius: 8px; transition: all 0.4s ease; position: relative; overflow: hidden; }
+    .note-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(166, 138, 92, 0.05) 0%, transparent 100%); opacity: 0; transition: opacity 0.4s ease; pointer-events: none; }
+    
+    /* Background Image Variant */
+    .note-card.has-bg { 
+      background-size: cover; 
+      background-position: center; 
+      padding: 60px 30px 40px; 
+      display: flex; 
+      align-items: flex-end; 
+      min-height: 300px; 
+    }
+    .note-card.has-bg::before {
+      background: linear-gradient(to top, rgba(18,18,18,0.9) 0%, rgba(18,18,18,0.4) 50%, rgba(18,18,18,0.1) 100%);
+      opacity: 1;
+      z-index: 1;
+    }
+    .note-card.has-bg .note-content { position: relative; z-index: 2; width: 100%; }
+    .note-card.has-bg h3 { color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5); font-size: 1.8rem; margin-bottom: 15px; }
+    .note-card.has-bg p { color: rgba(255,255,255,0.9); text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+    
+    .note-card:hover { transform: translateY(-10px); border-color: rgba(166, 138, 92, 0.3); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+    .note-card:not(.has-bg):hover { background: #fdfaf5; }
+    .note-card:not(.has-bg):hover::before { opacity: 1; }
+    
+    /* Hover state for bg variant using CSS variables */
+    .note-card.has-bg::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background-image: var(--bg-img);
+      background-size: cover; background-position: center;
+      transition: transform 0.6s ease; z-index: 0;
+    }
+    .note-card.has-bg:hover::after { transform: scale(1.08); }
+    
+    .note-icon { font-size: 2.5rem; color: var(--color-accent); margin-bottom: 20px; transition: transform 0.4s ease; }
+    .note-card:hover .note-icon { transform: scale(1.1); }
     .note-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
     .note-card p { color: var(--color-gray); font-size: 0.95rem; }
 
@@ -253,9 +294,14 @@
     <div class="container header-inner">
       <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
       <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
-      <nav class="nav-links">
-        <a href="index.html" class="active">Home 1</a>
-        <a href="index-2.html">Home 2</a>
+            <nav class="nav-links">
+        <div class="nav-item-dropdown">
+          <a href="#" class="active">Home <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="index.html">Home 1</a>
+            <a href="index-2.html">Home 2</a>
+          </div>
+        </div>
         <a href="shop.html">Shop</a>
         <a href="subscription.html">Discovery Box</a>
         <a href="deals.html">Deals</a>
@@ -319,10 +365,7 @@
           <div class="product-brand">Tom Ford</div>
           <h3 class="product-title">Oud Wood</h3>
           <div class="product-notes">Oud, Sandalwood, Cardamom</div>
-          <div class="product-price">From ₹800</div>
-          <div class="size-pills">
-            <span class="size-pill active">10ml</span>
-          </div>
+          <div class="product-price">From ?800</div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
@@ -335,7 +378,7 @@
           <div class="product-brand">Diptyque</div>
           <h3 class="product-title">Tam Dao</h3>
           <div class="product-notes">Cedar, Sandalwood, Cypress</div>
-          <div class="product-price">From ₹750</div>
+          <div class="product-price">From ?750</div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
@@ -349,7 +392,7 @@
           <div class="product-brand">Chanel</div>
           <h3 class="product-title">Bleu de Chanel</h3>
           <div class="product-notes">Grapefruit, Mint, Pink Pepper</div>
-          <div class="product-price">From ₹850</div>
+          <div class="product-price">From ?850</div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
@@ -362,7 +405,7 @@
           <div class="product-brand">Acqua di Parma</div>
           <h3 class="product-title">Colonia</h3>
           <div class="product-notes">Sicilian Citrus, Lavender, Rosemary</div>
-          <div class="product-price">From ₹700</div>
+          <div class="product-price">From ?700</div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
@@ -376,7 +419,7 @@
           <div class="product-brand">By Kilian</div>
           <h3 class="product-title">Angel's Share</h3>
           <div class="product-notes">Cognac, Cinnamon, Oak</div>
-          <div class="product-price">From ₹1,600</div>
+          <div class="product-price">From ?1,600</div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
@@ -389,7 +432,7 @@
           <div class="product-brand">Xerjoff</div>
           <h3 class="product-title">Italica</h3>
           <div class="product-notes">Almond, Milk, Toffee</div>
-          <div class="product-price">From ₹1,800</div>
+          <div class="product-price">From ?1,800</div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
@@ -403,7 +446,7 @@
           <div class="product-brand">Viktor&Rolf</div>
           <h3 class="product-title">Spicebomb Extreme</h3>
           <div class="product-notes">Black Pepper, Cumin, Tobacco</div>
-          <div class="product-price">From ₹950</div>
+          <div class="product-price">From ?950</div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
@@ -416,7 +459,7 @@
           <div class="product-brand">Tom Ford</div>
           <h3 class="product-title">Tobacco Vanille</h3>
           <div class="product-notes">Tobacco Leaf, Vanilla, Cocoa</div>
-          <div class="product-price">From ₹1,200</div>
+          <div class="product-price">From ?1,200</div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
@@ -430,7 +473,7 @@
           <div class="product-brand">Gucci</div>
           <h3 class="product-title">Bloom</h3>
           <div class="product-notes">Tuberose, Jasmine, Rangoon Creeper</div>
-          <div class="product-price">From ₹700</div>
+          <div class="product-price">From ?700</div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
@@ -443,7 +486,7 @@
           <div class="product-brand">Frederic Malle</div>
           <h3 class="product-title">Portrait of a Lady</h3>
           <div class="product-notes">Rose, Clove, Patchouli</div>
-          <div class="product-price">From ₹1,900</div>
+          <div class="product-price">From ?1,900</div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
@@ -458,15 +501,15 @@
   <!-- The Art of Decanting -->
   <section class="decanting-section">
     <div class="container decanting-inner">
-      <div class="decanting-text">
+      <div class="decanting-text text-center">
         <p class="section-subtitle mb-1" style="color: var(--color-accent);">Our Craftsmanship</p>
         <h2>The Art of the Perfect Poured Decant</h2>
         <p>Every decant is a labor of love. We use medical-grade, laboratory-standard equipment to ensure your fragrance never touches the air, preserving its full complexity and longevity.</p>
         <p>From sterile environment control to precision glass atomizers, we treat every ml with the respect a masterpiece deserves.</p>
-        <div class="subs-features">
-          <li style="color: #fff;"><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Sterile, UV-protected environment</li>
-          <li style="color: #fff;"><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Precision medical-grade pipettes</li>
-          <li style="color: #fff;"><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Guaranteed leak-proof glass atomizers</li>
+        <div class="subs-features" style="text-align: left; display: inline-block;">
+          <li style="color: var(--color-secondary);"><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Sterile, UV-protected environment</li>
+          <li style="color: var(--color-secondary);"><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Precision medical-grade pipettes</li>
+          <li style="color: var(--color-secondary);"><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Guaranteed leak-proof glass atomizers</li>
         </div>
       </div>
       <div class="decanting-image">
@@ -485,20 +528,23 @@
       </div>
 
       <div class="notes-grid">
-        <div class="note-card">
-          <div class="note-icon"><i class="fas fa-leaf"></i></div>
-          <h3>Top Notes</h3>
-          <p>The first impression. Typically citrus or herbal, these notes are light and disappear within 15-30 minutes of application.</p>
+        <div class="note-card has-bg" style="--bg-img: url('https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&q=80&w=800');">
+          <div class="note-content">
+            <h3>Top Notes</h3>
+            <p>The first impression. Typically citrus or herbal, these notes are light and disappear within 15-30 minutes of application.</p>
+          </div>
         </div>
-        <div class="note-card">
-          <div class="note-icon"><i class="fas fa-tint"></i></div>
-          <h3>Heart Notes</h3>
-          <p>The soul of the scent. Florals, spices, or fruits that emerge once the top notes fade, lasting for 2-4 hours.</p>
+        <div class="note-card has-bg" style="--bg-img: url('https://images.unsplash.com/photo-1590736969955-71cc94801759?auto=format&fit=crop&q=80&w=800');">
+          <div class="note-content">
+            <h3>Heart Notes</h3>
+            <p>The soul of the scent. Florals, spices, or fruits that emerge once the top notes fade, lasting for 2-4 hours.</p>
+          </div>
         </div>
-        <div class="note-card">
-          <div class="note-icon"><i class="fas fa-tree"></i></div>
-          <h3>Base Notes</h3>
-          <p>The lasting foundation. Deep woods, musk, or resins that provide longevity and stay on your skin for 6-12+ hours.</p>
+        <div class="note-card has-bg" style="--bg-img: url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=800');">
+          <div class="note-content">
+            <h3>Base Notes</h3>
+            <p>The lasting foundation. Deep woods, musk, or resins that provide longevity and stay on your skin for 6-12+ hours.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -594,7 +640,7 @@
         
         <div>
           <h4 class="footer-title">Join The Club</h4>
-          <p style="color: #A0A0A0; font-size: 0.9rem;">Subscribe for exclusive 10% off your first order and early access to rare drops.</p>
+          <p style="color: var(--color-gray); font-size: 0.9rem;">Subscribe for exclusive 10% off your first order and early access to rare drops.</p>
           <form class="newsletter-form">
             <input type="email" placeholder="Enter your email" required>
             <button type="submit">Join</button>
@@ -636,5 +682,6 @@
   </script>
 </body>
 </html>
+
 
 

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -23,33 +23,33 @@
     .cart-item {
       display: flex; padding: 25px 0; border-bottom: 1px solid var(--color-gray-light); gap: 25px;
     }
-    .cart-item-img { width: 120px; height: 120px; object-fit: cover; background: #f9f9f9; }
+    .cart-item-img { width: 120px; height: 120px; object-fit: cover; background: var(--color-secondary); }
     .cart-item-info { flex: 1; }
     .cart-item-brand { font-size: 0.8rem; text-transform: uppercase; color: var(--color-gray); letter-spacing: 1px; }
     .cart-item-title { font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 5px; }
-    .cart-item-meta { font-size: 0.9rem; color: #666; margin-bottom: 15px; }
+    .cart-item-meta { font-size: 0.9rem; color: var(--color-gray); margin-bottom: 15px; }
     .cart-item-meta span { color: var(--color-primary); font-weight: 500; }
     
     .cart-item-actions { display: flex; align-items: center; justify-content: space-between; }
     .qty-controls { display: flex; border: 1px solid var(--color-gray-light); width: max-content; }
-    .qty-btn { padding: 5px 15px; background: #f9f9f9; cursor: pointer; }
+    .qty-btn { padding: 5px 15px; background: var(--color-secondary); cursor: pointer; }
     .qty-input { width: 40px; text-align: center; border: none; outline: none; border-left: 1px solid var(--color-gray-light); border-right: 1px solid var(--color-gray-light); }
     .remove-btn { color: var(--color-gray); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
-    .remove-btn:hover { color: #e74c3c; text-decoration: underline; }
+    .remove-btn:hover { color: var(--color-accent); text-decoration: underline; }
     
     .cart-item-price { font-size: 1.2rem; font-weight: 500; }
 
     /* Summary */
     .cart-summary {
-      background: #fdfdfd; border: 1px solid var(--color-gray-light); padding: 30px; height: max-content;
+      background: var(--color-secondary); border: 1px solid var(--color-gray-light); padding: 30px; height: max-content;
     }
-    .summary-title { font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+    .summary-title { font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 25px; border-bottom: 1px solid var(--color-gray-light); padding-bottom: 15px; }
     .summary-row { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 0.95rem; }
-    .summary-total { font-size: 1.3rem; font-weight: 500; border-top: 1px solid #eee; padding-top: 20px; margin-top: 10px; display: flex; justify-content: space-between; }
+    .summary-total { font-size: 1.3rem; font-weight: 500; border-top: 1px solid var(--color-gray-light); padding-top: 20px; margin-top: 10px; display: flex; justify-content: space-between; }
     
     .promo-box { margin: 25px 0; display: flex; }
     .promo-box input { flex: 1; padding: 12px; border: 1px solid var(--color-gray-light); outline: none; }
-    .promo-box button { background: var(--color-primary); color: #fff; padding: 0 20px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+    .promo-box button { background: var(--color-primary); color: var(--color-secondary); padding: 0 20px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
 
     @media (max-width: 900px) {
       .cart-layout { grid-template-columns: 1fr; }
@@ -68,9 +68,14 @@
     <div class="container header-inner">
       <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
       <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
-      <nav class="nav-links">
-        <a href="index.html">Home 1</a>
-        <a href="index-2.html">Home 2</a>
+            <nav class="nav-links">
+        <div class="nav-item-dropdown">
+          <a href="#">Home <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="index.html">Home 1</a>
+            <a href="index-2.html">Home 2</a>
+          </div>
+        </div>
         <a href="shop.html">Shop</a>
         <a href="subscription.html">Discovery Box</a>
         <a href="deals.html">Deals</a>
@@ -107,7 +112,7 @@
               <button class="remove-btn">Remove</button>
             </div>
           </div>
-          <div class="cart-item-price">₹1,800</div>
+          <div class="cart-item-price">?1,800</div>
         </div>
         
         <div class="cart-item">
@@ -125,7 +130,7 @@
               <button class="remove-btn">Remove</button>
             </div>
           </div>
-          <div class="cart-item-price">₹3,000</div>
+          <div class="cart-item-price">?3,000</div>
         </div>
         
         <div style="padding: 20px 0;">
@@ -138,15 +143,15 @@
         <h3 class="summary-title">Order Summary</h3>
         <div class="summary-row">
           <span>Subtotal (3 items)</span>
-          <span>₹4,800</span>
+          <span>?4,800</span>
         </div>
         <div class="summary-row">
           <span>Shipping (Secure Packaging)</span>
-          <span>₹150</span>
+          <span>?150</span>
         </div>
         <div class="summary-row" style="color: #27ae60;">
           <span>First Purchase Discount</span>
-          <span>-₹480</span>
+          <span>-?480</span>
         </div>
         
         <div class="promo-box">
@@ -156,7 +161,7 @@
         
         <div class="summary-total">
           <span>Total</span>
-          <span>₹4,470</span>
+          <span>?4,470</span>
         </div>
         <p style="font-size: 0.8rem; color: var(--color-gray); margin-bottom: 25px; text-align: right;">Inclusive of all taxes</p>
         
@@ -204,7 +209,7 @@
         
         <div>
           <h4 class="footer-title">Join The Club</h4>
-          <p style="color: #A0A0A0; font-size: 0.9rem;">Subscribe for exclusive 10% off your first order and early access to rare drops.</p>
+          <p style="color: var(--color-gray); font-size: 0.9rem;">Subscribe for exclusive 10% off your first order and early access to rare drops.</p>
           <form class="newsletter-form">
             <input type="email" placeholder="Enter your email" required>
             <button type="submit">Join</button>
@@ -220,5 +225,6 @@
   <script src="assets/js/main.js"></script>
 </body>
 </html>
+
 
 
