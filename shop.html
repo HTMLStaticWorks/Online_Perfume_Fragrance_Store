@@ -20,10 +20,20 @@
     .header .header-actions button {
       color: var(--color-secondary);
     }
-    .header .nav-links a:hover,
-    .header .header-actions i:hover,
     .header .header-actions button:hover {
       color: var(--color-accent);
+    }
+    /* Dark Mode Header Fix */
+    body.dark-mode .header .logo,
+    body.dark-mode .header .nav-links a,
+    body.dark-mode .header .header-actions i,
+    body.dark-mode .header .header-actions button {
+      color: var(--color-primary) !important;
+    }
+    body.dark-mode .header .nav-links a:hover,
+    body.dark-mode .header .header-actions i:hover,
+    body.dark-mode .header .header-actions button:hover {
+      color: var(--color-accent) !important;
     }
     .header.scrolled .logo,
     .header.scrolled .nav-links a,
@@ -38,6 +48,14 @@
       color: var(--color-text-light);
       padding: 120px 0 60px;
       text-align: center;
+    }
+    
+    body.dark-mode .shop-header {
+      background-color: #121212 !important;
+      border-bottom: 1px solid #222;
+    }
+    .shop-header h1 {
+      color: var(--color-text-light) !important;
     }
     
     .shop-container {
@@ -130,6 +148,16 @@
       margin-top: 15px; transition: all var(--transition-fast);
     }
     .product-card:hover .add-to-cart-btn { background: var(--color-primary); color: var(--color-text-light); }
+    
+    /* Dark Mode Button Overrides */
+    body.dark-mode .add-to-cart-btn {
+      border-color: var(--color-accent) !important;
+      color: var(--color-accent) !important;
+    }
+    body.dark-mode .product-card:hover .add-to-cart-btn {
+      background: var(--color-accent) !important;
+      color: #000 !important;
+    }
 
     /* Pagination */
     .pagination {
@@ -149,6 +177,14 @@
       background: var(--color-primary);
       color: var(--color-text-light);
       border-color: var(--color-primary);
+    }
+    
+    /* Dark Mode Pagination Overrides */
+    body.dark-mode .page-link:hover, 
+    body.dark-mode .page-link.active {
+      background: var(--color-accent) !important;
+      color: #000 !important;
+      border-color: var(--color-accent) !important;
     }
 
     @media (max-width: 900px) {
@@ -185,10 +221,8 @@
       </nav>
       <div class="header-actions">
         <button id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
-        <button id="rtl-toggle" aria-label="Toggle RTL" title="Toggle RTL" style="font-weight: bold; font-size: 0.8rem;">RTL</button>
-        <button aria-label="Search"><i class="fas fa-search"></i></button>
+        <button id="rtl-toggle" aria-label="Toggle RTL Mode" title="Toggle RTL Mode"><span style="font-size: 0.8rem; font-weight: 600;">RTL</span></button>
         <a href="user-dashboard.html" aria-label="Account"><i class="far fa-user"></i></a>
-        <a href="wishlist.html" aria-label="Wishlist"><i class="far fa-heart"></i></a>
         <a href="cart.html" aria-label="Cart"><i class="fas fa-shopping-bag"></i></a>
       </div>
     </div>
@@ -197,7 +231,7 @@
   <!-- Shop Header -->
   <div class="shop-header">
     <div class="container">
-      <h1 class="section-title text-light" style="color: white; margin-bottom: 10px;">The Decant Library</h1>
+      <h1 class="section-title text-light" style="margin-bottom: 10px;">The Decant Library</h1>
       <p style="color: var(--color-gray); max-width: 600px; margin: 0 auto;">Discover rare, niche, and designer fragrances curated for the true enthusiast. Hand-poured with precision, ensuring 100% authenticity.</p>
     </div>
   </div>
@@ -280,7 +314,7 @@
             <div class="product-brand">Tom Ford</div>
             <a href="product-details.html" class="product-title">Oud Wood</a>
             <div class="product-notes">Oud, Sandalwood, Cardamom</div>
-            <div class="product-price">₹800</div>
+            <div class="product-price">RS 800</div>
             <div class="size-pills">
               <span class="size-pill active" data-price="800">2ml</span>
               <span class="size-pill" data-price="1800">5ml</span>
@@ -299,7 +333,7 @@
             <div class="product-brand">Creed</div>
             <a href="product-details.html" class="product-title">Aventus</a>
             <div class="product-notes">Pineapple, Birch, Musk</div>
-            <div class="product-price">₹1,200</div>
+            <div class="product-price">RS 1,200</div>
             <div class="size-pills">
               <span class="size-pill active" data-price="1200">2ml</span>
               <span class="size-pill" data-price="2800">5ml</span>
@@ -317,7 +351,7 @@
             <div class="product-brand">Maison Francis Kurkdjian</div>
             <a href="product-details.html" class="product-title">Baccarat Rouge 540</a>
             <div class="product-notes">Saffron, Jasmine, Amberwood</div>
-            <div class="product-price">₹1,500</div>
+            <div class="product-price">RS 1,500</div>
             <div class="size-pills">
               <span class="size-pill active" data-price="1500">2ml</span>
               <span class="size-pill" data-price="3500">5ml</span>
@@ -336,7 +370,7 @@
             <div class="product-brand">Byredo</div>
             <a href="product-details.html" class="product-title">Gypsy Water</a>
             <div class="product-notes">Bergamot, Lemon, Pepper</div>
-            <div class="product-price">₹900</div>
+            <div class="product-price">RS 900</div>
             <div class="size-pills">
               <span class="size-pill active" data-price="900">2ml</span>
               <span class="size-pill" data-price="2100">5ml</span>
@@ -355,7 +389,7 @@
             <div class="product-brand">Parfums de Marly</div>
             <a href="product-details.html" class="product-title">Layton</a>
             <div class="product-notes">Apple, Vanilla, Cardamom</div>
-            <div class="product-price">₹1,050</div>
+            <div class="product-price">RS 1,050</div>
             <div class="size-pills">
               <span class="size-pill active" data-price="1050">2ml</span>
               <span class="size-pill" data-price="2400">5ml</span>
@@ -374,7 +408,7 @@
             <div class="product-brand">Dior</div>
             <a href="product-details.html" class="product-title">Sauvage Elixir</a>
             <div class="product-notes">Nutmeg, Cinnamon, Sandalwood</div>
-            <div class="product-price">₹950</div>
+            <div class="product-price">RS 950</div>
             <div class="size-pills">
               <span class="size-pill active" data-price="950">2ml</span>
               <span class="size-pill" data-price="2200">5ml</span>
@@ -393,7 +427,7 @@
             <div class="product-brand">Le Labo</div>
             <a href="product-details.html" class="product-title">Santal 33</a>
             <div class="product-notes">Sandalwood, Papyrus, Leather</div>
-            <div class="product-price">₹1,100</div>
+            <div class="product-price">RS 1,100</div>
             <div class="size-pills">
               <span class="size-pill active" data-price="1100">2ml</span>
               <span class="size-pill" data-price="2500">5ml</span>
@@ -406,13 +440,13 @@
         <!-- Product 8: Black Phantom -->
         <div class="product-card" data-scent="gourmand oriental" data-brand="kilian" data-occasion="clubbing date" data-price="1800" data-popularity="82" data-date="2026-03-25">
           <div class="product-image">
-            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1547887532-3178a536965b?auto=format&fit=crop&q=80&w=600" alt="Kilian Black Phantom"></a>
+            <a href="product-details.html"><img src="assets/images/kilian-black-phantom.png" alt="Kilian Black Phantom"></a>
           </div>
           <div class="product-info">
             <div class="product-brand">By Kilian</div>
             <a href="product-details.html" class="product-title">Black Phantom</a>
             <div class="product-notes">Coffee, Rum, Dark Chocolate</div>
-            <div class="product-price">₹1,800</div>
+            <div class="product-price">RS 1,800</div>
             <div class="size-pills">
               <span class="size-pill active" data-price="1800">2ml</span>
               <span class="size-pill" data-price="4200">5ml</span>
@@ -430,7 +464,7 @@
             <div class="product-brand">Amouage</div>
             <a href="product-details.html" class="product-title">Reflection Man</a>
             <div class="product-notes">Jasmine, Neroli, Sandalwood</div>
-            <div class="product-price">₹1,300</div>
+            <div class="product-price">RS 1,300</div>
             <div class="size-pills">
               <span class="size-pill active" data-price="1300">2ml</span>
               <span class="size-pill" data-price="3100">5ml</span>
@@ -449,7 +483,7 @@
             <div class="product-brand">Tom Ford</div>
             <a href="product-details.html" class="product-title">Lost Cherry</a>
             <div class="product-notes">Black Cherry, Bitter Almond, Griotte</div>
-            <div class="product-price">₹1,600</div>
+            <div class="product-price">RS 1,600</div>
             <div class="size-pills">
               <span class="size-pill active" data-price="1600">2ml</span>
               <span class="size-pill" data-price="3800">5ml</span>
@@ -467,7 +501,7 @@
             <div class="product-brand">Parfums de Marly</div>
             <a href="product-details.html" class="product-title">Delina</a>
             <div class="product-notes">Turkish Rose, Lychee, Rhubarb</div>
-            <div class="product-price">₹1,400</div>
+            <div class="product-price">RS 1,400</div>
             <div class="size-pills">
               <span class="size-pill active" data-price="1400">2ml</span>
               <span class="size-pill" data-price="3200">5ml</span>
@@ -486,7 +520,7 @@
             <div class="product-brand">Dolce & Gabbana</div>
             <a href="product-details.html" class="product-title">Light Blue Intense</a>
             <div class="product-notes">Sea Water, Grapefruit, Juniper</div>
-            <div class="product-price">₹600</div>
+            <div class="product-price">RS 600</div>
             <div class="size-pills">
               <span class="size-pill active" data-price="600">2ml</span>
               <span class="size-pill" data-price="1400">5ml</span>
@@ -499,13 +533,13 @@
         <!-- Product 13: Bleecker Street -->
         <div class="product-card" data-scent="fresh woody" data-brand="bond-no-9" data-occasion="casual office" data-price="1250" data-popularity="75" data-date="2026-03-05">
           <div class="product-image">
-            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1608228078970-985f403487f8?auto=format&fit=crop&q=80&w=600" alt="Bond No 9 Bleecker Street"></a>
+            <a href="product-details.html"><img src="assets/images/bond-bleecker.png" alt="Bond No 9 Bleecker Street"></a>
           </div>
           <div class="product-info">
             <div class="product-brand">Bond No. 9</div>
             <a href="product-details.html" class="product-title">Bleecker Street</a>
             <div class="product-notes">Violet Leaf, Blueberry, Suede</div>
-            <div class="product-price">₹1,250</div>
+            <div class="product-price">RS 1,250</div>
             <div class="size-pills">
               <span class="size-pill active" data-price="1250">2ml</span>
               <span class="size-pill" data-price="2900">5ml</span>
@@ -523,7 +557,7 @@
             <div class="product-brand">Maison Francis Kurkdjian</div>
             <a href="product-details.html" class="product-title">Grand Soir</a>
             <div class="product-notes">Amber, Vanilla, Tonka Bean</div>
-            <div class="product-price">₹1,350</div>
+            <div class="product-price">RS 1,350</div>
             <div class="size-pills">
               <span class="size-pill active" data-price="1350">2ml</span>
               <span class="size-pill" data-price="3100">5ml</span>
@@ -541,7 +575,7 @@
             <div class="product-brand">Memo Paris</div>
             <a href="product-details.html" class="product-title">Irish Leather</a>
             <div class="product-notes">Juniper, Leather, Amber</div>
-            <div class="product-price">₹1,150</div>
+            <div class="product-price">RS 1,150</div>
             <div class="size-pills">
               <span class="size-pill active" data-price="1150">2ml</span>
               <span class="size-pill" data-price="2700">5ml</span>
@@ -559,7 +593,7 @@
             <div class="product-brand">Louis Vuitton</div>
             <a href="product-details.html" class="product-title">Ombre Nomade</a>
             <div class="product-notes">Oud, Rose, Incense</div>
-            <div class="product-price">₹1,900</div>
+            <div class="product-price">RS 1,900</div>
             <div class="size-pills">
               <span class="size-pill active" data-price="1900">2ml</span>
               <span class="size-pill" data-price="4500">5ml</span>
@@ -571,13 +605,13 @@
         <!-- Product 17: Side Effect -->
         <div class="product-card" data-scent="oriental spicy" data-brand="initio" data-occasion="clubbing date" data-price="1450" data-popularity="81" data-date="2026-03-30">
           <div class="product-image">
-            <a href="product-details.html"><img src="https://images.unsplash.com/photo-1631214502752-9571f5c66e4a?auto=format&fit=crop&q=80&w=600" alt="Initio Side Effect"></a>
+            <a href="product-details.html"><img src="assets/images/initio-side-effect.png" alt="Initio Side Effect"></a>
           </div>
           <div class="product-info">
             <div class="product-brand">Initio Parfums Prives</div>
             <a href="product-details.html" class="product-title">Side Effect</a>
             <div class="product-notes">Tobacco, Rum, Vanilla</div>
-            <div class="product-price">₹1,450</div>
+            <div class="product-price">RS 1,450</div>
             <div class="size-pills">
               <span class="size-pill active" data-price="1450">2ml</span>
               <span class="size-pill" data-price="3400">5ml</span>
@@ -595,7 +629,7 @@
             <div class="product-brand">Creed</div>
             <a href="product-details.html" class="product-title">Silver Mountain Water</a>
             <div class="product-notes">Green Tea, Black Currant, Musk</div>
-            <div class="product-price">₹1,100</div>
+            <div class="product-price">RS 1,100</div>
             <div class="size-pills">
               <span class="size-pill active" data-price="1100">2ml</span>
               <span class="size-pill" data-price="2600">5ml</span>
@@ -626,7 +660,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#" class="logo" style="color: var(--color-secondary);"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+          <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
           <p>The ultimate discovery platform for premium, niche, and designer fragrances. Find your signature scent securely and affordably.</p>
         </div>
         
@@ -771,7 +805,7 @@
           e.target.classList.add('active');
           
           const newPrice = e.target.dataset.price;
-          priceDisplay.textContent = `₹${newPrice}`;
+          priceDisplay.textContent = `RS ${newPrice}`;
           card.dataset.price = newPrice;
         }
 

@@ -54,6 +54,7 @@
       border-top: 1px solid rgba(197, 160, 89, 0.2);
       border-bottom: 1px solid rgba(197, 160, 89, 0.2);
     }
+    body.dark-mode .trust-banner { background-color: #000; }
     .trust-inner {
       display: flex;
       justify-content: space-between;
@@ -159,6 +160,15 @@
       border-color: var(--color-primary);
       color: var(--color-primary);
     }
+   body.dark-mode .size-pill:hover, body.dark-mode .size-pill.active { border-color: var(--color-accent); color: var(--color-accent); }
+body.dark-mode .product-card:hover .add-to-cart-btn,
+body.dark-mode .btn-outline:hover,
+body.dark-mode .btn-primary:hover,
+body.dark-mode .btn-accent:hover { 
+  background-color: var(--color-accent) !important; 
+  color: #000 !important; 
+  border-color: var(--color-accent) !important; 
+}
     .add-to-cart-btn {
       width: 100%;
       padding: 15px;
@@ -191,6 +201,7 @@
     body.dark-mode .subs-section h2 { color: var(--color-text-dark); }
     body.dark-mode .subs-section .section-subtitle { color: var(--color-accent); }
     body.dark-mode .subs-features i { color: var(--color-accent); }
+    body.dark-mode .subs-features li { color: var(--color-text-dark); }
     .subs-inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -198,14 +209,16 @@
       align-items: center;
     }
     .subs-image img { border-radius: 4px; }
+    .subs-content { text-align: center; }
     .subs-content h2 { color: var(--color-text-light); font-size: 3rem; margin-bottom: 20px; }
     .subs-content p { color: var(--color-gray); margin-bottom: 30px; font-size: 1.1rem; }
-    .subs-features { margin-bottom: 40px; }
+    .subs-features { margin-bottom: 40px; display: inline-block; text-align: left; }
     .subs-features li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: var(--color-secondary); }
     .subs-features i { color: var(--color-accent); }
 
     /* Reviews Section */
     .reviews-section { padding: var(--section-padding); background-color: #FDFBFC; }
+    body.dark-mode .reviews-section { background-color: var(--color-secondary); }
     .review-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -215,9 +228,20 @@
     .review-card {
       background: var(--color-secondary);
       padding: 40px 30px;
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 12px;
       box-shadow: var(--shadow-sm);
       text-align: center;
+      transition: all var(--transition-normal);
+      position: relative;
     }
+    .review-card:hover { 
+      transform: translateY(-10px) scale(1.02); 
+      box-shadow: var(--shadow-lg); 
+      border-color: var(--color-accent); 
+    }
+    body.dark-mode .review-card { background-color: #121212; border-color: rgba(255,255,255,0.05); }
+    body.dark-mode .review-card:hover { border-color: var(--color-accent); }
     .stars { color: var(--color-accent); margin-bottom: 20px; font-size: 1.1rem; }
     .review-text { font-style: italic; color: var(--color-gray); margin-bottom: 25px; line-height: 1.8; }
     .reviewer-name { font-family: var(--font-serif); font-size: 1.2rem; }
@@ -225,10 +249,48 @@
 
     /* Art of Decanting */
     .decanting-section { padding: var(--section-padding); background-color: var(--color-primary); color: var(--color-secondary); }
+    body.dark-mode .decanting-section { background-color: #121212; color: var(--color-text-dark); }
     .decanting-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
     .decanting-text h2 { color: var(--color-secondary); font-size: 3rem; margin-bottom: 25px; }
+    body.dark-mode .decanting-text h2 { color: var(--color-text-dark); }
     .decanting-text p { color: var(--color-gray); margin-bottom: 30px; font-size: 1.1rem; }
+    .decanting-section .subs-features li { color: var(--color-secondary); }
+    body.dark-mode .decanting-section .subs-features li { color: var(--color-text-dark); }
     .decanting-image img { border-radius: 8px; box-shadow: var(--shadow-lg); }
+
+    /* Collections Section */
+    .collections-section { padding: var(--section-padding); background-color: var(--color-secondary); }
+    .collections-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+    .collection-card { position: relative; height: 500px; overflow: hidden; border-radius: 4px; cursor: pointer; }
+    .collection-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
+    .collection-card:hover img { transform: scale(1.1); }
+    .collection-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 40px; color: #fff; }
+    .collection-overlay h3 { font-family: var(--font-serif); font-size: 2rem; margin-bottom: 10px; }
+    .collection-overlay p { font-size: 0.95rem; opacity: 0.8; margin-bottom: 20px; }
+    .collection-btn { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #fff; width: fit-content; padding-bottom: 5px; transition: all 0.3s ease; }
+    .collection-card:hover .collection-btn { border-bottom-color: var(--color-accent); color: var(--color-accent); }
+
+    /* Our Story Section */
+    .story-section { padding: var(--section-padding); background-color: var(--color-primary); color: var(--color-secondary); }
+    body.dark-mode .story-section { background-color: #0a0a0a; color: var(--color-text-dark); }
+    .story-inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; }
+    .story-text { text-align: center; }
+    .story-text h2 { font-size: 3.5rem; margin-bottom: 30px; line-height: 1; color: inherit; }
+    .story-text p { font-size: 1.2rem; line-height: 1.8; margin-bottom: 40px; color: var(--color-gray); }
+    .story-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 40px; }
+    body.dark-mode .story-stats { border-top-color: rgba(255,255,255,0.1); }
+    .stat-item h4 { font-size: 2rem; color: var(--color-accent); margin-bottom: 5px; }
+    .stat-item p { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0; }
+
+    /* Promo Newsletter Section */
+    .newsletter-promo { padding: 100px 0; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat; text-align: center; color: #fff; }
+    .newsletter-promo-content { max-width: 700px; margin: 0 auto; }
+    .newsletter-promo h2 { font-size: 3rem; margin-bottom: 20px; }
+    .newsletter-promo p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 40px; }
+    .newsletter-promo-form { display: flex; gap: 10px; max-width: 500px; margin: 0 auto; }
+    .newsletter-promo-form input { flex: 1; padding: 15px 25px; border: none; border-radius: 30px; font-size: 1rem; }
+    .newsletter-promo-form button { padding: 15px 40px; border: none; border-radius: 30px; background-color: var(--color-accent); color: #000; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.3s ease; }
+    .newsletter-promo-form button:hover { background-color: #fff; transform: translateY(-2px); }
 
     /* Scent Notes 101 */
     .notes-section { padding: var(--section-padding); background-color: var(--color-secondary); }
@@ -298,7 +360,7 @@
         <div class="nav-item-dropdown">
           <a href="#" class="active">Home <i class="fas fa-chevron-down"></i></a>
           <div class="dropdown-menu">
-            <a href="index.html">Home 1</a>
+            <a href="index.html" class="active">Home 1</a>
             <a href="index-2.html">Home 2</a>
           </div>
         </div>
@@ -310,10 +372,8 @@
       </nav>
       <div class="header-actions">
         <button id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
-        <button id="rtl-toggle" aria-label="Toggle RTL" title="Toggle RTL" style="font-weight: bold; font-size: 0.8rem;">RTL</button>
-        <button aria-label="Search"><i class="fas fa-search"></i></button>
+        <button id="rtl-toggle" aria-label="Toggle RTL Mode" title="Toggle RTL Mode"><span style="font-size: 0.8rem; font-weight: 600;">RTL</span></button>
         <a href="user-dashboard.html" aria-label="Account"><i class="far fa-user"></i></a>
-        <a href="wishlist.html" aria-label="Wishlist"><i class="far fa-heart"></i></a>
         <a href="cart.html" aria-label="Cart"><i class="fas fa-shopping-bag"></i></a>
       </div>
     </div>
@@ -365,7 +425,7 @@
           <div class="product-brand">Tom Ford</div>
           <h3 class="product-title">Oud Wood</h3>
           <div class="product-notes">Oud, Sandalwood, Cardamom</div>
-          <div class="product-price">From ?800</div>
+          <div class="product-price">From 800</div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
@@ -378,7 +438,7 @@
           <div class="product-brand">Diptyque</div>
           <h3 class="product-title">Tam Dao</h3>
           <div class="product-notes">Cedar, Sandalwood, Cypress</div>
-          <div class="product-price">From ?750</div>
+          <div class="product-price">From 750</div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
@@ -392,7 +452,7 @@
           <div class="product-brand">Chanel</div>
           <h3 class="product-title">Bleu de Chanel</h3>
           <div class="product-notes">Grapefruit, Mint, Pink Pepper</div>
-          <div class="product-price">From ?850</div>
+          <div class="product-price">From 850</div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
@@ -405,7 +465,7 @@
           <div class="product-brand">Acqua di Parma</div>
           <h3 class="product-title">Colonia</h3>
           <div class="product-notes">Sicilian Citrus, Lavender, Rosemary</div>
-          <div class="product-price">From ?700</div>
+          <div class="product-price">From 700</div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
@@ -419,7 +479,7 @@
           <div class="product-brand">By Kilian</div>
           <h3 class="product-title">Angel's Share</h3>
           <div class="product-notes">Cognac, Cinnamon, Oak</div>
-          <div class="product-price">From ?1,600</div>
+          <div class="product-price">From 1,600</div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
@@ -432,7 +492,7 @@
           <div class="product-brand">Xerjoff</div>
           <h3 class="product-title">Italica</h3>
           <div class="product-notes">Almond, Milk, Toffee</div>
-          <div class="product-price">From ?1,800</div>
+          <div class="product-price">From 1,800</div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
@@ -446,7 +506,7 @@
           <div class="product-brand">Viktor&Rolf</div>
           <h3 class="product-title">Spicebomb Extreme</h3>
           <div class="product-notes">Black Pepper, Cumin, Tobacco</div>
-          <div class="product-price">From ?950</div>
+          <div class="product-price">From 950</div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
@@ -459,7 +519,7 @@
           <div class="product-brand">Tom Ford</div>
           <h3 class="product-title">Tobacco Vanille</h3>
           <div class="product-notes">Tobacco Leaf, Vanilla, Cocoa</div>
-          <div class="product-price">From ?1,200</div>
+          <div class="product-price">From 1,200</div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
@@ -473,7 +533,7 @@
           <div class="product-brand">Gucci</div>
           <h3 class="product-title">Bloom</h3>
           <div class="product-notes">Tuberose, Jasmine, Rangoon Creeper</div>
-          <div class="product-price">From ?700</div>
+          <div class="product-price">From 700</div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
@@ -486,7 +546,7 @@
           <div class="product-brand">Frederic Malle</div>
           <h3 class="product-title">Portrait of a Lady</h3>
           <div class="product-notes">Rose, Clove, Patchouli</div>
-          <div class="product-price">From ?1,900</div>
+          <div class="product-price">From 1,900</div>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
@@ -507,13 +567,51 @@
         <p>Every decant is a labor of love. We use medical-grade, laboratory-standard equipment to ensure your fragrance never touches the air, preserving its full complexity and longevity.</p>
         <p>From sterile environment control to precision glass atomizers, we treat every ml with the respect a masterpiece deserves.</p>
         <div class="subs-features" style="text-align: left; display: inline-block;">
-          <li style="color: var(--color-secondary);"><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Sterile, UV-protected environment</li>
-          <li style="color: var(--color-secondary);"><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Precision medical-grade pipettes</li>
-          <li style="color: var(--color-secondary);"><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Guaranteed leak-proof glass atomizers</li>
+          <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Sterile, UV-protected environment</li>
+          <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Precision medical-grade pipettes</li>
+          <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Guaranteed leak-proof glass atomizers</li>
         </div>
       </div>
       <div class="decanting-image">
         <img src="assets/images/decanting-process-user.jpg" alt="Premium Fragrance Decanting - Chanel Coco Mademoiselle">
+      </div>
+    </div>
+  </section>
+
+  <!-- Curated Collections -->
+  <section class="collections-section">
+    <div class="container">
+      <div class="text-center">
+        <p class="section-subtitle">Curated For You</p>
+        <h2 class="section-title">Explore Our Edit</h2>
+        <p style="color: var(--color-gray); max-width: 600px; margin: 0 auto;">Discover hand-picked selections tailored to your mood, occasion, and olfactory personality.</p>
+      </div>
+      
+      <div class="collections-grid">
+        <div class="collection-card">
+          <img src="assets/images/office-collection.png" alt="The Office Edit - Premium Luxury Fragrance">
+          <div class="collection-overlay">
+            <h3>The Office Edit</h3>
+            <p>Professional, clean, and sophisticated scents that command respect without overwhelming.</p>
+            <div class="collection-btn">Explore Collection</div>
+          </div>
+        </div>
+        <div class="collection-card">
+          <img src="assets/images/date-night-collection.png" alt="Date Night Luxe - Moody Dark Fragrance">
+          <div class="collection-overlay">
+            <h3>Date Night Luxe</h3>
+            <p>Sultry, mysterious, and alluring fragrances designed for your most memorable evenings.</p>
+            <div class="collection-btn">Explore Collection</div>
+          </div>
+        </div>
+        <div class="collection-card">
+          <img src="assets/images/niche-collection.png" alt="The Niche Vault - Rare Artisanal Scents">
+          <div class="collection-overlay">
+            <h3>The Niche Vault</h3>
+            <p>Rare and avant-garde olfactory masterpieces for the true fragrance connoisseur.</p>
+            <div class="collection-btn">Explore Collection</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -552,6 +650,35 @@
 
 
 
+  <!-- Our Story & Mission -->
+  <section class="story-section">
+    <div class="container story-inner">
+      <div class="story-text">
+        <p class="section-subtitle mb-1">Our Philosophy</p>
+        <h2>Fragrance is an Experience, Not a Purchase.</h2>
+        <p>At LUXE, we believe that finding a signature scent shouldn't be a gamble. Our mission is to democratize luxury perfumery by making the world's most exclusive scents accessible, one 5ml decant at a time.</p>
+        
+        <div class="story-stats">
+          <div class="stat-item">
+            <h4>100%</h4>
+            <p>Authentic Juice</p>
+          </div>
+          <div class="stat-item">
+            <h4>500+</h4>
+            <p>Rare Fragrances</p>
+          </div>
+          <div class="stat-item">
+            <h4>10k+</h4>
+            <p>Happy Scenters</p>
+          </div>
+        </div>
+      </div>
+      <div class="story-image">
+        <img src="assets/images/story-decanting.png" alt="LUXE Fragrance Curation - Professional Decanting Process" style="border-radius: 8px; box-shadow: var(--shadow-lg);">
+      </div>
+    </div>
+  </section>
+
   <!-- Subscription Highlight -->
   <section class="subs-section">
     <div class="container subs-inner">
@@ -571,6 +698,18 @@
       <div class="subs-image">
         <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=800" alt="Discovery Box Subscription">
       </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Promo -->
+  <section class="newsletter-promo">
+    <div class="container newsletter-promo-content">
+      <h2 class="section-title text-light" style="color: white;">Join The Elite Circle</h2>
+      <p>Subscribe to receive exclusive early access to rare niche drops, member-only discounts, and our monthly "Scent of the Month" newsletter.</p>
+      <form class="newsletter-promo-form">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit">Join Now</button>
+      </form>
     </div>
   </section>
 
@@ -611,7 +750,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#" class="logo" style="color: var(--color-secondary);"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+          <a href="#" class="logo footer-logo-link"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
           <p>The ultimate discovery platform for premium, niche, and designer fragrances. Find your signature scent securely and affordably.</p>
         </div>
         

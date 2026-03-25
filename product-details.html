@@ -119,14 +119,7 @@
     }
     .btn-add:hover { background: var(--color-accent); color: var(--color-primary); }
     
-    .btn-wishlist {
-      width: 60px;
-      display: flex; align-items: center; justify-content: center;
-      border: 1px solid var(--color-gray-light);
-      font-size: 1.2rem;
-      color: var(--color-gray);
-    }
-    .btn-wishlist:hover { color: var(--color-accent); border-color: var(--color-accent); }
+    .btn-add:hover { background: var(--color-accent); color: var(--color-primary); }
 
     /* Trust Elements */
     .pd-trust {
@@ -196,9 +189,9 @@
         <a href="about.html">About</a>
       </nav>
       <div class="header-actions">
-        <button aria-label="Search"><i class="fas fa-search"></i></button>
+        <button id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+        <button id="rtl-toggle" aria-label="Toggle RTL Mode" title="Toggle RTL Mode"><span style="font-size: 0.8rem; font-weight: 600;">RTL</span></button>
         <a href="user-dashboard.html" aria-label="Account"><i class="far fa-user"></i></a>
-        <a href="wishlist.html" aria-label="Wishlist"><i class="far fa-heart"></i></a>
         <a href="cart.html" aria-label="Cart"><i class="fas fa-shopping-bag"></i></a>
       </div>
     </div>
@@ -233,7 +226,7 @@
         <a href="#reviews">(124 Reviews)</a>
       </div>
       
-      <div class="pd-price">?800 - ?3,500</div>
+      <div class="pd-price">RS 800 - RS 3,500</div>
       
       <p class="pd-description">
         One of the most rare, precious, and expensive ingredients in a perfumer's arsenal, oud wood is often burned in incense-filled temples. Exotic rose wood and cardamom give way to a smoky blend of rare oud wood, sandalwood and vetiver.
@@ -245,17 +238,17 @@
         <div class="size-grid">
           <div class="sz-option">
             <span class="sz-ml">2ml</span>
-            <span class="sz-price">?800</span>
+            <span class="sz-price">RS 800</span>
             <span class="sz-sprays">~30 Sprays</span>
           </div>
           <div class="sz-option active">
             <span class="sz-ml">5ml</span>
-            <span class="sz-price">?1,800</span>
+            <span class="sz-price">RS 1,800</span>
             <span class="sz-sprays">~75 Sprays</span>
           </div>
           <div class="sz-option">
             <span class="sz-ml">10ml</span>
-            <span class="sz-price">?3,500</span>
+            <span class="sz-price">RS 3,500</span>
             <span class="sz-sprays">~150 Sprays</span>
           </div>
         </div>
@@ -267,7 +260,6 @@
           <input type="number" value="1" min="1">
         </div>
         <button class="btn btn-add">Add to Cart</button>
-        <button class="btn btn-wishlist" title="Add to Want List"><i class="far fa-heart"></i></button>
       </div>
 
       <!-- Trust Badges -->
@@ -333,7 +325,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#" class="logo" style="color: var(--color-secondary);"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+          <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
           <p>The ultimate discovery platform for premium, niche, and designer fragrances. Find your signature scent securely and affordably.</p>
         </div>
         

@@ -47,12 +47,37 @@
       color: var(--color-secondary);
     }
 
+    /* Header Contrast for Home 2 Hero */
+    .header:not(.scrolled) .logo,
+    .header:not(.scrolled) .nav-links a,
+    .header:not(.scrolled) .header-actions button,
+    .header:not(.scrolled) .header-actions a {
+      color: var(--color-secondary) !important;
+    }
+    body.dark-mode .header:not(.scrolled) .logo,
+    body.dark-mode .header:not(.scrolled) .nav-links a,
+    body.dark-mode .header:not(.scrolled) .header-actions button,
+    body.dark-mode .header:not(.scrolled) .header-actions a {
+      color: var(--color-primary) !important;
+    }
+
+    /* Gold Highlights for Theme & RTL Toggles */
+    #theme-toggle, #rtl-toggle { color: var(--color-accent) !important; }
+    
+    /* Ensure action icons are white/primary in non-scrolled state */
+    .header:not(.scrolled) .header-actions button i, 
+    .header:not(.scrolled) .header-actions a i { color: var(--color-secondary); }
+    body.dark-mode .header:not(.scrolled) .header-actions button i, 
+    body.dark-mode .header:not(.scrolled) .header-actions a i { color: var(--color-primary); }
+
     /* Core Info Section */
     .why-decants {
       padding: 100px 0;
       background-color: var(--color-secondary);
       text-align: center;
     }
+    body.dark-mode .why-decants { background-color: #0a0a0a; }
+    .why-decants .section-title { color: var(--color-primary); }
     .features-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -144,30 +169,51 @@
       background: #f8f6f2;
     }
     .feature-box {
-      background: var(--color-secondary);
-      padding: 44px 32px;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-      border: 1px solid rgba(0, 0, 0, 0.04);
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-                  box-shadow 0.4s ease,
-                  border-color 0.4s ease;
-      cursor: default;
+      position: relative;
+      padding: 40px;
+      background-color: var(--color-primary);
+      border: 1px solid rgba(197, 160, 89, 0.2);
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
+    .feature-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 1;
+      transition: background 0.4s ease;
+    }
+    .feature-box:hover::before {
+      background: rgba(0, 0, 0, 0.45);
+    }
+    .feature-box > * { position: relative; z-index: 2; color: #fff !important; }
+    .feature-box h4 { color: var(--color-accent) !important; }
     .feature-box:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
       border-color: var(--color-accent);
     }
-    .feature-box i {
-      display: inline-block;
-      font-size: 2.2rem;
+    .discovery-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
       color: var(--color-accent);
-      margin-bottom: 20px;
-      transition: transform 0.4s ease;
+      margin-bottom: 10px;
+      opacity: 0.3;
+      transition: all 0.4s ease;
+      font-style: italic;
     }
-    .feature-box:hover i {
-      transform: scale(1.2) rotate(6deg);
+    .feature-box:hover .discovery-number {
+      opacity: 1;
+      transform: translateY(-8px);
     }
     .feature-box h4 {
       font-family: 'Playfair Display', serif;
@@ -177,6 +223,32 @@
       margin-bottom: 14px;
       color: var(--color-primary);
     }
+
+    /* How It Works Section */
+    .how-it-works { padding: var(--section-padding); background-color: var(--color-primary); color: #fff; text-align: center; }
+    body.dark-mode .how-it-works { background-color: #0a0a0a; }
+    .steps-container { display: flex; justify-content: space-around; gap: 40px; margin-top: 60px; position: relative; }
+    .steps-container::before { content: ''; position: absolute; top: 30px; left: 10%; width: 80%; height: 1px; background: rgba(255,255,255,0.1); z-index: 1; }
+    .step-item { flex: 1; position: relative; z-index: 2; }
+    .step-number { width: 60px; height: 60px; background: var(--color-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; font-size: 1.5rem; font-weight: 600; color: #000; box-shadow: 0 0 20px rgba(197, 160, 89, 0.3); }
+    .step-item h4 { font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 15px; }
+    .step-item p { font-size: 0.95rem; opacity: 0.8; line-height: 1.6; }
+
+    /* Rare Drops Section */
+    .rare-drops { padding: var(--section-padding); background-color: var(--color-secondary); }
+    .rare-drops-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .rare-drops-image img { border-radius: 12px; box-shadow: var(--shadow-lg); transition: transform 0.5s ease; }
+    .rare-drops-image:hover img { transform: scale(1.02); }
+    .rare-tag { display: inline-block; padding: 5px 15px; background: var(--color-accent); color: #000; font-size: 0.75rem; text-transform: uppercase; font-weight: 600; letter-spacing: 2px; margin-bottom: 20px; border-radius: 20px; }
+
+    /* Button Dark Mode Fix */
+    body.dark-mode .btn-primary { color: var(--color-secondary) !important; }
+
+    /* Gifting Section */
+    .gifting-section { padding: var(--section-padding); background-color: #000; color: #fff; text-align: center; }
+    .gifting-card { max-width: 800px; margin: 0 auto; padding: 60px; border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 12px; background: linear-gradient(145deg, #0a0a0a, #000); }
+    .gifting-card .btn-outline { color: #fff !important; border-color: #fff !important; background: transparent !important; }
+    .gifting-card .btn-outline:hover { background-color: #fff !important; color: #000 !important; }
   </style>
   <link rel="icon" type="image/png" href="favicon.png">
 </head>
@@ -203,10 +275,8 @@
       </nav>
       <div class="header-actions">
         <button id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
-        <button id="rtl-toggle" aria-label="Toggle RTL" title="Toggle RTL" style="font-weight: bold; font-size: 0.8rem;">RTL</button>
-        <button aria-label="Search"><i class="fas fa-search"></i></button>
+        <button id="rtl-toggle" aria-label="Toggle RTL Mode" title="Toggle RTL Mode"><span style="font-size: 0.8rem; font-weight: 600;">RTL</span></button>
         <a href="user-dashboard.html" aria-label="Account"><i class="far fa-user"></i></a>
-        <a href="wishlist.html" aria-label="Wishlist"><i class="far fa-heart"></i></a>
         <a href="cart.html" aria-label="Cart"><i class="fas fa-shopping-bag"></i></a>
       </div>
     </div>
@@ -217,7 +287,7 @@
     <div class="text-content container">
       <p class="section-subtitle mb-1" style="color: var(--color-accent); letter-spacing: 3px;">Stop Blind Buying</p>
       <h1 class="hero-title-2">Your Signature Scent Awaits</h1>
-      <p class="mb-3" style="font-size: 1.1rem; color: var(--color-gray);">Sample the world's most luxurious and exclusive fragrances starting at just ₹500. Find what you love, then invest in the full bottle.</p>
+      <p class="mb-3" style="font-size: 1.1rem; color: var(--color-gray);">Sample the world's most luxurious and exclusive fragrances starting at just RS 500. Find what you love, then invest in the full bottle.</p>
       <a href="#quiz" class="btn btn-accent">Take The Scent Quiz</a>
       <a href="shop.html" class="btn btn-outline" style="color: var(--color-secondary); border-color: var(--color-secondary); margin-left: 15px;">Shop All Decants</a>
     </div>
@@ -231,20 +301,65 @@
       <p style="color: var(--color-gray); max-width: 600px; margin: 0 auto;">Perfume reacts differently to every skin chemistry. A scent you love on paper might not work on you. Here's how we solve the fragrance gamble.</p>
       
       <div class="features-grid">
-        <div class="feature-box">
-          <i class="fas fa-vial"></i>
+        <div class="feature-box" style="background-image: url('assets/images/feature-bg-1.png');">
           <h4>Low Risk, High Reward</h4>
-          <p class="text-muted" style="color: var(--color-gray); font-size: 0.95rem;">Test a ₹25,000 niche fragrance for a fraction of the price. If you don't love it, you simply move on.</p>
+          <p class="text-muted" style="font-size: 0.95rem; opacity: 0.9;">Test a RS 25,000 niche fragrance for a fraction of the price. If you don't love it, you simply move on.</p>
         </div>
-        <div class="feature-box">
-          <i class="fas fa-certificate"></i>
+        <div class="feature-box" style="background-image: url('assets/images/feature-bg-2.png');">
           <h4>Guaranteed Authenticity</h4>
-          <p class="text-muted" style="color: var(--color-gray); font-size: 0.95rem;">Every decant is hand-poured directly from the original manufacturer's bottle using sterile syringes. 100% pure juice.</p>
+          <p class="text-muted" style="font-size: 0.95rem; opacity: 0.9;">Every decant is hand-poured directly from the original manufacturer's bottle using sterile syringes. 100% pure juice.</p>
         </div>
-        <div class="feature-box">
-          <i class="fas fa-plane"></i>
+        <div class="feature-box" style="background-image: url('assets/images/feature-bg-3.png');">
           <h4>Travel Friendly</h4>
-          <p class="text-muted" style="color: var(--color-gray); font-size: 0.95rem;">Our 5ml and 10ml glass atomizers are leak-proof and TSA approved. Perfect for reapplying throughout the day.</p>
+          <p class="text-muted" style="font-size: 0.95rem; opacity: 0.9;">Our 5ml and 10ml glass atomizers are leak-proof and TSA approved. Perfect for reapplying throughout the day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works">
+    <div class="container">
+      <h2 class="section-title">Your Path to Signature Scents</h2>
+      <p style="opacity: 0.8; max-width: 600px; margin: 0 auto; color: #fff;">Finding the perfect fragrance shouldn't be a gamble. Here's our luxury-first approach to scent discovery.</p>
+      
+      <div class="steps-container">
+        <div class="step-item">
+          <div class="step-number">01</div>
+          <h4 style="color: #fff;">Explore 500+ Scents</h4>
+          <p>Browse our curated library of the world's finest niche, designer, and rare fragrances from globally renowned houses.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">02</div>
+          <h4 style="color: #fff;">Decant & Deliver</h4>
+          <p>Choose your size (5ml or 10ml). We hand-pour every order into sleek glass atomizers with 100% authenticity guaranteed.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">03</div>
+          <h4 style="color: #fff;">Find Your Match</h4>
+          <p>Wear the scent in your own environment. Once you find 'The One', you can confidently invest in a full-sized masterpiece.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rare Drops Collection -->
+  <section class="rare-drops">
+    <div class="container rare-drops-inner">
+      <div class="rare-drops-image">
+        <img src="assets/images/rare-drops.png" alt="Rare Drops Luxury Collection" style="width: 100%; height: auto;">
+      </div>
+      <div class="rare-drops-text" style="text-align: center;">
+        <span class="rare-tag">Limited Availability</span>
+        <h2 class="section-title" style="margin-bottom: 25px;">The Niche Vault: Rare Drops</h2>
+        <p style="color: var(--color-gray); margin-bottom: 35px; font-size: 1.1rem; line-height: 1.8;">Access our most exclusive portfolio. These are fragrances rarely found in standard retail—sourced from small artisanal houses and private collections across the globe.</p>
+        <ul style="margin-bottom: 40px; list-style: none; padding: 0; display: inline-block; text-align: left;">
+          <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px; color: var(--color-gray);"><i class="fas fa-check" style="color: var(--color-accent);"></i> Roja Parfums Exclusive Decants</li>
+          <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px; color: var(--color-gray);"><i class="fas fa-check" style="color: var(--color-accent);"></i> Vintage Batches & Discontinued Gems</li>
+          <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px; color: var(--color-gray);"><i class="fas fa-check" style="color: var(--color-accent);"></i> Xerjoff & Clive Christian Samplers</li>
+        </ul>
+        <div style="margin-top: 20px;">
+          <a href="shop.html" class="btn btn-primary">Enter The Vault</a>
         </div>
       </div>
     </div>
@@ -261,12 +376,10 @@
 
   <!-- Curated Sets / Shop -->
   <section class="container py-5">
-    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px;">
-      <div>
-        <h2 class="section-title mb-1">Trending Discovery Sets</h2>
-        <p style="color: var(--color-gray);">Bundled decants for an instant scent wardrobe.</p>
-      </div>
-      <a href="shop.html" style="text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; color: var(--color-primary); font-weight: 500;">View All <i class="fas fa-arrow-right"></i></a>
+    <div class="text-center" style="margin-bottom: 40px;">
+      <h2 class="section-title mb-1">Trending Discovery Sets</h2>
+      <p style="color: var(--color-gray); margin-bottom: 15px;">Bundled decants for an instant scent wardrobe.</p>
+      <a href="shop.html" style="text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; color: var(--color-accent); font-weight: 600;">View All Discovery Sets <i class="fas fa-arrow-right"></i></a>
     </div>
     
     <div class="product-grid-mini">
@@ -277,7 +390,7 @@
         <div class="product-info">
           <div class="product-brand">Beginner Set</div>
           <h3 class="product-title">The Office Essentials</h3>
-          <div class="product-price">₹2,499</div>
+          <div class="product-price">RS 2,499</div>
         </div>
       </div>
       <div class="product-card">
@@ -287,7 +400,7 @@
         <div class="product-info">
           <div class="product-brand">Premium Set</div>
           <h3 class="product-title">Date Night Seduction</h3>
-          <div class="product-price">₹3,200</div>
+          <div class="product-price">RS 3,200</div>
         </div>
       </div>
       <div class="product-card">
@@ -297,7 +410,7 @@
         <div class="product-info">
           <div class="product-brand">Niche Set</div>
           <h3 class="product-title">Oud Masterclass</h3>
-          <div class="product-price">₹4,500</div>
+          <div class="product-price">RS 4,500</div>
         </div>
       </div>
       <div class="product-card">
@@ -307,7 +420,22 @@
         <div class="product-info">
           <div class="product-brand">Seasonal Set</div>
           <h3 class="product-title">Summer Fresh Citrus</h3>
-          <div class="product-price">₹2,100</div>
+          <div class="product-price">RS 2,100</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Luxury Gifting Section -->
+  <section class="gifting-section">
+    <div class="container">
+      <div class="gifting-card">
+        <span class="rare-tag" style="background: #fff; color: #000;">Personalized Gifting</span>
+        <h2 class="section-title" style="color: #fff; margin-top: 15px;">Give The Gift of Discovery</h2>
+        <p style="opacity: 0.8; margin-bottom: 35px; font-size: 1.1rem; color: #fff;">Not sure what they'll love? Our digital gift cards and curated 'Best Seller' sets make the perfect present for any fragrance enthusiast.</p>
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+          <a href="#" class="btn btn-accent" style="color: #000; min-width: 200px;">Shop Gift Cards</a>
+          <a href="#" class="btn btn-outline" style="min-width: 200px;">Build a Gift Box</a>
         </div>
       </div>
     </div>
@@ -318,7 +446,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#" class="logo" style="color: var(--color-secondary);"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+          <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
           <p>The ultimate discovery platform for premium, niche, and designer fragrances. Find your signature scent securely and affordably.</p>
         </div>
         

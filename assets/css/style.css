@@ -94,6 +94,7 @@ button {
 /* --- Typography Utilities --- */
 .text-center { text-align: center; }
 .text-uppercase { text-transform: uppercase; letter-spacing: 1px; }
+.text-light { color: var(--color-text-light) !important; }
 .section-title { font-size: 2.5rem; margin-bottom: 1rem; }
 .section-subtitle { font-size: 1rem; color: var(--color-gray); text-transform: uppercase; letter-spacing: 2px; }
 
@@ -400,10 +401,14 @@ body.dark-mode .dropdown-menu a.active {
   margin-bottom: 60px;
 }
 
-.footer-brand .logo {
+.footer-brand .logo,
+.footer-logo-link {
   margin-bottom: 20px;
-  display: inline-block;
- display: inline-flex; align-items: center; gap: 8px; }
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-secondary) !important;
+}
 
 .footer-brand p {
   color: #A0A0A0;
@@ -532,8 +537,12 @@ body.dark-mode .note-card,
 body.dark-mode .product-info { background-color: #121212; border-color: #222; }
 body.dark-mode .product-title, 
 body.dark-mode .reviewer-name, 
-body.dark-mode .note-card h3,
-body.dark-mode .footer-title { color: #fafafa; }
+body.dark-mode .note-card h3 { color: #fafafa; }
+body.dark-mode .footer-brand .logo,
+body.dark-mode .footer-logo-link,
+body.dark-mode .footer-title {
+  color: var(--color-primary) !important; /* Ivory in Dark Mode */
+}
 body.dark-mode .filter-btn { border-color: #333; color: #fafafa; }
 body.dark-mode .filter-btn:hover, 
 body.dark-mode .filter-btn.active { background-color: var(--color-accent); color: #000; border-color: var(--color-accent); }
@@ -545,6 +554,12 @@ body.dark-mode .size-pill:hover, body.dark-mode .size-pill.active { border-color
 /* Header Action Buttons in Dark Mode */
 body.dark-mode #theme-toggle, 
 body.dark-mode #rtl-toggle { color: var(--color-accent); }
+
+/* Global Button Fixes in Dark Mode */
+body.dark-mode .btn-outline:hover,
+body.dark-mode .btn-primary {
+  color: #000 !important;
+}
 
 /* =========================================================================
    RTL SUPPORT

@@ -27,18 +27,38 @@
     .post-excerpt { color: var(--color-gray); margin-bottom: 30px; line-height: 1.7; }
 
     .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-    .blog-card { border: 1px solid transparent; transition: all 0.3s; }
+    .blog-card { border: 1px solid transparent; transition: all 0.3s; display: flex; flex-direction: column; }
     .blog-card:hover { transform: translateY(-5px); }
     .blog-card-img { width: 100%; height: 250px; object-fit: cover; margin-bottom: 20px; }
     .blog-card-title { font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 10px; }
+    .blog-card-content { flex: 1; display: flex; flex-direction: column; text-align: center; }
+    .blog-card .btn { margin-top: auto; align-self: center; }
 
-    @media (max-width: 900px) {
-      .featured-post { grid-template-columns: 1fr; }
-      .blog-grid { grid-template-columns: repeat(2, 1fr); }
-    }
     @media (max-width: 600px) {
       .blog-grid { grid-template-columns: 1fr; }
     }
+
+    /* Educational Section (Glossary) */
+    .glossary-section { background: var(--color-primary); color: var(--color-secondary); padding: 80px 0; margin-bottom: 80px; }
+    .glossary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 40px; }
+    .glossary-item h4 { color: var(--color-accent); font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 15px; }
+    .glossary-item p { font-size: 0.9rem; opacity: 0.8; line-height: 1.6; }
+
+    /* Quiz Banner */
+    .quiz-banner { background: #E9E4DB; padding: 60px; text-align: center; margin-bottom: 80px; border: 1px solid var(--color-gray-light); }
+    .quiz-banner h2 { font-size: 2.2rem; margin-bottom: 15px; }
+    .quiz-banner p { margin-bottom: 30px; color: var(--color-gray); }
+
+    /* Dark Mode Theme Fixes for Blog */
+    body.dark-mode { background-color: #000 !important; }
+    body.dark-mode .blog-hero { background-color: #000; }
+    body.dark-mode .glossary-section { background-color: #050505; border-top: 1px solid #111; border-bottom: 1px solid #111; }
+    body.dark-mode .glossary-section .section-title,
+    body.dark-mode .glossary-section p { color: var(--color-primary) !important; }
+    
+    body.dark-mode .quiz-banner { background: #080808; border-color: #222; }
+    body.dark-mode .quiz-banner h2 { color: var(--color-primary); }
+    body.dark-mode .quiz-banner p { color: #b0b0b0; }
   </style>
   <link rel="icon" type="image/png" href="favicon.png">
 </head>
@@ -65,10 +85,8 @@
       </nav>
       <div class="header-actions">
         <button id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
-        <button id="rtl-toggle" aria-label="Toggle RTL" title="Toggle RTL" style="font-weight: bold; font-size: 0.8rem;">RTL</button>
-        <button aria-label="Search"><i class="fas fa-search"></i></button>
+        <button id="rtl-toggle" aria-label="Toggle RTL Mode" title="Toggle RTL Mode"><span style="font-size: 0.8rem; font-weight: 600;">RTL</span></button>
         <a href="user-dashboard.html" aria-label="Account"><i class="far fa-user"></i></a>
-        <a href="wishlist.html" aria-label="Wishlist"><i class="far fa-heart"></i></a>
         <a href="cart.html" aria-label="Cart"><i class="fas fa-shopping-bag"></i></a>
       </div>
     </div>
@@ -85,7 +103,7 @@
     <!-- Featured -->
     <article class="featured-post">
       <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=800" alt="Guide" class="featured-img">
-      <div>
+      <div style="text-align: center;">
         <span class="post-meta">Ultimate Guide &middot; 5 Min Read</span>
         <h2 class="post-title"><a href="#">Designer vs Niche: What's the Real Difference?</a></h2>
         <p class="post-excerpt">Are niche fragrances always better? Is the steep price tag justified? We break down the differences in ingredients, blending techniques, and mass appeal so you can make informed choices for your wardrobe.</p>
@@ -93,27 +111,101 @@
       </div>
     </article>
 
+    <!-- Fragrance Glossary -->
+    <div class="glossary-section">
+      <div class="container">
+        <h2 class="section-title text-center" style="color: var(--color-secondary);">The Scent Glossary</h2>
+        <p class="text-center" style="opacity: 0.6; margin-bottom: 40px; color: var(--color-secondary);">Master the essential terminology of high perfumery.</p>
+        <div class="glossary-grid">
+          <div class="glossary-item">
+            <h4>Sillage</h4>
+            <p>The trail left by a perfume when it's worn. It is the degree to which a fragrance's aroma can be perceived by others in the wake of the wearer.</p>
+          </div>
+          <div class="glossary-item">
+            <h4>Notes</h4>
+            <p>Descriptors of scents that can be sensed upon the application of a perfume. They are divided into three classes: Top, Middle, and Base.</p>
+          </div>
+          <div class="glossary-item">
+            <h4>Dry Down</h4>
+            <p>The final phase of a fragrance as the top and heart notes evaporate, leaving the heaviest, most persistent base notes to linger for hours.</p>
+          </div>
+          <div class="glossary-item">
+            <h4>Accord</h4>
+            <p>A balanced blend of three or four notes which lose their individual identity to create a completely new, unified odor impression.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scent Quiz Banner -->
+    <div class="quiz-banner">
+      <div class="container">
+        <h2 style="font-family: var(--font-serif);">Unsure Where to Start?</h2>
+        <p style="max-width: 600px; margin: 0 auto 30px;">Take our 2-minute "Scent Signature" quiz to find your perfect fragrance family and personalized bottle matching.</p>
+        <a href="#" class="btn btn-primary">Start the Quiz</a>
+      </div>
+    </div>
+
     <!-- Grid -->
     <div class="blog-grid">
       <article class="blog-card">
         <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&q=80&w=500" alt="Article" class="blog-card-img">
-        <span class="post-meta">Editor's Picks</span>
-        <h3 class="blog-card-title"><a href="#">Top 10 Office-Safe Fragrances for 2026</a></h3>
-        <p style="color: var(--color-gray); font-size: 0.95rem;">Scents that project confidence without overwhelming your coworkers. From crisp vetivers to clean musks.</p>
+        <div class="blog-card-content">
+          <span class="post-meta">Editor's Picks</span>
+          <h3 class="blog-card-title"><a href="#">Top 10 Office-Safe Fragrances for 2026</a></h3>
+          <p style="color: var(--color-gray); font-size: 0.95rem; margin-bottom: 20px;">Scents that project confidence without overwhelming your coworkers. From crisp vetivers to clean musks.</p>
+          <a href="#" class="btn btn-outline">Read Article</a>
+        </div>
       </article>
 
       <article class="blog-card">
         <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=500" alt="Article" class="blog-card-img">
-        <span class="post-meta">Review</span>
-        <h3 class="blog-card-title"><a href="#">Baccarat Rouge 540: Worth the Hype?</a></h3>
-        <p style="color: var(--color-gray); font-size: 0.95rem;">An in-depth review of MFK's masterpiece. We analyze the legendary sillage and the mesmerizing notes.</p>
+        <div class="blog-card-content">
+          <span class="post-meta">Review</span>
+          <h3 class="blog-card-title"><a href="#">Baccarat Rouge 540: Worth the Hype?</a></h3>
+          <p style="color: var(--color-gray); font-size: 0.95rem; margin-bottom: 20px;">An in-depth review of MFK's masterpiece. We analyze the legendary sillage and the mesmerizing notes.</p>
+          <a href="#" class="btn btn-outline">Read Article</a>
+        </div>
       </article>
 
       <article class="blog-card">
         <img src="https://images.unsplash.com/photo-1599839619722-39751411ea63?auto=format&fit=crop&q=80&w=500" alt="Article" class="blog-card-img">
-        <span class="post-meta">Education</span>
-        <h3 class="blog-card-title"><a href="#">How to Make Your Perfume Last Longer</a></h3>
-        <p style="color: var(--color-gray); font-size: 0.95rem;">Applying to pulse points isn't enough. Learn the moisturizer trick and fabric techniques for max longevity.</p>
+        <div class="blog-card-content">
+          <span class="post-meta">Education</span>
+          <h3 class="blog-card-title"><a href="#">How to Make Your Perfume Last Longer</a></h3>
+          <p style="color: var(--color-gray); font-size: 0.95rem; margin-bottom: 20px;">Applying to pulse points isn't enough. Learn the moisturizer trick and fabric techniques for max longevity.</p>
+          <a href="#" class="btn btn-outline">Read Article</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <img src="https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&q=80&w=500" alt="Article" class="blog-card-img">
+        <div class="blog-card-content">
+          <span class="post-meta">Science & Mood</span>
+          <h3 class="blog-card-title"><a href="#">Scent & Psychology: Choosing for Mood</a></h3>
+          <p style="color: var(--color-gray); font-size: 0.95rem; margin-bottom: 20px;">From the energizing power of citrus to the calming properties of sandalwood. Learn the science of scent.</p>
+          <a href="#" class="btn btn-outline">Read Article</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <img src="https://images.unsplash.com/photo-1595475207225-428b62bda831?auto=format&fit=crop&q=80&w=500" alt="Article" class="blog-card-img">
+        <div class="blog-card-content">
+          <span class="post-meta">Trends</span>
+          <h3 class="blog-card-title"><a href="#">The Spring Awakening: Best Florals 2026</a></h3>
+          <p style="color: var(--color-gray); font-size: 0.95rem; margin-bottom: 20px;">We curate the most breathtaking florals and fruity niche releases for the upcoming season shift.</p>
+          <a href="#" class="btn btn-outline">Read Article</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <img src="https://images.unsplash.com/photo-1592947945242-69312358628b?auto=format&fit=crop&q=80&w=500" alt="Article" class="blog-card-img">
+        <div class="blog-card-content">
+          <span class="post-meta">Spotlight</span>
+          <h3 class="blog-card-title"><a href="#">Indie Icons: 5 Perfumers to Know</a></h3>
+          <p style="color: var(--color-gray); font-size: 0.95rem; margin-bottom: 20px;">Move beyond the big brands. These small-batch creators are pushing the boundaries of perfumery.</p>
+          <a href="#" class="btn btn-outline">Read Article</a>
+        </div>
       </article>
     </div>
 
@@ -124,7 +216,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#" class="logo" style="color: var(--color-secondary);"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+          <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
           <p>The ultimate discovery platform for premium, niche, and designer fragrances. Find your signature scent securely and affordably.</p>
         </div>
 

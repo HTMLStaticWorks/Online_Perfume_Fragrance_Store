@@ -17,13 +17,47 @@
     .sub-hero h1 { font-size: 3.5rem; color: var(--color-secondary); margin-bottom: 20px; line-height: 1.1; }
     .sub-hero p { max-width: 600px; margin: 0 auto 40px; font-size: 1.1rem; color: var(--color-gray); }
     
+    .sub-hero { padding: 160px 0 100px; background-color: var(--color-secondary); text-align: center; }
+    
+    /* Dark Mode Hero Support */
+    body.dark-mode .sub-hero { background-color: #000 !important; }
+    body.dark-mode .sub-hero .section-subtitle,
+    body.dark-mode .sub-hero h1,
+    body.dark-mode .sub-hero p {
+      color: var(--color-primary) !important;
+    }
+    body.dark-mode .sub-hero p {
+      color: rgba(248, 245, 240, 0.7) !important; /* Ivory with opacity */
+    }
     .how-it-works { padding: 100px 0; background: var(--color-secondary); text-align: center; }
-    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 50px; }
-    .step-box { background: var(--color-secondary); padding: 40px 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.03); }
-    .step-box:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
-    .step-box i { font-size: 2.5rem; color: var(--color-accent); margin-bottom: 20px; transition: transform 0.3s ease; }
-    .step-box:hover i { transform: scale(1.15); }
-    .step-box h4 { font-family: var(--font-sans); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+    .step-box { 
+      padding: 60px 30px; 
+      border-radius: 4px; 
+      position: relative; 
+      overflow: hidden; 
+      color: white; 
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 280px;
+      transition: transform 0.3s ease;
+    }
+    .step-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 1;
+      transition: background 0.3s ease;
+    }
+    .step-box:hover { transform: translateY(-5px); }
+    .step-box:hover::before { background: rgba(0,0,0,0.5); }
+    .step-box h4, .step-box p { position: relative; z-index: 2; margin-bottom: 10px; }
+    .step-box h4 { font-family: var(--font-sans); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; }
+    .step-box p { color: rgba(255,255,255,0.9) !important; font-size: 0.95rem; line-height: 1.6; }
     
     .pricing-tier { padding: 100px 0; }
     .tier-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1000px; margin: 50px auto 0; }
@@ -59,6 +93,19 @@
       color: var(--color-accent);
     }
     
+    /* Dark Mode Header Fix for Discovery Box */
+    body.dark-mode .header .logo,
+    body.dark-mode .header .nav-links a,
+    body.dark-mode .header .header-actions i,
+    body.dark-mode .header .header-actions button {
+      color: var(--color-primary) !important;
+    }
+    body.dark-mode .header .nav-links a:hover,
+    body.dark-mode .header .header-actions i:hover,
+    body.dark-mode .header .header-actions button:hover {
+      color: var(--color-accent) !important;
+    }
+    
     /* Scrolled Header */
     .header.scrolled .logo,
     .header.scrolled .nav-links a,
@@ -91,10 +138,10 @@
         <a href="about.html">About</a>
       </nav>
       <div class="header-actions">
-        <button aria-label="Search"><i class="fas fa-search"></i></button>
-        <a href="user-dashboard.html" aria-label="Account"><i class="far fa-user"></i></a>
-        <a href="wishlist.html" aria-label="Wishlist"><i class="far fa-heart"></i></a>
-        <a href="cart.html" aria-label="Cart"><i class="fas fa-shopping-bag"></i></a>
+        <button id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+        <button id="rtl-toggle" aria-label="Toggle RTL Mode" title="Toggle RTL Mode"><span style="font-size: 0.8rem; font-weight: 600;">RTL</span></button>
+        <a href="user-dashboard.html" class="user-btn" aria-label="Account"><i class="far fa-user"></i></a>
+        <a href="cart.html" class="cart-btn" aria-label="Cart"><i class="fas fa-shopping-bag"></i></a>
       </div>
     </div>
   </header>
@@ -114,20 +161,17 @@
       <p style="color: var(--color-gray);">Your journey to finding the perfect signature scent.</p>
       
       <div class="steps-grid">
-        <div class="step-box">
-          <i class="fas fa-clipboard-list"></i>
-          <h4>Take The Scent Quiz</h4>
-          <p style="color: var(--color-gray);">Tell us your preferences, favorite notes, and occasions. Our AI builds your unique scent profile.</p>
+        <div class="step-box" style="background-image: url('https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=800');">
+          <h4>TAKE THE SCENT QUIZ</h4>
+          <p>Tell us your preferences, favorite notes, and occasions. Our AI builds your unique scent profile.</p>
         </div>
-        <div class="step-box">
-          <i class="fas fa-box-open"></i>
-          <h4>Receive 3 Decants</h4>
-          <p style="color: var(--color-gray);">Every month, receive three 5ml travel-friendly decants (approx 75 sprays each) sourced from authentic bottles.</p>
+        <div class="step-box" style="background-image: url('https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&q=80&w=800');">
+          <h4>RECEIVE 3 DECANTS</h4>
+          <p>Every month, receive three 5ml travel-friendly decants (approx 75 sprays each) sourced from authentic bottles.</p>
         </div>
-        <div class="step-box">
-          <i class="fas fa-star"></i>
-          <h4>Rate & Refine</h4>
-          <p style="color: var(--color-gray);">Rate the scents you receive. Your profile gets smarter, and you get discounts on full bottles.</p>
+        <div class="step-box" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=800');">
+          <h4>RATE & REFINE</h4>
+          <p>Rate the scents you receive. Your profile gets smarter, and you get discounts on full bottles.</p>
         </div>
       </div>
     </div>
@@ -143,7 +187,7 @@
       <!-- Standard -->
       <div class="tier-card">
         <div class="tier-name">Designer Tier</div>
-        <div class="tier-price">₹1,499<span> / month</span></div>
+        <div class="tier-price">RS 1,499<span> / month</span></div>
         <p style="color: var(--color-gray); margin-bottom: 20px;">Perfect for discovering popular mainstream hits.</p>
         
         <ul class="tier-features">
@@ -159,7 +203,7 @@
       <!-- Premium -->
       <div class="tier-card premium">
         <div class="tier-name">Niche Explorer</div>
-        <div class="tier-price">₹2,999<span> / month</span></div>
+        <div class="tier-price">RS 2,999<span> / month</span></div>
         <p style="color: var(--color-gray); margin-bottom: 20px;">For the ultimate collector who demands exclusivity.</p>
         
         <ul class="tier-features">
@@ -179,7 +223,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#" class="logo" style="color: var(--color-secondary);"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+          <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
           <p>The ultimate discovery platform for premium, niche, and designer fragrances. Find your signature scent securely and affordably.</p>
         </div>
         
