@@ -8,16 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <link rel="stylesheet" href="assets/css/style.css">
   
   <style>
-    .sub-hero { background: var(--color-primary); color: var(--color-text-light); text-align: center; padding: 150px 20px 100px; position: relative; }
-    .sub-hero h1 { font-size: 3.5rem; color: var(--color-secondary); margin-bottom: 20px; line-height: 1.1; }
-    .sub-hero p { max-width: 600px; margin: 0 auto 40px; font-size: 1.1rem; color: var(--color-gray); }
-    
-    .sub-hero { padding: 160px 0 100px; background-color: var(--color-secondary); text-align: center; }
+    .sub-hero { padding: 160px 0 100px; background-color: var(--color-secondary); text-align: center; color: var(--color-primary); position: relative; }
+    .sub-hero h1 { font-size: 3.5rem; color: var(--color-primary); margin-bottom: 20px; line-height: 1.1; }
     
     /* Dark Mode Hero Support */
     body.dark-mode .sub-hero { background-color: #000 !important; }
@@ -56,7 +53,7 @@
     .step-box:hover { transform: translateY(-5px); }
     .step-box:hover::before { background: rgba(0,0,0,0.5); }
     .step-box h4, .step-box p { position: relative; z-index: 2; margin-bottom: 10px; }
-    .step-box h4 { font-family: var(--font-sans); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; }
+    .step-box h4 { font-family: var(--font-sans); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; color: #fff; }
     .step-box p { color: rgba(255,255,255,0.9) !important; font-size: 0.95rem; line-height: 1.6; }
     
     .pricing-tier { padding: 100px 0; }
@@ -76,8 +73,14 @@
     .tier-features li { margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; }
     .tier-features i { color: var(--color-accent); margin-top: 4px; }
 
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
+      .sub-hero { padding: 100px 20px 60px; }
+      .sub-hero h1 { font-size: 2.22rem; line-height: 1.2; margin-bottom: 15px; }
+      .sub-hero p { font-size: 1rem; margin-bottom: 30px; }
       .steps-grid, .tier-grid { grid-template-columns: 1fr; }
+      .step-box { min-height: 400px; padding: 80px 30px; }
+      .tier-features { text-align: center; }
+      .tier-features li { justify-content: center; text-align: center; }
     }
 
     /* Header Visibility Fix for Discovery Box (Dark Hero) */
@@ -85,7 +88,7 @@
     .header .nav-links a,
     .header .header-actions i,
     .header .header-actions button {
-      color: var(--color-secondary);
+      color: var(--color-primary);
     }
     .header .nav-links a:hover,
     .header .header-actions i:hover,
@@ -114,7 +117,7 @@
       color: var(--color-primary);
     }
   </style>
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
 </head>
 <body>
 
@@ -122,7 +125,7 @@
   <header class="header">
     <div class="container header-inner">
       <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
-      <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+      <a href="index.html" class="logo"><i class="fas fa-crown logo-icon"></i> LUXE</a>
       <nav class="nav-links">
         <div class="nav-item-dropdown">
           <a href="#">Home <i class="fas fa-chevron-down"></i></a>
@@ -136,6 +139,14 @@
         <a href="deals.html">Deals</a>
         <a href="blog.html">Blog</a>
         <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <div class="mobile-nav-actions">
+          <a href="user-dashboard.html"><i class="fas fa-user"></i> Account</a>
+          <a href="cart.html" class="mobile-cart-link">
+            <i class="fas fa-shopping-bag"></i> Cart
+            <span class="cart-count">0</span>
+          </a>
+        </div>
       </nav>
       <div class="header-actions">
         <button id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
@@ -224,8 +235,14 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+          <a href="index.html" class="logo"><i class="fas fa-crown logo-icon"></i> LUXE</a>
           <p>The ultimate discovery platform for premium, niche, and designer fragrances. Find your signature scent securely and affordably.</p>
+          <div class="footer-social">
+            <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
         </div>
         
         <div>
@@ -269,3 +286,4 @@
   <script src="assets/js/main.js"></script>
 </body>
 </html>
+

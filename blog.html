@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <link rel="stylesheet" href="assets/css/style.css">
 
@@ -27,22 +27,58 @@
     .post-excerpt { color: var(--color-gray); margin-bottom: 30px; line-height: 1.7; }
 
     .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-    .blog-card { border: 1px solid transparent; transition: all 0.3s; display: flex; flex-direction: column; }
-    .blog-card:hover { transform: translateY(-5px); }
+    .blog-card { 
+      border: 1px solid var(--color-gray-light); 
+      padding: 20px;
+      border-radius: 8px;
+      background: var(--color-secondary);
+      transition: all var(--transition-normal); 
+      display: flex; 
+      flex-direction: column; 
+    }
+    .blog-card:hover { 
+      transform: translateY(-8px); 
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-md);
+    }
     .blog-card-img { width: 100%; height: 250px; object-fit: cover; margin-bottom: 20px; }
     .blog-card-title { font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 10px; }
     .blog-card-content { flex: 1; display: flex; flex-direction: column; text-align: center; }
     .blog-card .btn { margin-top: auto; align-self: center; }
 
-    @media (max-width: 600px) {
+    @media (max-width: 992px) {
+      .featured-post { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+      .featured-img { height: 320px; margin-bottom: 20px; }
+      .blog-grid { grid-template-columns: 1fr 1fr; }
+      .glossary-grid { grid-template-columns: 1fr 1fr; }
+    }
+    
+    @media (max-width: 768px) {
       .blog-grid { grid-template-columns: 1fr; }
+      .glossary-grid { grid-template-columns: 1fr; }
+      .featured-img { height: 280px; }
+      .post-title { font-size: 1.8rem; }
+      .quiz-banner { padding: 40px 20px; }
+      .quiz-banner h2 { font-size: 1.8rem; }
     }
 
     /* Educational Section (Glossary) */
     .glossary-section { background: var(--color-primary); color: var(--color-secondary); padding: 80px 0; margin-bottom: 80px; }
     .glossary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 40px; }
+    .glossary-item { 
+      padding: 30px; 
+      background: rgba(255, 255, 255, 0.05); 
+      border: 1px solid rgba(255, 255, 255, 0.1); 
+      border-radius: 8px; 
+      transition: all var(--transition-normal); 
+    }
+    .glossary-item:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--color-accent);
+    }
     .glossary-item h4 { color: var(--color-accent); font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 15px; }
-    .glossary-item p { font-size: 0.9rem; opacity: 0.8; line-height: 1.6; }
+    .glossary-item p { font-size: 0.9rem; opacity: 0.8; line-height: 1.6; margin-bottom: 0; }
 
     /* Quiz Banner */
     .quiz-banner { background: #E9E4DB; padding: 60px; text-align: center; margin-bottom: 80px; border: 1px solid var(--color-gray-light); }
@@ -60,7 +96,7 @@
     body.dark-mode .quiz-banner h2 { color: var(--color-primary); }
     body.dark-mode .quiz-banner p { color: #b0b0b0; }
   </style>
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
 </head>
 <body>
 
@@ -68,7 +104,7 @@
   <header class="header">
     <div class="container header-inner">
       <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
-      <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+      <a href="index.html" class="logo"><i class="fas fa-crown logo-icon"></i> LUXE</a>
       <nav class="nav-links">
         <div class="nav-item-dropdown">
           <a href="#">Home <i class="fas fa-chevron-down"></i></a>
@@ -82,6 +118,7 @@
         <a href="deals.html">Deals</a>
         <a href="blog.html" class="active">Blog</a>
         <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
       </nav>
       <div class="header-actions">
         <button id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
@@ -217,8 +254,14 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+          <a href="index.html" class="logo"><i class="fas fa-crown logo-icon"></i> LUXE</a>
           <p>The ultimate discovery platform for premium, niche, and designer fragrances. Find your signature scent securely and affordably.</p>
+          <div class="footer-social">
+            <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
         </div>
 
         <div>
@@ -262,3 +305,4 @@
   <script src="assets/js/main.js"></script>
 </body>
 </html>
+

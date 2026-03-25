@@ -110,4 +110,26 @@ document.addEventListener('DOMContentLoaded', () => {
       rtlToggle.style.color = newDir === 'rtl' ? 'var(--color-accent)' : 'inherit';
     });
   }
+
+  // --- Scroll to Top Button ---
+  const scrollTopBtn = document.createElement('button');
+  scrollTopBtn.className = 'scroll-top-btn';
+  scrollTopBtn.setAttribute('aria-label', 'Scroll to top');
+  scrollTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+  document.body.appendChild(scrollTopBtn);
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      scrollTopBtn.classList.add('active');
+    } else {
+      scrollTopBtn.classList.remove('active');
+    }
+  });
+
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
 });

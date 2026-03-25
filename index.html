@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   
   <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Styles -->
   <link rel="stylesheet" href="assets/css/style.css">
@@ -24,6 +24,7 @@
       min-height: 700px;
       display: flex;
       align-items: center;
+      justify-content: center;
       position: relative;
       background: url('https://images.unsplash.com/photo-1615309033306-05646f8fb049?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
     }
@@ -31,13 +32,15 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(to right, rgba(18,18,18,0.85) 0%, rgba(18,18,18,0.4) 100%);
+      background: rgba(18, 18, 18, 0.6);
     }
     .hero-content {
       position: relative;
       z-index: 2;
       color: var(--color-text-light);
-      max-width: 600px;
+      max-width: 800px;
+      text-align: center;
+      margin: 0 auto;
     }
     .hero-title {
       font-size: 4rem;
@@ -160,15 +163,8 @@
       border-color: var(--color-primary);
       color: var(--color-primary);
     }
-   body.dark-mode .size-pill:hover, body.dark-mode .size-pill.active { border-color: var(--color-accent); color: var(--color-accent); }
-body.dark-mode .product-card:hover .add-to-cart-btn,
-body.dark-mode .btn-outline:hover,
-body.dark-mode .btn-primary:hover,
-body.dark-mode .btn-accent:hover { 
-  background-color: var(--color-accent) !important; 
-  color: #000 !important; 
-  border-color: var(--color-accent) !important; 
-}
+    body.dark-mode .size-pill:hover, body.dark-mode .size-pill.active { border-color: var(--color-accent); color: var(--color-accent); }
+    /* Removed redundant dark mode button hover overrides to let global style.css handle them */
     .add-to-cart-btn {
       width: 100%;
       padding: 15px;
@@ -234,6 +230,8 @@ body.dark-mode .btn-accent:hover {
       text-align: center;
       transition: all var(--transition-normal);
       position: relative;
+      display: flex;
+      flex-direction: column;
     }
     .review-card:hover { 
       transform: translateY(-10px) scale(1.02); 
@@ -244,7 +242,7 @@ body.dark-mode .btn-accent:hover {
     body.dark-mode .review-card:hover { border-color: var(--color-accent); }
     .stars { color: var(--color-accent); margin-bottom: 20px; font-size: 1.1rem; }
     .review-text { font-style: italic; color: var(--color-gray); margin-bottom: 25px; line-height: 1.8; }
-    .reviewer-name { font-family: var(--font-serif); font-size: 1.2rem; }
+    .reviewer-name { font-family: var(--font-serif); font-size: 1.2rem; margin-top: auto; }
     .reviewer-badge { font-size: 0.75rem; text-transform: uppercase; color: var(--color-accent); letter-spacing: 1px; margin-top: 5px; }
 
     /* Art of Decanting */
@@ -265,7 +263,7 @@ body.dark-mode .btn-accent:hover {
     .collection-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
     .collection-card:hover img { transform: scale(1.1); }
     .collection-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 40px; color: #fff; }
-    .collection-overlay h3 { font-family: var(--font-serif); font-size: 2rem; margin-bottom: 10px; }
+    .collection-overlay h3 { font-family: var(--font-serif); font-size: 2rem; margin-bottom: 10px; color: #fff; }
     .collection-overlay p { font-size: 0.95rem; opacity: 0.8; margin-bottom: 20px; }
     .collection-btn { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #fff; width: fit-content; padding-bottom: 5px; transition: all 0.3s ease; }
     .collection-card:hover .collection-btn { border-bottom-color: var(--color-accent); color: var(--color-accent); }
@@ -338,6 +336,9 @@ body.dark-mode .btn-accent:hover {
 
     @media (max-width: 992px) {
       .decanting-inner { grid-template-columns: 1fr; gap: 40px; }
+      .collections-grid { grid-template-columns: repeat(2, 1fr); }
+      .subs-inner { grid-template-columns: 1fr; }
+      .subs-features { margin: 0 auto 30px; display: table; }
     }
     @media (max-width: 768px) {
       .hero-title { font-size: 2.8rem; }
@@ -345,6 +346,10 @@ body.dark-mode .btn-accent:hover {
       .review-grid { grid-template-columns: 1fr; }
       .trust-inner { justify-content: center; }
       .notes-grid { grid-template-columns: 1fr; }
+      .collections-grid { grid-template-columns: 1fr; }
+      .collection-card { height: 400px; }
+      .newsletter-promo-form { flex-direction: column; }
+      .newsletter-promo-form input, .newsletter-promo-form button { width: 100%; border-radius: 30px; }
     }
   </style>
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
@@ -355,7 +360,7 @@ body.dark-mode .btn-accent:hover {
   <header class="header">
     <div class="container header-inner">
       <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
-      <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+      <a href="index.html" class="logo"><i class="fas fa-crown logo-icon"></i> LUXE</a>
             <nav class="nav-links">
         <div class="nav-item-dropdown">
           <a href="#" class="active">Home <i class="fas fa-chevron-down"></i></a>
@@ -369,6 +374,14 @@ body.dark-mode .btn-accent:hover {
         <a href="deals.html">Deals</a>
         <a href="blog.html">Blog</a>
         <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <div class="mobile-nav-actions">
+          <a href="user-dashboard.html"><i class="fas fa-user"></i> Account</a>
+          <a href="cart.html" class="mobile-cart-link">
+            <i class="fas fa-shopping-bag"></i> Cart
+            <span class="cart-count">0</span>
+          </a>
+        </div>
       </nav>
       <div class="header-actions">
         <button id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
@@ -387,7 +400,7 @@ body.dark-mode .btn-accent:hover {
         <p class="section-subtitle mb-1" style="color: var(--color-accent);">Try Before You Buy</p>
         <h1 class="hero-title">Experience Luxury Without the Commitment</h1>
         <p class="mb-3" style="font-size: 1.1rem; opacity: 0.9;">Explore our curated selection of 100% authentic niche and designer fragrances through premium decants, delivered to your door.</p>
-        <a href="shop.html" class="btn btn-accent">Start Discovering</a>
+        <a href="shop.html" class="btn btn-accent">Shop All Decants</a>
       </div>
     </div>
   </section>
@@ -402,7 +415,8 @@ body.dark-mode .btn-accent:hover {
   </div>
 
   <!-- Discover Section -->
-  <section class="discover-section container">
+  <section class="discover-section">
+    <div class="container">
     <h2 class="section-title">Find Your Signature Note</h2>
     <p style="color: var(--color-gray);">Not sure where to start? Filter by the scent profiles that resonate with you.</p>
     
@@ -552,12 +566,40 @@ body.dark-mode .btn-accent:hover {
         </div>
       </div>
 
+      <div class="product-card" data-category="floral">
+        <div class="product-badge">Top Rated</div>
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&q=80&w=600" alt="Baccarat Rouge 540">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Maison Francis Kurkdjian</div>
+          <h3 class="product-title">Baccarat Rouge 540</h3>
+          <div class="product-notes">Saffron, Jasmine, Amberwood</div>
+          <div class="product-price">From 2,200</div>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="floral">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1592947945242-69312358628b?auto=format&fit=crop&q=80&w=600" alt="Delina Exclusif">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Parfums de Marly</div>
+          <h3 class="product-title">Delina Exclusif</h3>
+          <div class="product-notes">Turkish Rose, Lychee, Vanilla</div>
+          <div class="product-price">From 1,800</div>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
     </div>
     
     <div class="mt-4">
       <a href="shop.html" class="btn btn-outline" style="border-radius: 30px;">View All Fragrances</a>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- The Art of Decanting -->
   <section class="decanting-section">
@@ -751,8 +793,14 @@ body.dark-mode .btn-accent:hover {
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#" class="logo footer-logo-link"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+          <a href="#" class="logo footer-logo-link"><i class="fas fa-crown logo-icon"></i> LUXE</a>
           <p>The ultimate discovery platform for premium, niche, and designer fragrances. Find your signature scent securely and affordably.</p>
+          <div class="footer-social">
+            <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
         </div>
         
         <div>
@@ -822,6 +870,7 @@ body.dark-mode .btn-accent:hover {
   </script>
 </body>
 </html>
+
 
 
 

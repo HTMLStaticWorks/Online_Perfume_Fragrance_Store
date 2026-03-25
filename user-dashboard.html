@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
   
   <style>
@@ -69,10 +69,20 @@
     .status-processing { background: var(--color-secondary)8e1; color: var(--color-accent); }
 
     /* Subscription Summary */
-    .sub-summary { display: flex; align-items: center; gap: 20px; background: var(--color-secondary); padding: 20px; border: 1px solid var(--color-gray-light); border-radius: 6px; }
+    .sub-summary { 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      text-align: center; 
+      gap: 20px; 
+      background: var(--color-secondary); 
+      padding: 30px; 
+      border: 1px solid var(--color-gray-light); 
+      border-radius: 6px; 
+    }
     body.dark-mode .sub-summary { background: #111; border-color: #222; }
     .sub-icon { font-size: 2.5rem; color: var(--color-accent); }
-    .sub-info { flex: 1; }
+    .sub-info { flex: none; }
     .sub-info h4 { font-size: 1.1rem; margin-bottom: 5px; }
     body.dark-mode .sub-info h4 { color: #fff; }
     .sub-info p { font-size: 0.9rem; color: var(--color-gray); }
@@ -87,11 +97,54 @@
     }
 
     /* Form Styles for Settings Tab */
-    .settings-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .settings-form .form-group { text-align: left; margin-bottom: 20px; }
-    .settings-form .form-group label { text-align: left; }
-    .settings-form .form-control { text-align: left; }
-    @media (max-width: 600px) { .settings-form { grid-template-columns: 1fr; } }
+    .settings-form { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 25px; 
+      max-width: 800px; 
+      margin: 0 auto; 
+    }
+    .settings-form .form-group { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 10px; 
+      margin-bottom: 0; 
+      text-align: left;
+    }
+    .settings-form .form-group label { 
+      font-size: 0.9rem; 
+      text-transform: uppercase; 
+      letter-spacing: 1.5px; 
+      color: var(--color-gray); 
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    .settings-form .form-control { 
+      width: 100%; 
+      padding: 18px 20px; 
+      background: var(--color-secondary); 
+      border: 1px solid var(--color-gray-light); 
+      border-radius: 4px; 
+      color: var(--color-primary); 
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      transition: all var(--transition-fast);
+      text-align: left;
+    }
+    .settings-form .form-control:focus {
+      border-color: var(--color-accent);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.1);
+    }
+    body.dark-mode .settings-form .form-control {
+      background: #1a1a1a;
+      border-color: #333;
+      color: #fff;
+    }
+    .btn-submit-container {
+      text-align: center;
+      margin-top: 20px;
+    }
 
     /* Reviews Styles */
     .review-item { padding: 20px; border-bottom: 1px solid var(--color-gray-light); }
@@ -102,7 +155,7 @@
       .dash-container { grid-template-columns: 1fr; }
     }
   </style>
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
 </head>
 <body>
 
@@ -110,7 +163,7 @@
   <header class="header">
     <div class="container header-inner">
       <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
-      <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
+      <a href="index.html" class="logo"><i class="fas fa-crown logo-icon"></i> LUXE</a>
       <nav class="nav-links">
         <div class="nav-item-dropdown">
           <a href="#">Home <i class="fas fa-chevron-down"></i></a>
@@ -124,6 +177,14 @@
         <a href="deals.html">Deals</a>
         <a href="blog.html">Blog</a>
         <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <div class="mobile-nav-actions">
+          <a href="user-dashboard.html" class="active"><i class="fas fa-user"></i> Account</a>
+          <a href="cart.html" class="mobile-cart-link">
+            <i class="fas fa-shopping-bag"></i> Cart
+            <span class="cart-count">0</span>
+          </a>
+        </div>
       </nav>
       <div class="header-actions">
         <button id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
@@ -142,7 +203,7 @@
       <div class="user-profile">
         <div class="user-avatar">R</div>
         <h2 class="user-name">Rahul Sharma</h2>
-        <div class="user-tier"><i class="fas fa-crown"></i> Gold Member</div>
+        <div class="user-tier"><i class="fas fa-crown logo-icon"></i> Gold Member</div>
       </div>
       
       <ul class="dash-nav">
@@ -193,15 +254,15 @@
         </div>
 
         <div class="dash-box">
-          <h3 class="dash-title">Active Subscription <a href="#" class="view-tab" data-tab="subscription">Manage</a></h3>
+          <h3 class="dash-title" style="justify-content: center;">Active Subscription</h3>
           <div class="sub-summary">
             <i class="fas fa-gem sub-icon"></i>
             <div class="sub-info">
               <h4>Niche Explorer Box (Monthly)</h4>
               <p>Next box ships on <strong>April 5th, 2026</strong>.</p>
             </div>
-            <div style="margin-left: auto;">
-              <button class="btn btn-outline" style="padding: 10px 20px;">Pause</button>
+            <div style="margin-top: 10px;">
+              <button class="btn btn-outline" style="padding: 10px 30px;">Manage Subscription</button>
             </div>
           </div>
         </div>
@@ -254,10 +315,9 @@
         </div>
       </div>
 
-      <!-- TAB: SUBSCRIPTION -->
       <div id="subscription" class="tab-content">
         <div class="dash-box">
-          <h3 class="dash-title">Subscription Management</h3>
+          <h3 class="dash-title" style="justify-content: center;">Subscription Management</h3>
           <div class="sub-summary" style="margin-bottom: 30px;">
             <i class="fas fa-gem sub-icon"></i>
             <div class="sub-info">
@@ -329,8 +389,8 @@
                 <option>Oriental & Musk</option>
               </select>
             </div>
-            <div class="form-group" style="grid-column: span 2;">
-              <button type="submit" class="btn btn-primary" style="padding: 15px 40px;">Save Changes</button>
+            <div class="btn-submit-container">
+              <button type="submit" class="btn btn-primary" style="padding: 18px 80px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">Save Changes</button>
             </div>
           </form>
         </div>
@@ -339,52 +399,6 @@
     </main>
   </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo"> LUXE</a>
-          <p>The ultimate discovery platform for premium, niche, and designer fragrances. Find your signature scent securely and affordably.</p>
-        </div>
-        
-        <div>
-          <h4 class="footer-title">Shop</h4>
-          <ul class="footer-links">
-            <li><a href="shop.html">All Fragrances</a></li>
-            <li><a href="shop.html">Best Sellers</a></li>
-            <li><a href="shop.html">New Arrivals</a></li>
-            <li><a href="subscription.html">Discovery Box</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h4 class="footer-title">Quick Links</h4>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="deals.html">Deals</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="order-tracking.html">Track Order</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h4 class="footer-title">Join The Club</h4>
-          <p style="color: var(--color-gray); font-size: 0.9rem;">Subscribe for exclusive 10% off your first order and early access to rare drops.</p>
-          <form class="newsletter-form">
-            <input type="email" placeholder="Enter your email" required>
-            <button type="submit">Join</button>
-          </form>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 LUXE Fragrance Discovery. All Rights Reserved. 100% Authentic Guarantee.</p>
-      </div>
-    </div>
-  </footer>
 
   <script src="assets/js/main.js"></script>
   <script>
@@ -424,3 +438,4 @@
   </script>
 </body>
 </html>
+
