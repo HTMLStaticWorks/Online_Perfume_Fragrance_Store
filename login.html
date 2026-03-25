@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | LUXE - Luxury Fragrance Discovery</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <style>
+    :root {
+      --login-bg: url('C:/Users/prasa/.gemini/antigravity/brain/7fe5b15d-9c21-4036-a87c-51619336d195/login_luxury_bg_1774427175999.png');
+    }
+
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--login-bg) no-repeat center center/cover;
+      font-family: var(--font-sans);
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(8px);
+    }
+
+    .login-container {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .login-card {
+      background: rgba(255, 255, 255, 0.98);
+      padding: 60px 45px;
+      border-radius: 8px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+      text-align: center;
+      position: relative; /* For absolutely positioned actions */
+    }
+
+    .login-card-actions {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .login-card-actions button {
+      background: transparent;
+      border: none;
+      color: var(--color-gray);
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    .login-card-actions button:hover {
+      color: var(--color-accent);
+      background: rgba(197, 160, 89, 0.1);
+    }
+    
+    body.dark-mode .login-card {
+      background: rgba(18, 18, 18, 0.98);
+      border: 1px solid #2a2a2a;
+    }
+
+    /* Standardized Logo Styling inside Card */
+    .login-card .logo {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: var(--color-primary); /* Dark in light mode, Light in dark mode */
+      text-decoration: none;
+    }
+    /* Explicitly override if needed, but var(--color-primary) should handle both. */
+    body.dark-mode .login-card .logo { color: var(--color-primary) !important; }
+
+    .login-title {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--color-gray);
+      margin-bottom: 45px;
+      font-weight: 500;
+    }
+    body.dark-mode .login-title { color: #aaa; }
+
+    .form-group {
+      margin-bottom: 28px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+      color: var(--color-gray);
+      font-weight: 600;
+    }
+    body.dark-mode .form-group label { color: #aaa; }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 0;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--color-gray-light);
+      font-size: 0.95rem;
+      color: var(--color-primary);
+      transition: all 0.3s;
+      border-radius: 0;
+    }
+    body.dark-mode .form-control { color: #fff; border-color: #333; }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--color-accent);
+    }
+
+    .login-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 35px;
+      font-size: 0.82rem;
+    }
+
+    .login-options label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      color: var(--color-primary);
+      user-select: none;
+    }
+    body.dark-mode .login-options label { color: var(--color-gray); }
+
+    .login-options input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      margin: 0;
+      accent-color: var(--color-accent);
+      cursor: pointer;
+    }
+
+    .login-options a {
+      color: var(--color-accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .login-options a:hover { opacity: 0.8; }
+
+    .btn-login {
+      width: 100%;
+      padding: 16px;
+      background: var(--color-primary);
+      color: var(--color-secondary);
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-bottom: 30px;
+      font-size: 0.9rem;
+      border-radius: 2px;
+    }
+    body.dark-mode .btn-login { background: #fff; color: #000; }
+
+    .btn-login:hover {
+      background: var(--color-accent);
+      color: var(--color-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
+    }
+
+    .signup-link {
+      margin-top: 35px;
+      font-size: 0.88rem;
+      color: var(--color-gray);
+    }
+
+    .signup-link a {
+      color: var(--color-accent);
+      font-weight: 600;
+      text-decoration: none;
+      margin-left: 5px;
+    }
+
+    .social-login {
+      margin-top: 40px;
+      border-top: 1px solid var(--color-gray-light);
+      padding-top: 40px;
+    }
+    body.dark-mode .social-login { border-color: #2a2a2a; }
+
+    .social-login p {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--color-gray);
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .social-btn-group {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .social-btn {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--color-gray-light);
+      border-radius: 50%;
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: all 0.3s;
+      font-size: 1.2rem;
+    }
+    body.dark-mode .social-btn { border-color: #333; color: #fff; }
+
+    .social-btn:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      background: rgba(197, 160, 89, 0.05);
+      transform: scale(1.1);
+    }
+
+    .back-home {
+      position: fixed;
+      top: 30px;
+      left: 30px;
+      z-index: 20;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .back-home:hover { color: var(--color-accent); }
+  </style>
+</head>
+<body>
+  <!-- Removed Back Home Link as requested -->
+
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-card-actions">
+        <button id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+        <button id="rtl-toggle" aria-label="Toggle RTL Mode" title="Toggle RTL Mode"><span style="font-size: 0.8rem; font-weight: 600;">RTL</span></button>
+      </div>
+      
+      <a href="index.html" class="logo" style="justify-content: center; margin-bottom: 25px;">
+        <img src="assets/images/logo.png" alt="LUXE Logo" class="brand-logo" style="height: 45px;"> LUXE
+      </a>
+      <p class="login-title">SIGN IN TO YOUR VAULT</p>
+
+      <form action="user-dashboard.html">
+        <div class="form-group">
+          <label>EMAIL ADDRESS</label>
+          <input type="email" class="form-control" required placeholder="rahul@example.com">
+        </div>
+        
+        <div class="form-group">
+          <label>PASSWORD</label>
+          <input type="password" class="form-control" required placeholder="••••••••">
+        </div>
+
+        <div class="login-options">
+          <label>
+            <input type="checkbox"> Remember Me
+          </label>
+          <a href="#">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="btn-login">Enter The Vault</button>
+      </form>
+
+      <div class="signup-link">
+        Don't have a scent profile? <a href="signup.html">Create Account</a>
+      </div>
+
+      <div class="social-login">
+        <p>OR SIGN IN WITH</p>
+        <div class="social-btn-group">
+          <a href="#" class="social-btn"><i class="fab fa-google"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-apple"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
