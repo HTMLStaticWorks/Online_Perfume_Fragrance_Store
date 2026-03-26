@@ -152,7 +152,16 @@
     .review-stars { color: var(--color-accent); margin-bottom: 10px; }
 
     @media (max-width: 900px) {
-      .dash-container { grid-template-columns: 1fr; }
+      .dash-container { grid-template-columns: 1fr; gap: 30px; padding: 0 15px; margin-top: 80px; }
+    }
+
+    @media (max-width: 600px) {
+      .dash-box { padding: 20px 15px; }
+      .welcome-card { padding: 30px 20px; }
+      .welcome-card h2 { font-size: 1.5rem; }
+      .sub-grid-responsive { grid-template-columns: 1fr !important; }
+      .order-table th, .order-table td { padding: 12px 8px; font-size: 0.8rem; }
+      .dash-title { flex-direction: column; align-items: flex-start; gap: 10px; }
     }
   </style>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
@@ -327,7 +336,7 @@
             </div>
           </div>
           
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div class="sub-grid-responsive" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
             <div class="sub-summary" style="padding: 20px;">
               <div>
                 <h4 style="margin-bottom: 10px;">Billing Details</h4>
