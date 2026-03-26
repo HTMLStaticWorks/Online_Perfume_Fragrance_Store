@@ -13,9 +13,11 @@
   <link rel="stylesheet" href="assets/css/style.css">
   
   <style>
-    /* Header Visibility Fix (Dark Shop Banner) */
+    /* ── Header Visibility Fix (Dark Shop Banner) ── */
+    
+    /* Global Overrides: Logo and top-level icons are on the dark banner. */
     .header .logo,
-    .header .nav-links a,
+    .header .mobile-menu-btn,
     .header .header-actions i,
     .header .header-actions button {
       color: var(--color-secondary);
@@ -23,18 +25,35 @@
     .header .header-actions button:hover {
       color: var(--color-accent);
     }
+    
     /* Dark Mode Header Fix */
     body.dark-mode .header .logo,
-    body.dark-mode .header .nav-links a,
+    body.dark-mode .header .mobile-menu-btn,
     body.dark-mode .header .header-actions i,
     body.dark-mode .header .header-actions button {
       color: var(--color-primary) !important;
     }
-    body.dark-mode .header .nav-links a:hover,
     body.dark-mode .header .header-actions i:hover,
     body.dark-mode .header .header-actions button:hover {
       color: var(--color-accent) !important;
     }
+
+    /* Desktop Only Overrides: Nav links are on the dark banner ONLY on desktop. */
+    @media (min-width: 993px) {
+      .header .nav-links > a,
+      .header .nav-item-dropdown > a {
+        color: var(--color-secondary);
+      }
+      body.dark-mode .header .nav-links > a,
+      body.dark-mode .header .nav-item-dropdown > a {
+        color: var(--color-primary) !important;
+      }
+      body.dark-mode .header .nav-links > a:hover,
+      body.dark-mode .header .nav-item-dropdown > a:hover {
+        color: var(--color-accent) !important;
+      }
+    }
+    
     .header.scrolled .logo,
     .header.scrolled .nav-links a,
     .header.scrolled .header-actions i,

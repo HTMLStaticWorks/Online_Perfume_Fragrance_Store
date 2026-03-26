@@ -31,6 +31,27 @@
     .map-placeholder { width: 100%; height: 350px; background: var(--color-gray-light) url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200') center/cover; position: relative; }
     .map-placeholder::after { content: 'Interactive Map Area'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255,255,255,0.9); padding: 10px 20px; font-weight: 500; box-shadow: var(--shadow-sm); }
     
+    .contact-social { display: flex; gap: 12px; margin-top: 25px; margin-left: 35px; }
+    .contact-social a { 
+      display: flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--color-gray-light); color: var(--color-primary);
+      transition: all 0.3s ease; text-decoration: none; font-size: 1.1rem;
+    }
+    .contact-social a:hover {
+      background: var(--color-accent);
+      color: var(--color-secondary);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
+    }
+    body.dark-mode .contact-social a {
+      background: #2a2a2a;
+      color: #fff; /* or var(--color-primary) which is light in dark mode */
+    }
+    body.dark-mode .contact-social a:hover {
+      background: var(--color-accent);
+    }
+
     @media (max-width: 768px) {
       .contact-container { grid-template-columns: 1fr; }
     }
@@ -105,6 +126,13 @@
           <h5>Phone & WhatsApp</h5>
           <p>+91 98765 43210 (Mon-Sat, 10am - 6pm)</p>
         </div>
+      </div>
+      
+      <div class="contact-social">
+        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
       </div>
     </div>
     
