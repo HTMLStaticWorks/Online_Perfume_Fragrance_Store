@@ -56,6 +56,11 @@
       display: flex;
       gap: 15px;
     }
+    
+    [dir="rtl"] .login-card-actions {
+      right: auto;
+      left: 20px;
+    }
 
     .login-card-actions button {
       background: transparent;
@@ -107,7 +112,7 @@
 
     .form-group {
       margin-bottom: 28px;
-      text-align: left;
+      text-align: start;
     }
 
     .form-group label {
@@ -207,7 +212,7 @@
       color: var(--color-accent);
       font-weight: 600;
       text-decoration: none;
-      margin-left: 5px;
+      margin-inline-start: 5px;
     }
 
     .social-login {

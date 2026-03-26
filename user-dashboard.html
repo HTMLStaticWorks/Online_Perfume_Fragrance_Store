@@ -151,8 +151,82 @@
     body.dark-mode .review-item { border-color: #222; }
     .review-stars { color: var(--color-accent); margin-bottom: 10px; }
 
-    @media (max-width: 900px) {
+    @media (max-width: 992px) {
       .dash-container { grid-template-columns: 1fr; gap: 30px; padding: 0 15px; margin-top: 80px; }
+      
+      .dash-sidebar {
+        position: fixed;
+        top: 0;
+        left: -300px;
+        width: 280px;
+        height: 100vh;
+        z-index: 2000;
+        transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+        padding-top: 50px;
+      }
+      
+      .dash-sidebar.active {
+        left: 0;
+      }
+      
+      [dir="rtl"] .dash-sidebar {
+        left: auto;
+        right: -300px;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+      }
+      
+      [dir="rtl"] .dash-sidebar.active {
+        right: 0;
+      }
+      
+      .dash-mobile-menu-btn {
+        display: block;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--color-primary);
+        margin-right: 20px;
+      }
+      
+      [dir="rtl"] .dash-mobile-menu-btn {
+        margin-right: 0;
+        margin-left: 20px;
+      }
+      
+      .dash-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        display: none;
+        z-index: 1999;
+        backdrop-filter: blur(4px);
+      }
+      
+      .dash-overlay.active {
+        display: block;
+      }
+      
+      .close-sidebar {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--color-gray);
+        display: block;
+      }
+      
+      [dir="rtl"] .close-sidebar {
+        right: auto;
+        left: 20px;
+      }
+    }
+
+    @media (min-width: 993px) {
+      .dash-mobile-menu-btn, .dash-overlay, .close-sidebar { display: none !important; }
     }
 
     @media (max-width: 600px) {
@@ -171,6 +245,7 @@
   <!-- Header -->
   <header class="header">
     <div class="container header-inner">
+      <div class="dash-mobile-menu-btn" id="dash-mobile-toggle"><i class="fas fa-bars"></i></div>
       <a href="index.html" class="logo"><i class="fas fa-crown logo-icon"></i> LUXE</a>
       <div class="header-actions">
         <button id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
@@ -181,8 +256,11 @@
 
   <div class="dash-container">
     
+    <div class="dash-overlay" id="dash-overlay"></div>
+    
     <!-- Sidebar -->
-    <aside class="dash-sidebar">
+    <aside class="dash-sidebar" id="dash-sidebar">
+      <div class="close-sidebar" id="close-sidebar"><i class="fas fa-times"></i></div>
       <div class="user-profile">
         <div class="user-avatar">R</div>
         <h2 class="user-name">Rahul Sharma</h2>
@@ -413,10 +491,37 @@
             }
           });
 
+          // Close sidebar on mobile after clicking
+          if (window.innerWidth <= 992) {
+            document.getElementById('dash-sidebar').classList.remove('active');
+            document.getElementById('dash-overlay').classList.remove('active');
+          }
+
           // Scroll to top of content
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       });
+
+      // Hamburger Toggle
+      const dashMobileToggle = document.getElementById('dash-mobile-toggle');
+      const dashSidebar = document.getElementById('dash-sidebar');
+      const dashOverlay = document.getElementById('dash-overlay');
+      const closeSidebar = document.getElementById('close-sidebar');
+
+      if (dashMobileToggle) {
+        dashMobileToggle.addEventListener('click', () => {
+          dashSidebar.classList.add('active');
+          dashOverlay.classList.add('active');
+        });
+      }
+
+      const closeMenu = () => {
+        dashSidebar.classList.remove('active');
+        dashOverlay.classList.remove('active');
+      };
+
+      if (dashOverlay) dashOverlay.addEventListener('click', closeMenu);
+      if (closeSidebar) closeSidebar.addEventListener('click', closeMenu);
     });
   </script>
 </body>

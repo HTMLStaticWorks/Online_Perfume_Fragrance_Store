@@ -61,6 +61,11 @@
       display: flex;
       gap: 15px;
     }
+    
+    [dir="rtl"] .login-card-actions {
+      right: auto;
+      left: 20px;
+    }
 
     .login-card-actions button {
       background: transparent;
@@ -111,7 +116,7 @@
 
     .form-group {
       margin-bottom: 25px;
-      text-align: center;
+      text-align: start;
     }
 
     .form-group label {
@@ -135,7 +140,7 @@
       color: var(--color-primary);
       transition: all 0.3s;
       border-radius: 0;
-      text-align: center; /* Center placeholder and typed text */
+      text-align: start; /* Align placeholder and typed text to start */
     }
     body.dark-mode .form-control { color: #fff; border-color: #333; }
 
@@ -149,16 +154,16 @@
       color: var(--color-gray);
       margin-top: 8px;
       display: block;
-      text-align: center;
+      text-align: start;
     }
 
     .checkbox-group {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 12px;
       margin: 30px 0;
-      text-align: center;
+      text-align: start;
       font-size: 0.85rem;
       color: var(--color-primary);
       cursor: pointer;
@@ -211,7 +216,7 @@
       color: var(--color-accent);
       font-weight: 600;
       text-decoration: none;
-      margin-left: 5px;
+      margin-inline-start: 5px;
     }
 
     .social-login {
