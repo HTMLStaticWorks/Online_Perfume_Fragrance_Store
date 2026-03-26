@@ -351,6 +351,53 @@
       .newsletter-promo-form { flex-direction: column; }
       .newsletter-promo-form input, .newsletter-promo-form button { width: 100%; border-radius: 30px; }
     }
+    /* ── Header Contrast for Hero ── */
+    
+    /* Global Overrides: The top-level header items (Logo, Hamburger, Icons) sit on a dark 
+       hero background in BOTH desktop and mobile. So they must ALWAYS be light (Ivory). */
+    .header:not(.scrolled) .logo,
+    .header:not(.scrolled) .mobile-menu-btn,
+    .header:not(.scrolled) .header-actions button,
+    .header:not(.scrolled) .header-actions a {
+      color: var(--color-secondary) !important;
+    }
+    
+    body.dark-mode .header:not(.scrolled) .logo,
+    body.dark-mode .header:not(.scrolled) .mobile-menu-btn,
+    body.dark-mode .header:not(.scrolled) .header-actions button,
+    body.dark-mode .header:not(.scrolled) .header-actions a {
+      color: var(--color-primary) !important;
+    }
+
+    /* Desktop-Only Overrides: The nav-links ONLY sit on the dark hero background on Desktop. 
+       On mobile, they are inside the Ivory drawer, so they must fallback to default black text. */
+    @media (min-width: 993px) {
+      .header:not(.scrolled) .nav-links > a,
+      .header:not(.scrolled) .nav-item-dropdown > a {
+        color: var(--color-secondary) !important;
+      }
+      body.dark-mode .header:not(.scrolled) .nav-links > a,
+      body.dark-mode .header:not(.scrolled) .nav-item-dropdown > a {
+        color: var(--color-primary) !important;
+      }
+      
+      /* Active/Hover states for nav links in desktop hero */
+      .header:not(.scrolled) .nav-links > a:hover,
+      .header:not(.scrolled) .nav-item-dropdown > a:hover,
+      .header:not(.scrolled) .nav-links > a.active,
+      .header:not(.scrolled) .nav-item-dropdown > a.active {
+        color: var(--color-accent) !important;
+      }
+    }
+
+    /* Gold Highlights for Theme & RTL Toggles */
+    #theme-toggle, #rtl-toggle { color: var(--color-accent) !important; }
+    
+    /* Ensure action icons are white/primary in non-scrolled state */
+    .header:not(.scrolled) .header-actions button i, 
+    .header:not(.scrolled) .header-actions a i { color: var(--color-secondary); }
+    body.dark-mode .header:not(.scrolled) .header-actions button i, 
+    body.dark-mode .header:not(.scrolled) .header-actions a i { color: var(--color-primary); }
   </style>
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
 </head>
