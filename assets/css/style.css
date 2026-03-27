@@ -263,6 +263,10 @@ button {
 }
 
 /* Dropdown Navigation */
+.nav-item-dropdown {
+  position: relative;
+}
+
 .nav-item-dropdown a {
   display: flex;
   align-items: center;
@@ -314,26 +318,35 @@ button {
 .dropdown-menu a:hover {
   color: var(--color-accent);
   border-left-color: var(--color-accent);
-  background: linear-gradient(to right, rgba(180, 140, 90, 0.08) 0%, transparent 80%);
-  padding-left: 28px;
+  border-left-width: 3px;
+  background: linear-gradient(to right, rgba(197, 160, 89, 0.15) 0%, transparent 80%);
+  padding-left: 25px;
 }
 
 .dropdown-menu a.active {
   color: var(--color-accent);
   border-left-color: var(--color-accent);
-  background: linear-gradient(to right, rgba(180, 140, 90, 0.12) 0%, transparent 80%);
+  border-left-width: 3px;
+  background: linear-gradient(to right, rgba(197, 160, 89, 0.18) 0%, transparent 80%);
   font-weight: 600;
 }
 
 /* Always override any page-level header color for dropdown links */
 .nav-item-dropdown .dropdown-menu a,
 .header .nav-item-dropdown .dropdown-menu a,
-.header.scrolled .nav-item-dropdown .dropdown-menu a {
+.header.scrolled .nav-item-dropdown .dropdown-menu a,
+.header:not(.scrolled) .nav-item-dropdown .dropdown-menu a {
   color: var(--color-primary) !important;
 }
 
 .nav-item-dropdown .dropdown-menu a:hover,
-.header .nav-item-dropdown .dropdown-menu a:hover {
+.header .nav-item-dropdown .dropdown-menu a:hover,
+.header:not(.scrolled) .nav-item-dropdown .dropdown-menu a:hover {
+  color: var(--color-accent) !important;
+  background: linear-gradient(to right, rgba(197, 160, 89, 0.15) 0%, transparent 80%) !important;
+}
+
+.header:not(.scrolled) .nav-item-dropdown .dropdown-menu a.active {
   color: var(--color-accent) !important;
 }
 
