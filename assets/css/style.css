@@ -240,6 +240,10 @@ button {
   text-transform: uppercase;
   letter-spacing: 1px;
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
 }
 
 .nav-links a::after {
@@ -259,16 +263,10 @@ button {
 }
 
 /* Dropdown Navigation */
-.nav-item-dropdown {
-  position: relative;
+.nav-item-dropdown a {
   display: flex;
   align-items: center;
-  gap: 5px;
-}
-
-.nav-item-dropdown i {
-  font-size: 0.7rem;
-  transition: transform var(--transition-fast);
+  gap: 6px;
 }
 
 .nav-item-dropdown:hover i {
@@ -690,8 +688,25 @@ body.dark-mode .btn-primary {
 [dir="rtl"] .product-badge { left: auto; right: 15px; }
 [dir="rtl"] .subs-features li i, 
 [dir="rtl"] .trust-item i { margin-right: 0; margin-left: 10px; }
-[dir="rtl"] .header-actions { margin-left: 0; margin-right: auto; gap: 25px; }
-[dir="rtl"] .logo { margin-right: 0; margin-left: 40px; }
+[dir="rtl"] .header-actions { margin-left: 25px; margin-right: auto; gap: 15px; }
+[dir="rtl"] .logo { margin-right: 0; margin-left: 20px; }
+[dir="rtl"] .nav-links { gap: 15px; }
+
+/* Mobile RTL Drawer */
+@media (max-width: 992px) {
+  [dir="rtl"] .nav-links {
+    right: auto;
+    left: -100%;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+  }
+  [dir="rtl"] .nav-links.active {
+    left: 0;
+  }
+}
+
+/* In RTL, the chevron should be on the left of text */
+[dir="rtl"] .nav-item-dropdown a { flex-direction: row-reverse; }
+[dir="rtl"] .nav-item-dropdown i { margin-right: 0; margin-left: 4px; }
 [dir="rtl"] .footer-brand { text-align: right; }
 [dir="rtl"] .footer-links, [dir="rtl"] .newsletter-form { text-align: right; }
 [dir="rtl"] .newsletter-form button { border-left: 1px solid var(--color-primary); border-right: none; }
