@@ -563,7 +563,13 @@ body.dark-mode .btn-login-nav:hover {
 /* --- Responsive --- */
 @media (max-width: 992px) {
   .nav-links { display: flex; } /* Ensure flex for mobile slide-in */
-  .mobile-menu-btn { display: block; }
+  .mobile-menu-btn { 
+    display: block; 
+    margin-left: 20px;
+  }
+  .header-actions {
+    margin-left: auto;
+  }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   
   .mobile-nav-actions {
