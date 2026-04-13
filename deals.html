@@ -63,26 +63,12 @@
     .product-price { font-size: 1.25rem; font-weight: 500; color: var(--color-primary); margin-top: auto; }
     .product-price s { color: var(--color-gray); font-size: 0.95rem; margin-right: 10px; font-weight: 400; }
     
-    .add-to-cart-btn {
-      width: 100%; padding: 14px; background: transparent; border: 1px solid var(--color-primary);
-      color: var(--color-primary); text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.8rem;
-      margin-top: 20px; transition: all var(--transition-fast);
-      cursor: pointer; font-weight: 500;
-    }
-    .product-card:hover .add-to-cart-btn { background: var(--color-primary); color: var(--color-text-light); }
-
+    .add-to-cart-btn { cursor: pointer; }
+    
     /* Dark Mode Visibility Fixes */
     body.dark-mode .product-card { border-color: rgba(255,255,255,0.1); }
     body.dark-mode .product-title { color: var(--color-text-dark); }
     body.dark-mode .product-price { color: var(--color-text-dark); }
-    body.dark-mode .add-to-cart-btn {
-      border-color: var(--color-accent) !important;
-      color: var(--color-accent) !important;
-    }
-    body.dark-mode .product-card:hover .add-to-cart-btn {
-      background: var(--color-accent) !important;
-      color: #000 !important;
-    }
     body.dark-mode .offer-banner .btn-accent {
       color: #000 !important;
     }
